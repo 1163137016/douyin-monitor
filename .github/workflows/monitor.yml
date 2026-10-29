@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: read
+  contents: write      # 需要写权限: 创建 release 并上传作品附件
   pages: write
   id-token: write
 
@@ -17,7 +17,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60    # 上传附件需要更多时间
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -46,6 +46,7 @@ jobs:
           MONITOR_URLS: ${{ secrets.MONITOR_URLS }}
           SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
           MAX_PAGES: ${{ secrets.MAX_PAGES }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python monitor_run.py
 
       - name: Build gallery
