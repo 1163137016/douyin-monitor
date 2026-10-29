@@ -4,8 +4,8 @@
 
 两种模式:
   1) 云端模式(推荐): 读取 state.json 中的 works 字段, 媒体直链指向远端存储
-     (默认 catbox.moe 匿名直链)。网页本身只有几 KB, 作品数量不再受 GitHub
-     Pages 容量限制。
+     (默认 GitHub Releases 附件直链)。网页本身只有几 KB, 作品数量不再受
+     GitHub Pages 容量限制。
   2) 本地模式: 扫描 downloads/ 并把媒体复制进 site/downloads/。
      受 Pages 1GB 产物上限约束, 仅适合作品量小的场景(未启用云端存储时自动使用)。
 
