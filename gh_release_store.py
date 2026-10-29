@@ -15,6 +15,7 @@
 未配置时 enabled() 返回 False，调用方自动退回本地模式，不会报错。
 """
 import os
+import re
 import time
 import urllib.parse
 from pathlib import Path
@@ -95,6 +96,19 @@ def _list_releases():
     return out
 
 
+# GitHub 会把附件名里的非 ASCII/空格/井号等字符规范化成 "."（连续非法字符折叠
+# 成一个点，例如 "含中文的文案" -> "."，"hello #tag" -> "hello.tag"）。
+# 因此上传前必须自己先按同样规则规范化，否则：
+#   1) 与仓库里已存的附件名对不上，幂等判断永远不命中 -> 重复上传
+#   2) 撞名时 GitHub 返回 422(already_exists) -> 整条作品归档失败
+_ILLEGAL = re.compile(r"[^A-Za-z0-9._-]+")
+
+
+def safe_name(key: str) -> str:
+    """把 '昵称/文件夹/文件名' 压成 GitHub 可接受的附件名。"""
+    return _ILLEGAL.sub(".", key.replace("/", "__"))
+
+
 def _load_index(releases):
     """构建 附件名 -> 直链 映射，供上传前做幂等复用。"""
     global _asset_index
@@ -102,7 +116,7 @@ def _load_index(releases):
     for rel in releases:
         for name, url in rel.get("assets", []):
             if name and url:
-                _asset_index.setdefault(name, url)
+                _asset_index.setdefault(safe_name(name), url)
 
 
 def _tag_index(tag: str):
@@ -189,7 +203,7 @@ def peek(key: str) -> str:
         return ""
     if not _ready:
         ensure_release()
-    return _asset_index.get(key.replace("/", "__"), "")
+    return _asset_index.get(safe_name(key), "")
 
 
 def public_url(asset_name: str) -> str:
@@ -220,7 +234,7 @@ def upload(path: Path, key: str, retries: int = 3) -> str:
         return ""
     if not ensure_release():
         return ""
-    asset_name = key.replace("/", "__")
+    asset_name = safe_name(key)
     # 幂等: 同名附件此前已上传过（回灌历史作品时会大量遇到），直接复用已有直链
     if asset_name in _asset_index:
         print(f"    [store] 附件已存在, 复用直链: {asset_name}")
@@ -246,8 +260,16 @@ def upload(path: Path, key: str, retries: int = 3) -> str:
                        or public_url(asset_name))
                 _asset_index[asset_name] = url
                 return url
+            if r.status_code == 422:
+                # 多半是同名附件已存在(GitHub 规范化名字后可能撞名)。
+                # 刷新一次索引再查, 命中就直接复用, 别白白重试 3 次。
+                _load_index(_list_releases())
+                hit = _asset_index.get(asset_name)
+                if hit:
+                    print(f"    [store] 附件已存在(422), 复用直链: {asset_name}")
+                    return hit
             print(f"    !! GH release 上传失败(第{attempt}次) {asset_name}: "
-                  f"HTTP {r.status_code} {r.text[:150]}")
+                  f"HTTP {r.status_code} {r.text[:200]}")
         except Exception as e:
             print(f"    !! GH release 上传异常(第{attempt}次) {asset_name}: {e}")
         time.sleep(2 * attempt)
