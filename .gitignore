@@ -8,6 +8,10 @@ douk/
 # 下载产物与运行时增量基准（GitHub Actions 用 Actions Cache 持久化，不入库）
 downloads/
 state.json
+run_new_count.txt
+
+# 画廊生成物(由 Actions 部署为 GitHub Pages, 不入库)
+site/
 
 # Python
 __pycache__/
