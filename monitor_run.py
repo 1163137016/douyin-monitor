@@ -491,6 +491,19 @@ def main() -> int:
         print(f"==> 监控账号: {sec}")
         st = load_account_state(sec)
         known = set(st.get("known", []))
+
+        def _flush():
+            """每处理一条就落盘一次。
+
+            回灌一次要下载+上传几十条作品, 耗时可能逼近 job 超时上限;
+            若只在结尾保存, 中途被中断会导致本轮已完成的进度全部丢失、
+            下轮又从头开始。这里增量保存, 保证进度不回退。
+            """
+            st["known"] = sorted(known)
+            st["nickname"] = nick_csv or st.get("nickname", "")
+            st["last_run"] = time.strftime("%Y-%m-%d %H:%M:%S")
+            save_account_state(sec, st)
+
         awemes = fetch_post_list(session, cookie, sec)
         print(f"    拉到作品 {len(awemes)} 条")
         # 按发布时间倒序, 保证先处理最新
@@ -506,6 +519,7 @@ def main() -> int:
             media = select_media(a)
             if not media:
                 print(f"    [跳过] {aid} 无可下载媒体")
+                _flush()
                 continue
             saved = download_work(session, cookie, a, sec)
             if saved:
@@ -535,10 +549,8 @@ def main() -> int:
                             "items": [{"type": t, "url": u} for t, u in items],
                             "caption": caption,
                         }
-        st["known"] = sorted(known)
-        st["nickname"] = nick_csv or st.get("nickname", "")
-        st["last_run"] = time.strftime("%Y-%m-%d %H:%M:%S")
-        save_account_state(sec, st)
+            _flush()  # 每处理完一条立即落盘, 防止中断丢失进度
+        _flush()
         total_known += len(known)
         print(f"    本账号累计已知 {len(known)} 条, 已归档 "
               f"{len(st.get('works', {}))} 条")
