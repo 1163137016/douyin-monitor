@@ -4,6 +4,6 @@ curl-cffi==0.16.3
 requests==2.34.2
 emoji==2.16.0
 rich==15.0.0
-# 默认存储后端 catbox.moe 走匿名 HTTP 上传, 仅需 requests(上方已包含), 无需 boto3。
+# 默认存储后端 GitHub Releases 走 GitHub API 上传, 仅需 requests(上方已包含)。
 # 若改用 Cloudflare R2(STORAGE_BACKEND=r2), 需自行取消下行注释并安装:
 # boto3>=1.35,<2
