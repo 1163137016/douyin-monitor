@@ -3,10 +3,11 @@
 """生成 GitHub Pages 画廊 site/index.html（可在线播放, 不依赖抖音）。
 
 两种模式:
-  1) R2 模式(推荐): 读取 gallery_manifest.json, 媒体直链指向 Cloudflare R2。
-     网页本身只有几 KB, 作品数量不再受 GitHub Pages 容量限制。
+  1) 云端模式(推荐): 读取 state.json 中的 works 字段, 媒体直链指向远端存储
+     (默认 catbox.moe 匿名直链)。网页本身只有几 KB, 作品数量不再受 GitHub
+     Pages 容量限制。
   2) 本地模式: 扫描 downloads/ 并把媒体复制进 site/downloads/。
-     受 Pages 1GB 产物上限约束, 仅适合作品量小的场景(未配置 R2 时自动使用)。
+     受 Pages 1GB 产物上限约束, 仅适合作品量小的场景(未启用云端存储时自动使用)。
 
 设计要点:
   - 全程只使用已归档的直链/本地文件, 不请求抖音, 不留下访问痕迹。
@@ -21,7 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 DOWNLOAD_DIR = ROOT / "downloads"
 SITE = ROOT / "site"
-MANIFEST = ROOT / "gallery_manifest.json"
+STATE_FILE = ROOT / "state.json"
 
 PAGE_HEAD = """<!doctype html>
 <html lang="zh">
@@ -62,17 +63,18 @@ def media_tag(kind: str, src: str) -> str:
     return f'<img loading="lazy" src="{esc(src)}" alt="" />'
 
 
-def collect_from_manifest() -> list:
-    """R2 模式: 从清单读取, 条目形如
-    {nick, desc, pub, ts, kind, items:[{type,url}], caption}
-    """
-    if not MANIFEST.exists():
+def collect_from_state() -> list:
+    """云端模式: 直接从 state.json 的 works 字段读取已上传作品的直链清单。
+    条目形如 {nick, desc, pub, ts, kind, items:[{type,url}], caption}。"""
+    if not STATE_FILE.exists():
         return []
     try:
-        data = json.loads(MANIFEST.read_text("utf-8"))
+        st = json.loads(STATE_FILE.read_text("utf-8"))
     except Exception as e:
-        print(f"清单解析失败: {e}")
+        print(f"state 解析失败: {e}")
         return []
+    works = st.get("works") or {}
+    data = list(works.values())
     data.sort(key=lambda x: x.get("ts") or 0, reverse=True)
     return data
 
@@ -112,8 +114,8 @@ def build() -> None:
         shutil.rmtree(SITE)
     SITE.mkdir()
 
-    entries = collect_from_manifest()
-    mode = "R2 直链" if entries else "本地文件"
+    entries = collect_from_state()
+    mode = "云端直链" if entries else "本地文件"
     if not entries:
         entries = collect_from_local()
 
