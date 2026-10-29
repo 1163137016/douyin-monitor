@@ -4,3 +4,6 @@ curl-cffi==0.16.3
 requests==2.34.2
 emoji==2.16.0
 rich==15.0.0
+# Cloudflare R2 对象存储（S3 兼容）。未配置 R2 时不会用到。
+# 用区间约束而非精确锁定, 避免 boto3/botocore 版本不匹配导致安装失败。
+boto3>=1.35,<2
