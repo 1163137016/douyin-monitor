@@ -121,6 +121,9 @@ MAX_NEW_PER_RUN = int(os.environ.get("MAX_NEW_PER_RUN", "50").strip() or "50")
 # 正常执行。避免像"被 job 超时硬杀"那样导致本轮进度全部丢失。
 # 默认 45 分钟, 留出余量给缓存上传与 Pages 部署。
 TIME_BUDGET_MIN = float(os.environ.get("TIME_BUDGET_MIN", "45").strip() or "45")
+# 单个媒体文件的下载总时长上限(秒)。慢速大文件会拖垮整轮时间预算,
+# 超时即放弃该文件(下轮再试), 保证本轮能按时收尾并落盘。
+DL_TIMEOUT = float(os.environ.get("DL_TIMEOUT", "240").strip() or "240")
 _RUN_START = time.time()
 
 
@@ -255,6 +258,12 @@ def cover_url(aweme: dict) -> str:
 
 
 def download_file(session: Session, url: str, cookie: dict, path: Path) -> bool:
+    """下载单个媒体。socket 超时之外再加单文件总时长上限。
+
+    只靠 socket 超时挡不住"慢速但一直有数据"的连接(大视频可能拖几十分钟),
+    那样会把本轮时间预算耗光、来不及落盘。这里超时即放弃并删除半截文件。
+    """
+    started = time.time()
     try:
         r = session.get(url, headers={
             "User-Agent": USERAGENT,
@@ -265,9 +274,15 @@ def download_file(session: Session, url: str, cookie: dict, path: Path) -> bool:
             return False
         with open(path, "wb") as f:
             for chunk in r.iter_content(chunk_size=65536):
+                if time.time() - started > DL_TIMEOUT:
+                    print(f"!! 下载超时(>{DL_TIMEOUT:.0f}s) 放弃: {path.name}")
+                    break
                 if chunk:
                     f.write(chunk)
-        return path.stat().st_size > 0
+        if path.stat().st_size <= 0:
+            path.unlink(missing_ok=True)
+            return False
+        return True
     except Exception as e:
         print(f"!! 下载异常 {path.name}: {e}")
         return False
