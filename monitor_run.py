@@ -20,6 +20,7 @@ DouK-Downloader 的"终端交互模式"依赖剪贴板监听(同步阻塞调用)
   DOWNLOAD_DIR        下载根目录, 默认 ./downloads          [可选]
   MAX_PAGES           每次最多翻几页(控制耗时), 默认 5        [可选]
   MAX_NEW_PER_RUN     每轮最多处理多少条新作品, 默认 50       [可选]
+  TIME_BUDGET_MIN     每轮时间预算(分钟), 到点主动收尾, 默认 45  [可选]
   STORAGE_BACKEND     存储后端: gh_release(默认)/r2/local          [可选]
 """
 import csv
@@ -116,6 +117,16 @@ MAX_PAGES = int(os.environ.get("MAX_PAGES", "5").strip() or "5")
 # 每轮最多下载多少条"新作品", 防止首次接入大量账号时一次性全量下载导致
 # 超时 / 产物超限 / 缓存爆掉。未处理完的会留到下一轮继续(渐进式补齐)。
 MAX_NEW_PER_RUN = int(os.environ.get("MAX_NEW_PER_RUN", "50").strip() or "50")
+# 本轮时间预算(分钟): 到点就主动收尾并落盘, 让后续步骤(生成画廊/部署/推送)
+# 正常执行。避免像"被 job 超时硬杀"那样导致本轮进度全部丢失。
+# 默认 45 分钟, 留出余量给缓存上传与 Pages 部署。
+TIME_BUDGET_MIN = float(os.environ.get("TIME_BUDGET_MIN", "45").strip() or "45")
+_RUN_START = time.time()
+
+
+def budget_left() -> bool:
+    """本轮还剩时间预算就返回 True。"""
+    return (time.time() - _RUN_START) < TIME_BUDGET_MIN * 60
 
 PROXIES = {"http": None, "https": None}  # 直连
 DOUK = DouYinParams()
@@ -488,6 +499,9 @@ def main() -> int:
         if len(all_new) >= MAX_NEW_PER_RUN:
             print(f"==> 已达每轮上限 {MAX_NEW_PER_RUN} 条, 剩余账号下轮继续")
             break
+        if not budget_left():
+            print(f"==> 已达本轮时间预算 {TIME_BUDGET_MIN} 分钟, 主动收尾(进度已落盘)")
+            break
         print(f"==> 监控账号: {sec}")
         st = load_account_state(sec)
         known = set(st.get("known", []))
@@ -511,6 +525,9 @@ def main() -> int:
         for a in awemes:
             if len(all_new) >= MAX_NEW_PER_RUN:
                 print(f"    [达到每轮上限 {MAX_NEW_PER_RUN}] 剩余作品下轮继续")
+                break
+            if not budget_left():
+                print(f"    [达到时间预算 {TIME_BUDGET_MIN} 分钟] 剩余作品下轮继续")
                 break
             aid = a.get("aweme_id")
             if not aid or aid in known:
