@@ -239,9 +239,20 @@ def upload(path: Path, key: str, retries: int = 3) -> str:
     if asset_name in _asset_index:
         print(f"    [store] 附件已存在, 复用直链: {asset_name}")
         return _asset_index[asset_name]
+
+    def name_for_try(n: int) -> str:
+        """首次用原名；失败后加序号后缀，规避规范化撞名导致的 422。"""
+        if n == 1:
+            return asset_name
+        stem, dot, ext = asset_name.rpartition(".")
+        base = stem if dot else asset_name
+        suffix = f"-{n}"
+        return f"{base}{suffix}.{ext}" if dot else f"{base}{suffix}"
+
     for attempt in range(1, retries + 1):
         if _cur_count >= MAX_ASSETS and not _next_release():
             return ""
+        name_try = name_for_try(attempt)
         try:
             # 必须显式给 Content-Length: 直接把文件对象交给 requests 会走
             # chunked 编码, GitHub 读不到长度并报 422
@@ -253,24 +264,24 @@ def upload(path: Path, key: str, retries: int = 3) -> str:
                     headers={**_headers(),
                              "Content-Type": "application/octet-stream",
                              "Content-Length": str(size)},
-                    params={"name": asset_name}, data=f, timeout=180)
+                    params={"name": name_try}, data=f, timeout=180)
             if r.status_code in (200, 201):
                 _cur_count += 1
                 url = (r.json().get("browser_download_url")
-                       or public_url(asset_name))
+                       or public_url(name_try))
                 _asset_index[asset_name] = url
                 return url
-            if r.status_code == 422:
+            if r.status_code == 422 and attempt == 1:
                 # 多半是同名附件已存在(GitHub 规范化名字后可能撞名)。
-                # 刷新一次索引再查, 命中就直接复用, 别白白重试 3 次。
+                # 刷新一次索引再查, 命中就复用, 否则靠后续改名重试解决。
                 _load_index(_list_releases())
                 hit = _asset_index.get(asset_name)
                 if hit:
                     print(f"    [store] 附件已存在(422), 复用直链: {asset_name}")
                     return hit
-            print(f"    !! GH release 上传失败(第{attempt}次) {asset_name}: "
+            print(f"    !! GH release 上传失败(第{attempt}次) {name_try}: "
                   f"HTTP {r.status_code} {r.text[:200]}")
         except Exception as e:
-            print(f"    !! GH release 上传异常(第{attempt}次) {asset_name}: {e}")
+            print(f"    !! GH release 上传异常(第{attempt}次) {name_try}: {e}")
         time.sleep(2 * attempt)
     return ""
