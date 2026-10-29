@@ -177,6 +177,21 @@ def _next_release():
     return False
 
 
+def peek(key: str) -> str:
+    """查询该 key（形如 '昵称/时间_文案/视频.mp4'）此前是否已上传过。
+
+    命中返回其公开直链，未上传过返回空串。调用方据此可跳过重复下载，
+    直接复用已有直链重建画廊索引（历史作品回灌时大量命中）。
+    """
+    if not _TOKEN:
+        reload()
+    if not (_TOKEN and _REPO):
+        return ""
+    if not _ready:
+        ensure_release()
+    return _asset_index.get(key.replace("/", "__"), "")
+
+
 def public_url(asset_name: str) -> str:
     """拼装 release 附件直链（作为 API 未返回时的兜底）。"""
     return (f"https://github.com/{_REPO}/releases/download/"
