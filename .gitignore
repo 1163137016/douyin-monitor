@@ -1,0 +1,15 @@
+# 敏感配置（含 Cookie，绝不提交）
+.env
+run_log.txt
+
+# 本地完整 DouK 源码(含运行时数据, 不入库); 反爬签名模块已复制到 douk_src/ 入库
+douk/
+
+# 下载产物与运行时增量基准（GitHub Actions 用 Actions Cache 持久化，不入库）
+downloads/
+state.json
+
+# Python
+__pycache__/
+*.pyc
+.Scripts/
