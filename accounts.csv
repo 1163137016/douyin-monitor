@@ -1,0 +1,8 @@
+﻿# 监控账号表：新增监控对象就在下面加一行。
+# sec_uid 与 url 填任意一个即可（都填以 sec_uid 为准）；
+# sec_uid 取自抖音主页链接：https://www.douyin.com/user/<这一长串就是 sec_uid>
+# enabled: 1=监控, 0=暂停（填 0 可临时停用某个账号）
+# nickname: 可选，留空会自动用抖音返回的昵称
+# remark: 备注，随便写
+sec_uid,url,nickname,enabled,remark
+#MS4wLjABAAAAok6Wsy7-FYySKArvJjzAWgeUdkg3mo5jeSTJu5aCZK8,https://www.douyin.com/user/MS4wLjABAAAAok6Wsy7-FYySKArvJjzAWgeUdkg3mo5jeSTJu5aCZK8,示例账号,1,把这行复制改成你要加的人
