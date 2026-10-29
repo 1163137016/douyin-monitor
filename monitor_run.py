@@ -22,6 +22,7 @@ DouK-Downloader 的"终端交互模式"依赖剪贴板监听(同步阻塞调用)
   MAX_NEW_PER_RUN     每轮最多处理多少条新作品, 默认 50       [可选]
   STORAGE_BACKEND     存储后端: gh_release(默认)/r2/local          [可选]
 """
+import csv
 import json
 import os
 import re
@@ -102,12 +103,15 @@ for _k in ("HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy", "ALL_PROXY"
     os.environ.pop(_k, None)
 
 DOWNLOAD_DIR = Path(os.environ.get("DOWNLOAD_DIR", ROOT / "downloads"))
-STATE_FILE = ROOT / "state.json"
-# 已上传作品的直链清单直接存在 state.json 的 "works" 字段里(随 Actions 缓存持久化),
-# build_gallery 读取它生成直链画廊, 无需单独的 manifest 文件。
+# 每个监控账号一个独立状态文件 state/<sec_uid>.json（已知作品 known + 已归档直链 works），
+# 不再把所有账号全部堆进同一个 state.json，便于按账号管理/排查/单独重置。
+STATE_DIR = ROOT / "state"
+# 可编程账号表格：在仓库里直接编辑 accounts.csv 即可增删监控对象
+ACCOUNTS_CSV = ROOT / "accounts.csv"
 SENDKEY = os.environ.get("SERVERCHAN_SENDKEY", "").strip()
 COOKIE = os.environ.get("DOUYIN_COOKIE", "").strip()
-URLS = [u.strip() for u in os.environ.get("MONITOR_URLS", "").split(",") if u.strip()]
+# 旧的环境变量账号列表，仍作为补充来源（平滑过渡到 accounts.csv）
+URLS_ENV = [u.strip() for u in os.environ.get("MONITOR_URLS", "").split(",") if u.strip()]
 MAX_PAGES = int(os.environ.get("MAX_PAGES", "5").strip() or "5")
 # 每轮最多下载多少条"新作品", 防止首次接入大量账号时一次性全量下载导致
 # 超时 / 产物超限 / 缓存爆掉。未处理完的会留到下一轮继续(渐进式补齐)。
@@ -270,13 +274,76 @@ def push(title: str, msg: str) -> None:
         print(f"==> 推送失败: {e}")
 
 
-def load_state() -> dict:
-    if STATE_FILE.exists():
+def state_path(sec: str) -> Path:
+    """账号状态文件路径（sec_uid 可能含特殊字符，做一遍安全化）。"""
+    return STATE_DIR / f"{re.sub(r'[^A-Za-z0-9_-]', '_', sec)[:80]}.json"
+
+
+def load_account_state(sec: str) -> dict:
+    """读取某个账号的状态；不存在则返回空骨架。"""
+    p = state_path(sec)
+    if p.exists():
         try:
-            return json.loads(STATE_FILE.read_text("utf-8"))
+            return json.loads(p.read_text("utf-8"))
         except Exception:
             pass
-    return {"known": []}
+    return {"sec_uid": sec, "nickname": "", "known": [], "works": {}}
+
+
+def save_account_state(sec: str, st: dict) -> None:
+    """把某个账号的已知作品与已归档直链写回它自己的文件。"""
+    try:
+        STATE_DIR.mkdir(parents=True, exist_ok=True)
+        state_path(sec).write_text(
+            json.dumps(st, ensure_ascii=False, indent=2), "utf-8")
+    except Exception as e:
+        print(f"!! 保存账号状态失败 {sec}: {e}")
+
+
+def load_accounts() -> list:
+    """监控账号来源：accounts.csv（可编程表格）+ MONITOR_URLS 环境变量，合并去重。
+
+    csv 列：sec_uid,url,nickname,enabled,remark
+      - sec_uid 为空时从 url 提取
+      - enabled 为 0/false/no/off 视为停用，即使 env 里也配置了同样跳过
+    返回 [(sec_uid, nickname), ...]
+    """
+    rows, disabled = [], set()
+    if ACCOUNTS_CSV.exists():
+        try:
+            with open(ACCOUNTS_CSV, "r", encoding="utf-8-sig", newline="") as f:
+                for parts in csv.reader(f):
+                    # 整行都空才跳过：sec_uid 列允许留空，只填 url 同样有效
+                    if not parts or not any(p.strip() for p in parts):
+                        continue
+                    first = parts[0].strip()
+                    if first.startswith("#") or first.lower() == "sec_uid":
+                        continue  # 注释行 / 表头
+                    sec_uid = first
+                    url = parts[1].strip() if len(parts) > 1 else ""
+                    nick = parts[2].strip() if len(parts) > 2 else ""
+                    enabled = parts[3].strip().lower() if len(parts) > 3 else "1"
+                    sec = sec_uid or (extract_sec_user_id(url) if url else "")
+                    if not sec:
+                        continue
+                    if enabled in ("0", "false", "no", "off"):
+                        disabled.add(sec)
+                        continue
+                    rows.append((sec, nick))
+        except Exception as e:
+            print(f"!! 读取 accounts.csv 失败: {e}")
+    # 环境变量里已配的账号继续生效（平滑过渡），但 csv 里显式停用的除外
+    for u in URLS_ENV:
+        sec = extract_sec_user_id(u)
+        if sec and sec not in disabled:
+            rows.append((sec, ""))
+    seen, out = set(), []
+    for sec, nick in rows:
+        if sec in seen:
+            continue
+        seen.add(sec)
+        out.append((sec, nick))
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -403,25 +470,27 @@ def main() -> int:
     if not COOKIE:
         print("!! 未配置 DOUYIN_COOKIE")
         return 1
-    if not URLS:
-        print("!! 未配置 MONITOR_URLS")
+    accounts = load_accounts()
+    if not accounts:
+        print("!! 没有可监控的账号: accounts.csv 为空且未配置 MONITOR_URLS")
         return 1
+    print(f"==> 待监控账号 {len(accounts)} 个(accounts.csv + MONITOR_URLS 合并)")
 
     cookie = parse_cookie(COOKIE)
     session = Session(impersonate="chrome")
-    state = load_state()
-    known = set(state.get("known", []))
     DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
+    STATE_DIR.mkdir(parents=True, exist_ok=True)
 
-    all_new = []  # (nick, desc, kind, n_files)
-    seen_ids = set(known)
+    all_new = []  # (nick, desc, kind, n_files, post_url, cover)
+    total_known = 0
 
-    for url in URLS:
+    for sec, nick_csv in accounts:
         if len(all_new) >= MAX_NEW_PER_RUN:
             print(f"==> 已达每轮上限 {MAX_NEW_PER_RUN} 条, 剩余账号下轮继续")
             break
-        sec = extract_sec_user_id(url)
         print(f"==> 监控账号: {sec}")
+        st = load_account_state(sec)
+        known = set(st.get("known", []))
         awemes = fetch_post_list(session, cookie, sec)
         print(f"    拉到作品 {len(awemes)} 条")
         # 按发布时间倒序, 保证先处理最新
@@ -431,23 +500,22 @@ def main() -> int:
                 print(f"    [达到每轮上限 {MAX_NEW_PER_RUN}] 剩余作品下轮继续")
                 break
             aid = a.get("aweme_id")
-            if not aid or aid in seen_ids:
+            if not aid or aid in known:
                 continue
-            seen_ids.add(aid)
+            known.add(aid)
             media = select_media(a)
             if not media:
                 print(f"    [跳过] {aid} 无可下载媒体")
                 continue
             saved = download_work(session, cookie, a, sec)
             if saved:
-                aid = a.get("aweme_id")
                 nick = _sanitize((a.get("author") or {}).get("nickname", sec[:8]))
                 desc = _sanitize(a.get("desc", "") or "无标题")
                 post_url = f"https://www.douyin.com/video/{aid}" if aid else ""
                 cov = cover_url(a)
                 all_new.append((nick, desc, media[0][2], len(saved), post_url, cov))
 
-                # 云端存储: 上传成功后删除本地副本, 并把直链写进 state.json
+                # 云端存储: 上传成功后删除本地副本, 直链写入该账号自己的状态文件
                 if store_on:
                     ct = a.get("create_time") or 0
                     pub = (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(ct))
@@ -457,8 +525,8 @@ def main() -> int:
                                if capf.exists() else "")
                     items = archive_work(saved)
                     if items:
-                        state.setdefault("works", {})
-                        state["works"][aid] = {
+                        st.setdefault("works", {})
+                        st["works"][aid] = {
                             "nick": nick,
                             "desc": desc or "无标题",
                             "pub": pub,
@@ -467,6 +535,13 @@ def main() -> int:
                             "items": [{"type": t, "url": u} for t, u in items],
                             "caption": caption,
                         }
+        st["known"] = sorted(known)
+        st["nickname"] = nick_csv or st.get("nickname", "")
+        st["last_run"] = time.strftime("%Y-%m-%d %H:%M:%S")
+        save_account_state(sec, st)
+        total_known += len(known)
+        print(f"    本账号累计已知 {len(known)} 条, 已归档 "
+              f"{len(st.get('works', {}))} 条")
 
     # 汇总推送：仅文字摘要（不含抖音链接/封面，避免留下访问痕迹）
     if all_new:
@@ -484,10 +559,7 @@ def main() -> int:
     except Exception:
         pass
 
-    state["known"] = sorted(seen_ids)
-    state["last_run"] = time.strftime("%Y-%m-%d %H:%M:%S")
-    STATE_FILE.write_text(json.dumps(state, ensure_ascii=False, indent=2), "utf-8")
-    print(f"==> 完成, 累计已知作品 {len(seen_ids)} 条")
+    print(f"==> 完成, 本轮新增 {len(all_new)} 条, 各账号累计已知 {total_known} 条")
     return 0
 
 
