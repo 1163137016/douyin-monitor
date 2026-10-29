@@ -380,9 +380,8 @@ def work_folder(aweme: dict, sec: str) -> tuple:
     return DOWNLOAD_DIR / nick / name, nick, raw_desc, pub
 
 
-def write_caption_txt(aweme: dict, folder: Path, pub: str, raw_desc: str,
-                      kind: str) -> None:
-    """把文案及作品信息保存到 文案.txt。"""
+def build_caption(aweme: dict, pub: str, raw_desc: str, kind: str) -> str:
+    """生成作品文案文本（写进 文案.txt / 画廊展示共用）。"""
     st = aweme.get("statistics") or {}
     lines = [
         f"发布时间: {pub}",
@@ -395,8 +394,15 @@ def write_caption_txt(aweme: dict, folder: Path, pub: str, raw_desc: str,
         f"收藏 {st.get('collect_count', '?')} | 分享 {st.get('share_count', '?')}",
         f"作品链接: https://www.douyin.com/video/{aweme.get('aweme_id', '')}",
     ]
+    return "\n".join(lines)
+
+
+def write_caption_txt(aweme: dict, folder: Path, pub: str, raw_desc: str,
+                      kind: str) -> None:
+    """把文案及作品信息保存到 文案.txt。"""
     try:
-        (folder / "文案.txt").write_text("\n".join(lines), "utf-8")
+        (folder / "文案.txt").write_text(
+            build_caption(aweme, pub, raw_desc, kind), "utf-8")
     except Exception as e:
         print(f"    !! 写文案失败: {e}")
 
@@ -430,6 +436,46 @@ def download_work(session: Session, cookie: dict, aweme: dict, sec: str) -> list
         except Exception:
             pass
     return saved
+
+
+def predicted_keys(aweme: dict, sec: str, media: list) -> list:
+    """不下载的前提下，预测该作品上传后会用到的 key 列表。
+
+    与 download_work 的命名规则保持一致（同一 work_folder + 同名文件），
+    因此预测命中就意味着该作品确实已归档过。
+    """
+    folder, _nick, _raw, _pub = work_folder(aweme, sec)
+    rel = folder.relative_to(DOWNLOAD_DIR).as_posix()
+    keys = []
+    for i, (_u, ext, kind_i) in enumerate(media):
+        if len(media) > 1:
+            fname = f"{i + 1:02d}.{ext}"
+        else:
+            fname = f"视频.{ext}" if kind_i == "video" else f"01.{ext}"
+        keys.append(f"{rel}/{fname}")
+    return keys
+
+
+def try_reuse_archived(aweme: dict, sec: str, media: list) -> list:
+    """该作品若此前已归档过，直接返回其直链列表（无需重复下载）。
+
+    回灌历史作品时能省掉绝大部分下载耗时；未命中返回 []。
+    """
+    peek = getattr(store, "peek", None)
+    if not peek:
+        return []
+    urls = []
+    for k in predicted_keys(aweme, sec, media):
+        u = peek(k)
+        if not u:
+            return []
+        urls.append(u)
+    out = []
+    for u in urls:
+        low = u.split("?")[0].lower()
+        kind = "video" if low.endswith((".mp4", ".webm", ".mov")) else "image"
+        out.append((kind, u))
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -536,6 +582,24 @@ def main() -> int:
             media = select_media(a)
             if not media:
                 print(f"    [跳过] {aid} 无可下载媒体")
+                _flush()
+                continue
+            # 此前已归档过的作品: 直接复用云端直链, 不再重复下载
+            reused = try_reuse_archived(a, sec, media) if store_on else []
+            if reused:
+                _folder, nick, raw_desc, pub = work_folder(a, sec)
+                ct = a.get("create_time") or 0
+                st.setdefault("works", {})
+                st["works"][aid] = {
+                    "nick": nick,
+                    "desc": _sanitize(a.get("desc", "") or "无标题"),
+                    "pub": pub,
+                    "ts": ct,
+                    "kind": media[0][2],
+                    "items": [{"type": t, "url": u} for t, u in reused],
+                    "caption": build_caption(a, pub, raw_desc, media[0][2]),
+                }
+                print(f"    [已归档] {aid} 复用云端直链 {len(reused)} 个, 跳过下载")
                 _flush()
                 continue
             saved = download_work(session, cookie, a, sec)
