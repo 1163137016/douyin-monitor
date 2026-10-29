@@ -191,7 +191,11 @@ def upload(path: Path, key: str, retries: int = 3) -> str:
     （release 附件名不允许含路径分隔符）。
     """
     global _cur_count
-    if not enabled():
+    # 注意: 这里不能用 enabled(), 它会 reload() 把 _ready 重置为 False,
+    # 导致每个文件都重新列一遍全部 release 附件(几百次多余 API 调用)。
+    if not _TOKEN:
+        reload()
+    if not (_TOKEN and _REPO):
         return ""
     try:
         if path.stat().st_size > MAX_FILE:
