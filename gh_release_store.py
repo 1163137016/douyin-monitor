@@ -229,11 +229,16 @@ def upload(path: Path, key: str, retries: int = 3) -> str:
         if _cur_count >= MAX_ASSETS and not _next_release():
             return ""
         try:
+            # 必须显式给 Content-Length: 直接把文件对象交给 requests 会走
+            # chunked 编码, GitHub 读不到长度并报 422
+            #   "size must be greater than or equal to 1"
+            size = path.stat().st_size
             with open(path, "rb") as f:
                 r = requests.post(
                     f"{UPLOAD_API}/repos/{_REPO}/releases/{_cur_id}/assets",
                     headers={**_headers(),
-                             "Content-Type": "application/octet-stream"},
+                             "Content-Type": "application/octet-stream",
+                             "Content-Length": str(size)},
                     params={"name": asset_name}, data=f, timeout=180)
             if r.status_code in (200, 201):
                 _cur_count += 1
