@@ -1,0 +1,52 @@
+name: 抖音监控（自动下载 + 微信推送）
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore cache (downloads + state)
+        uses: actions/cache@v4
+        with:
+          path: |
+            downloads
+            state.json
+          key: douyin-monitor-${{ github.run_id }}
+          restore-keys: |
+            douyin-monitor-
+
+      - name: Run monitor
+        env:
+          DOUYIN_COOKIE: ${{ secrets.DOUYIN_COOKIE }}
+          MONITOR_URLS: ${{ secrets.MONITOR_URLS }}
+          SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
+          MAX_PAGES: ${{ secrets.MAX_PAGES }}
+        run: python monitor_run.py
+
+      - name: Save cache (downloads + state)
+        if: always()
+        uses: actions/cache@v4
+        with:
+          path: |
+            downloads
+            state.json
+          key: douyin-monitor-${{ github.run_id }}
