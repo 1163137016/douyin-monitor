@@ -20,7 +20,7 @@ DouK-Downloader 的"终端交互模式"依赖剪贴板监听(同步阻塞调用)
   DOWNLOAD_DIR        下载根目录, 默认 ./downloads          [可选]
   MAX_PAGES           每次最多翻几页(控制耗时), 默认 5        [可选]
   MAX_NEW_PER_RUN     每轮最多处理多少条新作品, 默认 50       [可选]
-  STORAGE_BACKEND     存储后端: catbox(默认,匿名零配置) / r2 / local [可选]
+  STORAGE_BACKEND     存储后端: gh_release(默认)/r2/local          [可选]
 """
 import json
 import os
@@ -39,14 +39,15 @@ ROOT = Path(__file__).parent
 sys.path.insert(0, str(ROOT / "douk_src"))
 from src.encrypt.douyin_params import DouYinParams, USERAGENT  # noqa: E402
 
-# 远端存储后端: 默认 catbox(匿名上传, 零配置, 无需任何密钥);
+# 远端存储后端: 默认 gh_release(上传到本仓库的 GitHub Release 附件,
+# 只需 Actions 自带的 GITHUB_TOKEN, 无需任何外部账号/密钥);
 # 设 STORAGE_BACKEND=r2 可切回 Cloudflare R2(需配置 R2_* 环境变量)。
 sys.path.insert(0, str(ROOT))
-_BACKEND = os.environ.get("STORAGE_BACKEND", "catbox").strip().lower()
+_BACKEND = os.environ.get("STORAGE_BACKEND", "gh_release").strip().lower()
 if _BACKEND == "r2":
     import r2_store as store  # noqa: E402
 else:
-    import catbox_store as store  # noqa: E402
+    import gh_release_store as store  # noqa: E402
 
 
 # ---------------------------------------------------------------------------
@@ -361,7 +362,7 @@ def archive_work(saved: list) -> list:
 
     全部文件上传成功后删除本地文件夹(含文案.txt)。这样 downloads/ 不会累积,
     Actions 缓存不会超限, 1188+ 条作品也能长期保存。
-    任一项上传失败(如单文件超过 catbox 200MB 上限)则保留本地备份并返回 []。
+    任一项上传失败(如单文件超过 GitHub 2GB 上限)则保留本地备份并返回 []。
     """
     if not saved or not store.enabled():
         return []
@@ -396,7 +397,7 @@ def main() -> int:
     store.reload()
     store_on = store.enabled()
     backend_label = ("Cloudflare R2" if _BACKEND == "r2"
-                     else "catbox 匿名上传（零配置）" if store_on
+                     else "GitHub Releases（本仓库附件）" if store_on
                      else "本地目录（未启用云端存储）")
     print(f"==> 存储模式: {backend_label}")
     if not COOKIE:
