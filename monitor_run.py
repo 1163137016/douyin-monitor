@@ -94,6 +94,9 @@ SENDKEY = os.environ.get("SERVERCHAN_SENDKEY", "").strip()
 COOKIE = os.environ.get("DOUYIN_COOKIE", "").strip()
 URLS = [u.strip() for u in os.environ.get("MONITOR_URLS", "").split(",") if u.strip()]
 MAX_PAGES = int(os.environ.get("MAX_PAGES", "5").strip() or "5")
+# 每轮最多下载多少条"新作品", 防止首次接入大量账号时一次性全量下载导致
+# 超时 / 产物超限 / 缓存爆掉。未处理完的会留到下一轮继续(渐进式补齐)。
+MAX_NEW_PER_RUN = int(os.environ.get("MAX_NEW_PER_RUN", "50").strip() or "50")
 
 PROXIES = {"http": None, "https": None}  # 直连
 DOUK = DouYinParams()
@@ -357,6 +360,9 @@ def main() -> int:
     seen_ids = set(known)
 
     for url in URLS:
+        if len(all_new) >= MAX_NEW_PER_RUN:
+            print(f"==> 已达每轮上限 {MAX_NEW_PER_RUN} 条, 剩余账号下轮继续")
+            break
         sec = extract_sec_user_id(url)
         print(f"==> 监控账号: {sec}")
         awemes = fetch_post_list(session, cookie, sec)
@@ -364,6 +370,9 @@ def main() -> int:
         # 按发布时间倒序, 保证先处理最新
         awemes.sort(key=lambda a: a.get("create_time", 0), reverse=True)
         for a in awemes:
+            if len(all_new) >= MAX_NEW_PER_RUN:
+                print(f"    [达到每轮上限 {MAX_NEW_PER_RUN}] 剩余作品下轮继续")
+                break
             aid = a.get("aweme_id")
             if not aid or aid in seen_ids:
                 continue
