@@ -206,6 +206,21 @@ def select_media(aweme: dict):
     return []
 
 
+def cover_url(aweme: dict) -> str:
+    """取作品封面图直链（用于微信内在线预览，best-effort）。
+
+    抖音官方接口里封面通常在 video.cover / video.origin_cover / video.dynamic_cover
+    的 url_list 中。部分封面地址带签名且可能过期，加载不出来时以作品链接为准。
+    """
+    v = aweme.get("video") or {}
+    for key in ("cover", "origin_cover", "dynamic_cover"):
+        node = v.get(key) or {}
+        ul = node.get("url_list") or []
+        if ul:
+            return ul[0]
+    return ""
+
+
 def download_file(session: Session, url: str, cookie: dict, path: Path) -> bool:
     try:
         r = session.get(url, headers={
@@ -361,14 +376,24 @@ def main() -> int:
             if saved:
                 nick = _sanitize((a.get("author") or {}).get("nickname", sec[:8]))
                 desc = _sanitize(a.get("desc", "") or "无标题")
-                all_new.append((nick, desc, media[0][2], len(saved)))
+                aid = a.get("aweme_id")
+                post_url = f"https://www.douyin.com/video/{aid}" if aid else ""
+                cov = cover_url(a)
+                all_new.append((nick, desc, media[0][2], len(saved), post_url, cov))
 
-    # 汇总推送
+    # 汇总推送（含作品链接 + 封面，微信内可点开在线预览，无需下载）
     if all_new:
-        lines = "\n".join(
-            f"- [{kind}] {desc}（{n} 个文件）" for nick, desc, kind, n in all_new
-        )
-        push("抖音监控: 发现新作品", f"共 {len(all_new)} 条新作品:\n\n{lines}")
+        blocks = []
+        for nick, desc, kind, n, url, cov in all_new:
+            blk = f"**{nick}**：{desc}\n"
+            if cov:
+                blk += f"![]({cov})\n"
+            if url:
+                blk += f"[在抖音打开预览]({url})\n"
+            blk += f"类型: {'视频' if kind == 'video' else '图文'} · 文件数: {n}\n"
+            blocks.append(blk)
+        body = "\n---\n".join(blocks)
+        push("抖音监控: 发现新作品", f"共 {len(all_new)} 条新作品:\n\n{body}")
     else:
         print("==> 无新作品")
 
