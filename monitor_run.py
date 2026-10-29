@@ -381,21 +381,21 @@ def main() -> int:
                 cov = cover_url(a)
                 all_new.append((nick, desc, media[0][2], len(saved), post_url, cov))
 
-    # 汇总推送（含作品链接 + 封面，微信内可点开在线预览，无需下载）
+    # 汇总推送：仅文字摘要（不含抖音链接/封面，避免留下访问痕迹）
     if all_new:
-        blocks = []
-        for nick, desc, kind, n, url, cov in all_new:
-            blk = f"**{nick}**：{desc}\n"
-            if cov:
-                blk += f"![]({cov})\n"
-            if url:
-                blk += f"[在抖音打开预览]({url})\n"
-            blk += f"类型: {'视频' if kind == 'video' else '图文'} · 文件数: {n}\n"
-            blocks.append(blk)
-        body = "\n---\n".join(blocks)
-        push("抖音监控: 发现新作品", f"共 {len(all_new)} 条新作品:\n\n{body}")
+        lines = "\n".join(
+            f"- {nick}：{desc}（{'视频' if kind == 'video' else '图文'}）"
+            for nick, desc, kind, n, _u, _c in all_new
+        )
+        push("抖音监控: 发现新作品", f"共 {len(all_new)} 条新作品，点开云端作品库可在线播放:\n\n{lines}")
     else:
         print("==> 无新作品")
+
+    # 记录本次新作品数, 供 workflow 判断是否推送云端画廊链接
+    try:
+        (ROOT / "run_new_count.txt").write_text(str(len(all_new)), "utf-8")
+    except Exception:
+        pass
 
     state["known"] = sorted(seen_ids)
     state["last_run"] = time.strftime("%Y-%m-%d %H:%M:%S")
