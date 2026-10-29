@@ -1,4 +1,4 @@
-name: 抖音监控（自动下载 + 微信推送）
+name: 抖音监控（自动下载 + 云端画廊 + 微信推送）
 
 on:
   schedule:
@@ -7,6 +7,12 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: douyin-pages
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -42,11 +48,27 @@ jobs:
           MAX_PAGES: ${{ secrets.MAX_PAGES }}
         run: python monitor_run.py
 
-      - name: Upload downloads (可在 Artifacts 下载)
-        if: always()
-        continue-on-error: true
-        uses: actions/upload-artifact@v4
+      - name: Build gallery
+        run: python build_gallery.py
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: downloads-${{ github.run_id }}
-          path: downloads/
-          retention-days: 7
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Push gallery link (仅当有新作品)
+        if: always()
+        env:
+          SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
+        run: |
+          N=$(cat run_new_count.txt 2>/dev/null || echo 0)
+          if [ "$N" -gt 0 ]; then
+            URL="${{ steps.deployment.outputs.page_url }}"
+            curl -s -X POST "https://sctapi.ftqq.com/${{ secrets.SERVERCHAN_SENDKEY }}.send" \
+              --data-urlencode "title=抖音作品库已更新(云端可播放)" \
+              --data-urlencode "desp=本次新增作品，点此在浏览器在线观看(无需进抖音): $URL"
+          fi
