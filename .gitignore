@@ -9,6 +9,8 @@ douk/
 downloads/
 state.json
 run_new_count.txt
+# R2 模式下记录已上传作品直链的清单（同样由 Cache 持久化，不入库）
+gallery_manifest.json
 
 # 画廊生成物(由 Actions 部署为 GitHub Pages, 不入库)
 site/
