@@ -8,8 +8,10 @@ douk/
 # 下载产物与运行时增量基准（GitHub Actions 用 Actions Cache 持久化，不入库）
 downloads/
 state.json
+state/
 run_new_count.txt
-# 已上传作品直链清单已并入 state.json, 无需单独的 gallery_manifest.json
+# 已上传作品直链按账号存放在 state/<sec_uid>.json 里, 无需单独 manifest
+# 注意: accounts.csv 是账号表格, 需要入库以便在线增删监控对象
 
 # 画廊生成物(由 Actions 部署为 GitHub Pages, 不入库)
 site/
