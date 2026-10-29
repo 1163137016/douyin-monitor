@@ -39,6 +39,9 @@ _cur_id = None
 _cur_count = 0
 _ready = False
 
+# 附件名 -> 直链，用于上传前幂等复用（回灌时避免重复上传同名文件）
+_asset_index = {}
+
 
 def reload():
     """重新读取配置（本地 .env 场景用；Actions 已通过 env 注入）。"""
@@ -61,7 +64,11 @@ def _headers():
 
 
 def _list_releases():
-    """列出本仓库所有 release（翻页），返回 [{tag_name, id, n_assets}]。"""
+    """列出本仓库所有 release（翻页）。
+
+    返回 [{tag_name, id, n_assets, assets:[(name, url)]}]；
+    assets 用于幂等判断——回灌历史作品时同名附件若已存在，直接复用其直链。
+    """
     out = []
     for page in range(1, 11):  # 最多 1000 个 release，足够
         try:
@@ -76,12 +83,26 @@ def _list_releases():
         if not batch:
             break
         for rel in batch:
+            assets = rel.get("assets") or []
             out.append({"tag_name": rel.get("tag_name", ""),
                         "id": rel.get("id"),
-                        "n_assets": len(rel.get("assets") or [])})
+                        "n_assets": len(assets),
+                        "assets": [(a.get("name", ""),
+                                    a.get("browser_download_url", ""))
+                                   for a in assets]})
         if len(batch) < 100:
             break
     return out
+
+
+def _load_index(releases):
+    """构建 附件名 -> 直链 映射，供上传前做幂等复用。"""
+    global _asset_index
+    _asset_index = {}
+    for rel in releases:
+        for name, url in rel.get("assets", []):
+            if name and url:
+                _asset_index.setdefault(name, url)
 
 
 def _tag_index(tag: str):
@@ -122,7 +143,9 @@ def ensure_release():
     global _cur_tag, _cur_id, _cur_count, _ready
     if _ready:
         return _cur_id is not None
-    mine = [r for r in _list_releases() if _tag_index(r["tag_name"]) is not None]
+    all_rels = _list_releases()
+    _load_index(all_rels)
+    mine = [r for r in all_rels if _tag_index(r["tag_name"]) is not None]
     if mine:
         mine.sort(key=lambda r: _tag_index(r["tag_name"]))
         last = mine[-1]
@@ -179,6 +202,10 @@ def upload(path: Path, key: str, retries: int = 3) -> str:
     if not ensure_release():
         return ""
     asset_name = key.replace("/", "__")
+    # 幂等: 同名附件此前已上传过（回灌历史作品时会大量遇到），直接复用已有直链
+    if asset_name in _asset_index:
+        print(f"    [store] 附件已存在, 复用直链: {asset_name}")
+        return _asset_index[asset_name]
     for attempt in range(1, retries + 1):
         if _cur_count >= MAX_ASSETS and not _next_release():
             return ""
@@ -191,7 +218,10 @@ def upload(path: Path, key: str, retries: int = 3) -> str:
                     params={"name": asset_name}, data=f, timeout=180)
             if r.status_code in (200, 201):
                 _cur_count += 1
-                return r.json().get("browser_download_url") or public_url(asset_name)
+                url = (r.json().get("browser_download_url")
+                       or public_url(asset_name))
+                _asset_index[asset_name] = url
+                return url
             print(f"    !! GH release 上传失败(第{attempt}次) {asset_name}: "
                   f"HTTP {r.status_code} {r.text[:150]}")
         except Exception as e:
