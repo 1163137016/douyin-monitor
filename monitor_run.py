@@ -19,6 +19,8 @@ DouK-Downloader 的"终端交互模式"依赖剪贴板监听(同步阻塞调用)
   SERVERCHAN_SENDKEY  Server酱 SendKey(推送微信用)         [可选]
   DOWNLOAD_DIR        下载根目录, 默认 ./downloads          [可选]
   MAX_PAGES           每次最多翻几页(控制耗时), 默认 5        [可选]
+  MAX_NEW_PER_RUN     每轮最多处理多少条新作品, 默认 50       [可选]
+  STORAGE_BACKEND     存储后端: catbox(默认,匿名零配置) / r2 / local [可选]
 """
 import json
 import os
@@ -37,9 +39,14 @@ ROOT = Path(__file__).parent
 sys.path.insert(0, str(ROOT / "douk_src"))
 from src.encrypt.douyin_params import DouYinParams, USERAGENT  # noqa: E402
 
-# Cloudflare R2 对象存储（未配置时自动退回本地模式, 不会报错）
+# 远端存储后端: 默认 catbox(匿名上传, 零配置, 无需任何密钥);
+# 设 STORAGE_BACKEND=r2 可切回 Cloudflare R2(需配置 R2_* 环境变量)。
 sys.path.insert(0, str(ROOT))
-import r2_store  # noqa: E402
+_BACKEND = os.environ.get("STORAGE_BACKEND", "catbox").strip().lower()
+if _BACKEND == "r2":
+    import r2_store as store  # noqa: E402
+else:
+    import catbox_store as store  # noqa: E402
 
 
 # ---------------------------------------------------------------------------
@@ -95,8 +102,8 @@ for _k in ("HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy", "ALL_PROXY"
 
 DOWNLOAD_DIR = Path(os.environ.get("DOWNLOAD_DIR", ROOT / "downloads"))
 STATE_FILE = ROOT / "state.json"
-# R2 模式下记录已上传作品的清单(供 build_gallery 生成直链画廊), 需随缓存持久化
-MANIFEST_FILE = ROOT / "gallery_manifest.json"
+# 已上传作品的直链清单直接存在 state.json 的 "works" 字段里(随 Actions 缓存持久化),
+# build_gallery 读取它生成直链画廊, 无需单独的 manifest 文件。
 SENDKEY = os.environ.get("SERVERCHAN_SENDKEY", "").strip()
 COOKIE = os.environ.get("DOUYIN_COOKIE", "").strip()
 URLS = [u.strip() for u in os.environ.get("MONITOR_URLS", "").split(",") if u.strip()]
@@ -347,22 +354,23 @@ def download_work(session: Session, cookie: dict, aweme: dict, sec: str) -> list
 
 
 # ---------------------------------------------------------------------------
-# R2 归档: 上传成功后删除本地副本, 让缓存与 Pages 产物永远保持极小
+# 云端归档: 上传成功后删除本地副本, 让 Actions 缓存永远保持极小
 # ---------------------------------------------------------------------------
-def r2_archive_work(saved: list) -> list:
-    """把作品文件上传到 R2, 返回 [(type, public_url), ...]。
+def archive_work(saved: list) -> list:
+    """把作品文件上传到远端存储, 返回 [(type, public_url), ...]。
 
-    全部上传成功后删除本地文件夹(含文案.txt)。这样 downloads/ 不会累积,
-    Actions 缓存与 Pages 产物都不会超限, 1188+ 条作品也能长期保存。
+    全部文件上传成功后删除本地文件夹(含文案.txt)。这样 downloads/ 不会累积,
+    Actions 缓存不会超限, 1188+ 条作品也能长期保存。
+    任一项上传失败(如单文件超过 catbox 200MB 上限)则保留本地备份并返回 []。
     """
-    if not saved or not r2_store.enabled():
+    if not saved or not store.enabled():
         return []
     folder = saved[0].parent
     rel = folder.relative_to(DOWNLOAD_DIR).as_posix()
     uploaded, ok = [], True
     for p in sorted(saved):
-        key = f"{r2_store.PREFIX}/{rel}/{p.name}"
-        url = r2_store.upload(p, key)
+        key = f"{rel}/{p.name}"
+        url = store.upload(p, key)
         if url:
             kind = ("video" if p.suffix.lower() in (".mp4", ".webm", ".mov")
                     else "image")
@@ -372,39 +380,25 @@ def r2_archive_work(saved: list) -> list:
     if uploaded and ok:
         try:
             shutil.rmtree(folder)
-            print(f"    [R2] 已上传并清理本地: {rel}")
+            print(f"    [store] 已上传并清理本地: {rel}")
         except Exception as e:
             print(f"    !! 清理本地失败 {rel}: {e}")
-    return uploaded
-
-
-def append_manifest(nick: str, desc: str, pub: str, ts: int, kind: str,
-                    items: list, caption: str) -> None:
-    """追加一条作品到画廊清单; 排序交给 build_gallery 处理。"""
-    try:
-        data = []
-        if MANIFEST_FILE.exists():
-            data = json.loads(MANIFEST_FILE.read_text("utf-8"))
-        data.append({
-            "nick": nick, "desc": desc, "pub": pub, "ts": ts, "kind": kind,
-            "items": [{"type": t, "url": u} for t, u in items],
-            "caption": caption,
-        })
-        MANIFEST_FILE.write_text(
-            json.dumps(data, ensure_ascii=False, indent=1), "utf-8")
-    except Exception as e:
-        print(f"    !! 写画廊清单失败: {e}")
+        return uploaded
+    print(f"    [store] 上传未全部成功, 保留本地备份: {rel}")
+    return []
 
 
 # ---------------------------------------------------------------------------
 # 主流程
 # ---------------------------------------------------------------------------
 def main() -> int:
-    # .env 是在模块导入之后才载入的, 这里重新读取一次 R2 配置
-    r2_store.reload()
-    r2_on = r2_store.enabled()
-    print(f"==> 存储模式: "
-          f"{'Cloudflare R2（上传后清理本地）' if r2_on else '本地目录（未配置 R2）'}")
+    # .env 是在模块导入之后才载入的, 这里重新读取一次存储后端配置
+    store.reload()
+    store_on = store.enabled()
+    backend_label = ("Cloudflare R2" if _BACKEND == "r2"
+                     else "catbox 匿名上传（零配置）" if store_on
+                     else "本地目录（未启用云端存储）")
+    print(f"==> 存储模式: {backend_label}")
     if not COOKIE:
         print("!! 未配置 DOUYIN_COOKIE")
         return 1
@@ -445,25 +439,33 @@ def main() -> int:
                 continue
             saved = download_work(session, cookie, a, sec)
             if saved:
+                aid = a.get("aweme_id")
                 nick = _sanitize((a.get("author") or {}).get("nickname", sec[:8]))
                 desc = _sanitize(a.get("desc", "") or "无标题")
-                aid = a.get("aweme_id")
                 post_url = f"https://www.douyin.com/video/{aid}" if aid else ""
                 cov = cover_url(a)
                 all_new.append((nick, desc, media[0][2], len(saved), post_url, cov))
 
-                # R2 模式: 上传云端 + 记录清单(成功后自动删除本地副本)
-                if r2_on:
+                # 云端存储: 上传成功后删除本地副本, 并把直链写进 state.json
+                if store_on:
                     ct = a.get("create_time") or 0
                     pub = (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(ct))
                            if ct else "")
                     capf = saved[0].parent / "文案.txt"
                     caption = (capf.read_text("utf-8", errors="ignore")
                                if capf.exists() else "")
-                    items = r2_archive_work(saved)
+                    items = archive_work(saved)
                     if items:
-                        append_manifest(nick, desc or "无标题", pub, ct,
-                                        media[0][2], items, caption)
+                        state.setdefault("works", {})
+                        state["works"][aid] = {
+                            "nick": nick,
+                            "desc": desc or "无标题",
+                            "pub": pub,
+                            "ts": ct,
+                            "kind": media[0][2],
+                            "items": [{"type": t, "url": u} for t, u in items],
+                            "caption": caption,
+                        }
 
     # 汇总推送：仅文字摘要（不含抖音链接/封面，避免留下访问痕迹）
     if all_new:
