@@ -551,6 +551,14 @@ def main() -> int:
         print(f"==> 监控账号: {sec}")
         st = load_account_state(sec)
         known = set(st.get("known", []))
+        # 自愈: 云端模式下, known 里没有对应归档记录的作品(此前上传失败或被
+        # 中断遗留)其实并未真正入库, 本轮重新处理, 避免作品永久缺失。
+        if store_on:
+            works_now = st.get("works") or {}
+            dropped = len(known) - len(known & set(works_now))
+            if dropped:
+                print(f"    发现 {dropped} 条未归档记录, 本轮重新处理")
+            known = {k for k in known if k in works_now}
 
         def _flush():
             """每处理一条就落盘一次。
@@ -578,10 +586,10 @@ def main() -> int:
             aid = a.get("aweme_id")
             if not aid or aid in known:
                 continue
-            known.add(aid)
             media = select_media(a)
             if not media:
                 print(f"    [跳过] {aid} 无可下载媒体")
+                known.add(aid)  # 确实没有可下媒体的, 不必反复重试
                 _flush()
                 continue
             # 此前已归档过的作品: 直接复用云端直链, 不再重复下载
@@ -600,6 +608,7 @@ def main() -> int:
                     "caption": build_caption(a, pub, raw_desc, media[0][2]),
                 }
                 print(f"    [已归档] {aid} 复用云端直链 {len(reused)} 个, 跳过下载")
+                known.add(aid)
                 _flush()
                 continue
             saved = download_work(session, cookie, a, sec)
@@ -608,9 +617,9 @@ def main() -> int:
                 desc = _sanitize(a.get("desc", "") or "无标题")
                 post_url = f"https://www.douyin.com/video/{aid}" if aid else ""
                 cov = cover_url(a)
-                all_new.append((nick, desc, media[0][2], len(saved), post_url, cov))
 
                 # 云端存储: 上传成功后删除本地副本, 直链写入该账号自己的状态文件
+                archived = False
                 if store_on:
                     ct = a.get("create_time") or 0
                     pub = (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(ct))
@@ -630,6 +639,17 @@ def main() -> int:
                             "items": [{"type": t, "url": u} for t, u in items],
                             "caption": caption,
                         }
+                        known.add(aid)  # 归档成功才算完成
+                        archived = True
+                    else:
+                        # 上传失败: 不标记已知, 下轮重试(否则该作品会永久缺失)
+                        print(f"    !! {aid} 归档失败, 保留待下轮重试")
+                else:
+                    known.add(aid)  # 本地模式: 下载成功即完成
+                    archived = True
+                if archived:
+                    all_new.append((nick, desc, media[0][2], len(saved),
+                                    post_url, cov))
             _flush()  # 每处理完一条立即落盘, 防止中断丢失进度
         _flush()
         total_known += len(known)
