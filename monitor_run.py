@@ -23,6 +23,7 @@ DouK-Downloader 的"终端交互模式"依赖剪贴板监听(同步阻塞调用)
 import json
 import os
 import re
+import shutil
 import sys
 import time
 from pathlib import Path
@@ -35,6 +36,10 @@ ROOT = Path(__file__).parent
 # 复用 DouK 的反爬签名模块(必须让 `from src...` 可导入)
 sys.path.insert(0, str(ROOT / "douk_src"))
 from src.encrypt.douyin_params import DouYinParams, USERAGENT  # noqa: E402
+
+# Cloudflare R2 对象存储（未配置时自动退回本地模式, 不会报错）
+sys.path.insert(0, str(ROOT))
+import r2_store  # noqa: E402
 
 
 # ---------------------------------------------------------------------------
@@ -90,6 +95,8 @@ for _k in ("HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy", "ALL_PROXY"
 
 DOWNLOAD_DIR = Path(os.environ.get("DOWNLOAD_DIR", ROOT / "downloads"))
 STATE_FILE = ROOT / "state.json"
+# R2 模式下记录已上传作品的清单(供 build_gallery 生成直链画廊), 需随缓存持久化
+MANIFEST_FILE = ROOT / "gallery_manifest.json"
 SENDKEY = os.environ.get("SERVERCHAN_SENDKEY", "").strip()
 COOKIE = os.environ.get("DOUYIN_COOKIE", "").strip()
 URLS = [u.strip() for u in os.environ.get("MONITOR_URLS", "").split(",") if u.strip()]
@@ -340,9 +347,64 @@ def download_work(session: Session, cookie: dict, aweme: dict, sec: str) -> list
 
 
 # ---------------------------------------------------------------------------
+# R2 归档: 上传成功后删除本地副本, 让缓存与 Pages 产物永远保持极小
+# ---------------------------------------------------------------------------
+def r2_archive_work(saved: list) -> list:
+    """把作品文件上传到 R2, 返回 [(type, public_url), ...]。
+
+    全部上传成功后删除本地文件夹(含文案.txt)。这样 downloads/ 不会累积,
+    Actions 缓存与 Pages 产物都不会超限, 1188+ 条作品也能长期保存。
+    """
+    if not saved or not r2_store.enabled():
+        return []
+    folder = saved[0].parent
+    rel = folder.relative_to(DOWNLOAD_DIR).as_posix()
+    uploaded, ok = [], True
+    for p in sorted(saved):
+        key = f"{r2_store.PREFIX}/{rel}/{p.name}"
+        url = r2_store.upload(p, key)
+        if url:
+            kind = ("video" if p.suffix.lower() in (".mp4", ".webm", ".mov")
+                    else "image")
+            uploaded.append((kind, url))
+        else:
+            ok = False
+    if uploaded and ok:
+        try:
+            shutil.rmtree(folder)
+            print(f"    [R2] 已上传并清理本地: {rel}")
+        except Exception as e:
+            print(f"    !! 清理本地失败 {rel}: {e}")
+    return uploaded
+
+
+def append_manifest(nick: str, desc: str, pub: str, ts: int, kind: str,
+                    items: list, caption: str) -> None:
+    """追加一条作品到画廊清单; 排序交给 build_gallery 处理。"""
+    try:
+        data = []
+        if MANIFEST_FILE.exists():
+            data = json.loads(MANIFEST_FILE.read_text("utf-8"))
+        data.append({
+            "nick": nick, "desc": desc, "pub": pub, "ts": ts, "kind": kind,
+            "items": [{"type": t, "url": u} for t, u in items],
+            "caption": caption,
+        })
+        MANIFEST_FILE.write_text(
+            json.dumps(data, ensure_ascii=False, indent=1), "utf-8")
+    except Exception as e:
+        print(f"    !! 写画廊清单失败: {e}")
+
+
+# ---------------------------------------------------------------------------
 # 主流程
 # ---------------------------------------------------------------------------
 def main() -> int:
+    # .env 是在模块导入之后才载入的, 这里重新读取一次 R2 配置
+    r2_store.reload()
+    r2_on = r2_store.enabled()
+    print(f"==> 存储模式: "
+          f"{'Cloudflare R2（上传后清理本地）' if r2_on else '本地目录（未配置 R2）'}")
     if not COOKIE:
         print("!! 未配置 DOUYIN_COOKIE")
         return 1
@@ -389,6 +451,19 @@ def main() -> int:
                 post_url = f"https://www.douyin.com/video/{aid}" if aid else ""
                 cov = cover_url(a)
                 all_new.append((nick, desc, media[0][2], len(saved), post_url, cov))
+
+                # R2 模式: 上传云端 + 记录清单(成功后自动删除本地副本)
+                if r2_on:
+                    ct = a.get("create_time") or 0
+                    pub = (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(ct))
+                           if ct else "")
+                    capf = saved[0].parent / "文案.txt"
+                    caption = (capf.read_text("utf-8", errors="ignore")
+                               if capf.exists() else "")
+                    items = r2_archive_work(saved)
+                    if items:
+                        append_manifest(nick, desc or "无标题", pub, ct,
+                                        media[0][2], items, caption)
 
     # 汇总推送：仅文字摘要（不含抖音链接/封面，避免留下访问痕迹）
     if all_new:
