@@ -159,6 +159,12 @@ TIME_BUDGET_MIN = float(os.environ.get("TIME_BUDGET_MIN", "45").strip() or "45")
 # 单个媒体文件的下载总时长上限(秒)。慢速大文件会拖垮整轮时间预算,
 # 超时即放弃该文件(下轮再试), 保证本轮能按时收尾并落盘。
 DL_TIMEOUT = float(os.environ.get("DL_TIMEOUT", "240").strip() or "240")
+# 每轮最多做多少次"补抓缺失媒体"。补抓本身会走一次完整下载+上传，若判定条件
+# 有误(云端附件名与预测 key 不一致)会变成每轮对同一批老作品无限重试，把整轮
+# 时间预算全部吃掉，导致后面的新账号永远轮不到。这里做双重保险：
+#   1) 每条作品最多补抓一次(成功后标记 rec["bf"]=1，永不重试)
+#   2) 每轮总次数有硬上限
+MISSING_FIX_MAX = int(os.environ.get("MISSING_FIX_MAX", "30").strip() or "0")
 _RUN_START = time.time()
 
 
@@ -669,6 +675,7 @@ def main() -> int:
 
     all_new = []  # (nick, desc, kind, n_files, post_url, cover)
     total_known = 0
+    bf_used = [0]  # 本轮已执行的"补抓"次数（受 MISSING_FIX_MAX 限制）
 
     for sec, nick_csv in accounts:
         if len(all_new) >= MAX_NEW_PER_RUN:
@@ -717,19 +724,23 @@ def main() -> int:
                 continue
             media = select_media(a)
             if aid in known:
-                # 补抓: 已 known 作品云端可能缺 live 动态视频等媒体
-                if store_on:
+                # 补抓: 已 known 作品云端可能缺 live 动态视频等媒体。
+                # 注意: 每条作品最多补抓一次(rec["bf"])，且每轮总量有上限，
+                # 否则判定条件一旦失真就会变成每轮无限重试、吃掉整轮预算。
+                if store_on and MISSING_FIX_MAX > 0 and bf_used[0] < MISSING_FIX_MAX:
                     rec = (st.get("works") or {}).get(aid)
-                    if rec and media:
+                    if rec and media and not rec.get("bf"):
                         pk = predicted_keys(a, sec, media)
                         peek = getattr(store, "peek", None)
                         missing = [i for i, k in enumerate(pk)
                                    if not (peek(k) if peek else None)]
                         if missing:
+                            bf_used[0] += 1
                             print(f"    [补抓] {aid} 云端缺 {len(missing)} 个媒体"
                                   f"(如 live 动态), 补充下载")
                             saved = _download_subset(session, cookie, a, sec,
                                                     media, missing)
+                            rec["bf"] = 1        # 标记已尝试过，后续轮次不再重试
                             if saved:
                                 new_items = archive_work(saved)
                                 if new_items:
@@ -742,9 +753,9 @@ def main() -> int:
                                     if any(it.get("type") == "video"
                                            for it in exist):
                                         rec["kind"] = "live"
-                                    _flush()
                                     print(f"    [补抓完成] {aid} 现共 "
                                           f"{len(exist)} 个媒体")
+                            _flush()
                 continue
             if not media:
                 print(f"    [跳过] {aid} 无可下载媒体")
