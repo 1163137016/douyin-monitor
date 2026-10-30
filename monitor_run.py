@@ -21,9 +21,11 @@ DouK-Downloader 的"终端交互模式"依赖剪贴板监听(同步阻塞调用)
   MAX_PAGES           每次最多翻几页(控制耗时), 默认 5        [可选]
   MAX_NEW_PER_RUN     每轮最多处理多少条新作品, 默认 50       [可选]
   TIME_BUDGET_MIN     每轮时间预算(分钟), 到点主动收尾, 默认 45  [可选]
+  ACCOUNTS_URL        在线电子表格CSV地址(发布为CSV的Google表格/腾讯文档), 运行时拉取并合并 [可选]
   STORAGE_BACKEND     存储后端: gh_release(默认)/r2/local          [可选]
 """
 import csv
+import io
 import json
 import os
 import re
@@ -113,6 +115,9 @@ SENDKEY = os.environ.get("SERVERCHAN_SENDKEY", "").strip()
 COOKIE = os.environ.get("DOUYIN_COOKIE", "").strip()
 # 旧的环境变量账号列表，仍作为补充来源（平滑过渡到 accounts.csv）
 URLS_ENV = [u.strip() for u in os.environ.get("MONITOR_URLS", "").split(",") if u.strip()]
+# 可选: 在线电子表格(发布为 CSV 的 Google 表格 / 腾讯文档导出)地址,
+# workflow 运行时自动拉取并合并, 在电子表格界面增删监控对象更方便。
+ACCOUNTS_URL = (os.environ.get("ACCOUNTS_URL", "") or "").strip()
 MAX_PAGES = int(os.environ.get("MAX_PAGES", "5").strip() or "5")
 # 每轮最多下载多少条"新作品", 防止首次接入大量账号时一次性全量下载导致
 # 超时 / 产物超限 / 缓存爆掉。未处理完的会留到下一轮继续(渐进式补齐)。
@@ -326,43 +331,69 @@ def save_account_state(sec: str, st: dict) -> None:
         print(f"!! 保存账号状态失败 {sec}: {e}")
 
 
-def load_accounts() -> list:
-    """监控账号来源：accounts.csv（可编程表格）+ MONITOR_URLS 环境变量，合并去重。
+def _parse_account_rows(reader, rows, disabled) -> None:
+    """解析 CSV 行迭代器(每行为字段列表), 追加到 rows / disabled。
 
-    csv 列：sec_uid,url,nickname,enabled,remark
+    列：sec_uid,url,nickname,enabled,remark
       - sec_uid 为空时从 url 提取
-      - enabled 为 0/false/no/off 视为停用，即使 env 里也配置了同样跳过
+      - enabled 为 0/false/no/off 视为停用
+    """
+    for parts in reader:
+        # 整行都空才跳过：sec_uid 列允许留空，只填 url 同样有效
+        if not parts or not any(p.strip() for p in parts):
+            continue
+        first = parts[0].strip()
+        if first.startswith("#") or first.lower() == "sec_uid":
+            continue  # 注释行 / 表头
+        sec_uid = first
+        url = parts[1].strip() if len(parts) > 1 else ""
+        nick = parts[2].strip() if len(parts) > 2 else ""
+        enabled = parts[3].strip().lower() if len(parts) > 3 else "1"
+        sec = sec_uid or (extract_sec_user_id(url) if url else "")
+        if not sec:
+            continue
+        if enabled in ("0", "false", "no", "off"):
+            disabled.add(sec)
+            continue
+        rows.append((sec, nick))
+
+
+def load_accounts() -> list:
+    """监控账号来源(三者合并去重):
+      1) accounts.csv  (仓库内可编程表格)
+      2) ACCOUNTS_URL  (发布为 CSV 的在线电子表格, 可选)
+      3) MONITOR_URLS  (历史环境变量来源, 平滑过渡)
     返回 [(sec_uid, nickname), ...]
     """
     rows, disabled = [], set()
+
+    # 1) 仓库内 accounts.csv
     if ACCOUNTS_CSV.exists():
         try:
             with open(ACCOUNTS_CSV, "r", encoding="utf-8-sig", newline="") as f:
-                for parts in csv.reader(f):
-                    # 整行都空才跳过：sec_uid 列允许留空，只填 url 同样有效
-                    if not parts or not any(p.strip() for p in parts):
-                        continue
-                    first = parts[0].strip()
-                    if first.startswith("#") or first.lower() == "sec_uid":
-                        continue  # 注释行 / 表头
-                    sec_uid = first
-                    url = parts[1].strip() if len(parts) > 1 else ""
-                    nick = parts[2].strip() if len(parts) > 2 else ""
-                    enabled = parts[3].strip().lower() if len(parts) > 3 else "1"
-                    sec = sec_uid or (extract_sec_user_id(url) if url else "")
-                    if not sec:
-                        continue
-                    if enabled in ("0", "false", "no", "off"):
-                        disabled.add(sec)
-                        continue
-                    rows.append((sec, nick))
+                _parse_account_rows(csv.reader(f), rows, disabled)
         except Exception as e:
             print(f"!! 读取 accounts.csv 失败: {e}")
-    # 环境变量里已配的账号继续生效（平滑过渡），但 csv 里显式停用的除外
+
+    # 2) 在线电子表格(发布为 CSV 的 Google 表格 / 腾讯文档导出)
+    if ACCOUNTS_URL:
+        try:
+            print("==> 拉取在线账号表 ACCOUNTS_URL ...")
+            r = requests.get(ACCOUNTS_URL, timeout=30,
+                             headers={"User-Agent": "douyin-monitor"})
+            r.raise_for_status()
+            text = r.content.decode("utf-8-sig", errors="replace")
+            _parse_account_rows(csv.reader(io.StringIO(text)), rows, disabled)
+            print("    在线账号表已合并")
+        except Exception as e:
+            print(f"!! 拉取 ACCOUNTS_URL 失败(已忽略, 继续使用其它来源): {e}")
+
+    # 3) 历史环境变量来源(平滑过渡), 但 csv / 在线表里显式停用的除外
     for u in URLS_ENV:
         sec = extract_sec_user_id(u)
         if sec and sec not in disabled:
             rows.append((sec, ""))
+
     seen, out = set(), []
     for sec, nick in rows:
         if sec in seen:
