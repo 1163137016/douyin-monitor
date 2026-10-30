@@ -17,6 +17,7 @@
 import os
 import mimetypes
 import re
+import tempfile
 import time
 import urllib.parse
 from pathlib import Path
@@ -89,8 +90,10 @@ def _list_releases():
             out.append({"tag_name": rel.get("tag_name", ""),
                         "id": rel.get("id"),
                         "n_assets": len(assets),
-                        "assets": [(a.get("name", ""),
-                                    a.get("browser_download_url", ""))
+                        "assets": [{"id": a.get("id"),
+                                    "name": a.get("name", ""),
+                                    "content_type": a.get("content_type", ""),
+                                    "url": a.get("browser_download_url", "")}
                                    for a in assets]})
         if len(batch) < 100:
             break
@@ -115,7 +118,8 @@ def _load_index(releases):
     global _asset_index
     _asset_index = {}
     for rel in releases:
-        for name, url in rel.get("assets", []):
+        for a in rel.get("assets", []):
+            name, url = a.get("name"), a.get("url")
             if name and url:
                 _asset_index.setdefault(safe_name(name), url)
 
@@ -290,3 +294,121 @@ def upload(path: Path, key: str, retries: int = 3) -> str:
             print(f"    !! GH release 上传异常(第{attempt}次) {name_try}: {e}")
         time.sleep(2 * attempt)
     return ""
+
+
+# 旧附件 MIME 修正只处理视频类(图片 octet-stream 仍可正常显示, 无需修正)
+_VIDEO_EXTS = {".mp4", ".webm", ".mov"}
+
+
+def _raw_upload_once(rid, path, name_try):
+    """单次上传到指定 release, 返回直链或空串(不做改名重试)。"""
+    size = path.stat().st_size
+    ctype = mimetypes.guess_type(str(path))[0] or "application/octet-stream"
+    try:
+        with open(path, "rb") as f:
+            r = requests.post(
+                f"{UPLOAD_API}/repos/{_REPO}/releases/{rid}/assets",
+                headers={**_headers(),
+                         "Content-Type": ctype,
+                         "Content-Length": str(size)},
+                params={"name": name_try}, data=f, timeout=180)
+        if r.status_code in (200, 201):
+            return r.json().get("browser_download_url") or public_url(name_try)
+        if r.status_code == 422:
+            # 同名已存在(极端情况): 刷新索引复用, 避免重复创建
+            _load_index(_list_releases())
+            hit = _asset_index.get(safe_name(name_try))
+            if hit:
+                return hit
+        print(f"    !! GH release 上传失败 {name_try}: HTTP {r.status_code} "
+              f"{r.text[:160]}")
+    except Exception as e:
+        print(f"    !! GH release 上传异常 {name_try}: {e}")
+    return ""
+
+
+def _delete_asset(aid: int) -> bool:
+    """删除指定 asset(旧附件 MIME 修正时先删后重传)。"""
+    try:
+        r = requests.delete(
+            f"{API}/repos/{_REPO}/releases/assets/{aid}",
+            headers=_headers(), timeout=30)
+        return r.status_code in (200, 204)
+    except Exception as e:
+        print(f"    !! 删除旧附件失败 {aid}: {e}")
+        return False
+
+
+def _download_tmp(url: str, tmp: Path) -> bool:
+    """下载公开 release 附件到临时文件(无需鉴权)。"""
+    try:
+        r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"},
+                         timeout=120, stream=True)
+        if r.status_code != 200:
+            print(f"    !! 下载旧附件失败 HTTP {r.status_code}")
+            return False
+        with open(tmp, "wb") as f:
+            for chunk in r.iter_content(65536):
+                if chunk:
+                    f.write(chunk)
+        return tmp.stat().st_size > 0
+    except Exception as e:
+        print(f"    !! 下载旧附件异常: {e}")
+        return False
+
+
+def self_heal_mime(limit: int = 20, budget_min: int = 20) -> int:
+    """扫描历史 release 附件, 把 content_type 仍是 application/octet-stream 的
+    视频以正确 MIME 重新上传回原 release(同名同 tag, 直链 URL 不变, 画廊无需更新)。
+
+    受 limit 与时间预算约束, 分多轮逐步修正, 避免单次运行超时。
+    返回本轮修正的附件数量。
+    """
+    if not _TOKEN:
+        reload()
+    if not (_TOKEN and _REPO):
+        return 0
+    if not ensure_release():
+        return 0
+    started = time.time()
+    rels = _list_releases()
+    fixed = 0
+    for rel in rels:
+        rid = rel.get("id")
+        tag = rel.get("tag_name", "")
+        if not rid or not tag.startswith(TAG_PREFIX):
+            continue
+        for a in rel.get("assets", []):
+            if fixed >= limit:
+                print(f"    [self-heal] 已达本轮上限 {limit}, 剩余下轮继续")
+                return fixed
+            if time.time() - started > budget_min * 60:
+                print(f"    [self-heal] 已达时间预算 {budget_min} 分, 收尾")
+                return fixed
+            ctype = (a.get("content_type") or "")
+            name = a.get("name", "")
+            url = a.get("url", "")
+            ext = Path(name).suffix.lower()
+            if ctype != "application/octet-stream" or ext not in _VIDEO_EXTS:
+                continue
+            aid = a.get("id")
+            want = mimetypes.guess_type(name)[0] or "application/octet-stream"
+            print(f"    [self-heal] 修正 {name}: {ctype} -> {want}")
+            tmp = Path(tempfile.mktemp(suffix=ext))
+            try:
+                if not _download_tmp(url, tmp):
+                    continue
+                if not _delete_asset(aid):
+                    continue
+                new_url = _raw_upload_once(rid, tmp, name)
+                if new_url:
+                    _asset_index[safe_name(name)] = new_url
+                    fixed += 1
+                    print(f"    [self-heal] 已重传 {name}")
+                else:
+                    print(f"    !! [self-heal] 重传失败 {name} "
+                          f"(旧件已删, 请下轮重试或手动检查)")
+            finally:
+                tmp.unlink(missing_ok=True)
+    print(f"    [self-heal] 本轮共修正 {fixed} 个附件")
+    return fixed
