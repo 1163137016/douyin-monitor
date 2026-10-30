@@ -46,6 +46,7 @@ jobs:
           MONITOR_URLS: ${{ secrets.MONITOR_URLS }}
           SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
           MAX_PAGES: ${{ secrets.MAX_PAGES }}
+          ACCOUNTS_URL: ${{ secrets.ACCOUNTS_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python monitor_run.py
 
