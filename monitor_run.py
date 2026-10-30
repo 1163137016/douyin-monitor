@@ -570,6 +570,14 @@ def main() -> int:
                      else "GitHub Releases（本仓库附件）" if store_on
                      else "本地目录（未启用云端存储）")
     print(f"==> 存储模式: {backend_label}")
+    # 旧视频 MIME 修正: 把此前被存成 application/octet-stream 的视频以正确
+    # video/mp4 重传回原 release(直链 URL 不变), 让画廊能内嵌播放。
+    if store_on:
+        try:
+            n_fixed = store.self_heal_mime()
+            print(f"==> 旧视频 MIME 修正: 本轮修正 {n_fixed} 个")
+        except Exception as e:
+            print(f"!! 旧视频 MIME 修正异常(已跳过, 不影响主流程): {e}")
     if not COOKIE:
         print("!! 未配置 DOUYIN_COOKIE")
         return 1
