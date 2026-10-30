@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-31 04:29:02",
-  "total": 1307,
+  "generated": "2026-10-31 05:02:19",
+  "total": 1308,
   "source": "github-releases",
   "accounts": [
     {
@@ -7684,6 +7684,47 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-8/happy.__20240628_123714__07.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-03-13 13:10:51",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-03-13 13:10:51\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 4205 | 评论 122 | 收藏 566 | 分享 1388\n作品链接: https://www.douyin.com/video/7616603305813005503",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260313_131051__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260313_131051__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260313_131051__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260313_131051__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260313_131051__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260313_131051__06.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260313_131051__07.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260313_131051__08.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7616603305813005503"
         },
         {
           "pub": "2026-03-06 20:04:36",
@@ -43838,5 +43879,5 @@
       ]
     }
   ],
-  "local_added": 134
+  "local_added": 135
 }
