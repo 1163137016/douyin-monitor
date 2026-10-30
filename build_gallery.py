@@ -72,6 +72,10 @@ PAGE_HEAD = """<!doctype html>
         box-shadow:var(--shadow)}
   h3{margin:0 0 8px;word-break:break-all;font-size:14px;color:#444}
   video,img{max-width:100%;border-radius:8px;margin:8px 0;display:block;background:#000}
+  .live-badge{display:inline-block;background:#ff4d6d;color:#fff;font-size:12px;
+    padding:2px 8px;border-radius:10px;margin:4px 0;}
+  .vbar{font-size:13px;margin:-2px 0 10px}
+  .vbar a{color:#4da3ff;text-decoration:none}
   .vbar{font-size:12px;margin:0 0 6px}
   .vbar a{color:var(--accent);text-decoration:none}
   .vbar a:hover{text-decoration:underline}
@@ -184,8 +188,17 @@ def media_tag(kind: str, src: str) -> str:
 
 def _work_card(e: dict) -> str:
     title = " · ".join(x for x in (e.get("pub", ""), e.get("desc", "")) if x)
-    parts = [f'<div class="work"><h3>{esc(title or "未命名作品")}</h3>']
-    for it in e.get("items", []):
+    items = e.get("items", [])
+    types = {it.get("type") for it in items}
+    # Live 图 / 动态照片: 同一作品同时含 image(封面) 与 video(动态),
+    # 视频自带封面帧, 过滤掉静态图避免重复显示, 并标注实况。
+    is_live = ("video" in types) and ("image" in types)
+    # Live 图: 动态视频 + 其它静态图都展示(不丢内容); 视频自带封面帧。
+    render = items
+    parts = [f'<div class="work">', f'<h3>{esc(title or "未命名作品")}</h3>']
+    if is_live:
+        parts.append('<div class="live-badge">实况图 · 点击播放动态</div>')
+    for it in render:
         parts.append(media_tag(it.get("type", "image"), it.get("url", "")))
     if e.get("caption"):
         parts.append(f"<pre>{esc(e['caption'])}</pre>")
