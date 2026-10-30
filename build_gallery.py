@@ -20,6 +20,7 @@ import html
 import json
 import re
 import shutil
+import time
 import urllib.parse
 from pathlib import Path
 
@@ -526,6 +527,36 @@ def build() -> None:
     (SITE / "index.html").write_text(doc, "utf-8", errors="ignore")
     (SITE / "sw.js").write_text(SW_JS, "utf-8", errors="ignore")
     (SITE / "manifest.webmanifest").write_text(MANIFEST, "utf-8", errors="ignore")
+
+    # 导出结构化索引 gallery.json: 供「本地缓存服务」读取, 避免解析 HTML。
+    # 本地服务用它构建本地画廊 + 代理/缓存云端媒体, 实现页面本地秒开。
+    index = {
+        "generated": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "total": total,
+        "source": "github-releases",
+        "accounts": [
+            {
+                "id": g["id"],
+                "nick": g["nick"],
+                "works": [
+                    {
+                        "pub": e.get("pub", ""),
+                        "desc": e.get("desc", ""),
+                        "caption": e.get("caption", ""),
+                        "kind": e.get("kind", ""),
+                        "items": [{"type": it.get("type", "image"),
+                                   "url": it.get("url", "")}
+                                  for it in e.get("items", [])],
+                    }
+                    for e in g["items"]
+                ],
+            }
+            for g in groups
+        ],
+    }
+    (SITE / "gallery.json").write_text(
+        json.dumps(index, ensure_ascii=False), "utf-8", errors="ignore")
+
     size_kb = (SITE / "index.html").stat().st_size // 1024
     print(f"gallery built: {total} 个作品 / {n_acct} 个账号 -> site/index.html "
           f"({size_kb} KB, 模式: {mode})")
