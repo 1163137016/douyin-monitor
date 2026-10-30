@@ -15,6 +15,7 @@
 未配置时 enabled() 返回 False，调用方自动退回本地模式，不会报错。
 """
 import os
+import mimetypes
 import re
 import time
 import urllib.parse
@@ -257,12 +258,16 @@ def upload(path: Path, key: str, retries: int = 3) -> str:
             # 必须显式给 Content-Length: 直接把文件对象交给 requests 会走
             # chunked 编码, GitHub 读不到长度并报 422
             #   "size must be greater than or equal to 1"
+            # 同时按扩展名给正确的 Content-Type(如 video/mp4、image/jpeg),
+            # 否则 GitHub 默认存 application/octet-stream, 浏览器 <video> 会因
+            # MIME 不匹配而拒绝播放(图片因为更宽容仍能显示)。
             size = path.stat().st_size
+            ctype = mimetypes.guess_type(str(path))[0] or "application/octet-stream"
             with open(path, "rb") as f:
                 r = requests.post(
                     f"{UPLOAD_API}/repos/{_REPO}/releases/{_cur_id}/assets",
                     headers={**_headers(),
-                             "Content-Type": "application/octet-stream",
+                             "Content-Type": ctype,
                              "Content-Length": str(size)},
                     params={"name": name_try}, data=f, timeout=180)
             if r.status_code in (200, 201):
