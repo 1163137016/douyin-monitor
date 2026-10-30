@@ -28,7 +28,7 @@ ROOT = Path(__file__).parent
 DOWNLOAD_DIR = ROOT / "downloads"
 SITE = ROOT / "site"
 # 每个监控账号一个独立状态文件 state/<sec_uid>.json
-STATE_DIR = ROOT / "state"
+STATE_DIR = Path(os.environ.get("STATE_DIR", ROOT / "state"))
 
 # ---- PWA 已停用 ----
 # 页面不再注册 Service Worker，也不再输出 manifest。
