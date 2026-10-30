@@ -72,6 +72,9 @@ PAGE_HEAD = """<!doctype html>
         box-shadow:var(--shadow)}
   h3{margin:0 0 8px;word-break:break-all;font-size:14px;color:#444}
   video,img{max-width:100%;border-radius:8px;margin:8px 0;display:block;background:#000}
+  .vbar{font-size:12px;margin:0 0 6px}
+  .vbar a{color:var(--accent);text-decoration:none}
+  .vbar a:hover{text-decoration:underline}
   pre{white-space:pre-wrap;word-break:break-all;background:#f2f3f5;
       padding:10px;border-radius:8px;font-size:13px;margin:8px 0 0}
   .empty{text-align:center;color:var(--muted);padding:60px 0}
@@ -169,7 +172,13 @@ def esc(s) -> str:
 
 def media_tag(kind: str, src: str) -> str:
     if kind == "video":
-        return f'<video controls preload="metadata" src="{esc(src)}"></video>'
+        # 显式声明 type="video/mp4" 帮助浏览器识别; 另附「新窗口打开/下载」链接,
+        # 即便个别旧附件 MIME 仍为 octet-stream, 用户点开也能观看或下载。
+        return (f'<video controls preload="metadata">'
+                f'<source src="{esc(src)}" type="video/mp4"></source>'
+                f'</video>\n'
+                f'<div class="vbar"><a href="{esc(src)}" target="_blank" '
+                f'rel="noopener">⬇ 在新窗口打开 / 下载</a></div>')
     return f'<img loading="lazy" src="{esc(src)}" alt="" />'
 
 
