@@ -151,7 +151,7 @@ ACCOUNTS_URL = (os.environ.get("ACCOUNTS_URL", "") or "").strip()
 MAX_PAGES = int(os.environ.get("MAX_PAGES", "5").strip() or "5")
 # 每轮最多下载多少条"新作品", 防止首次接入大量账号时一次性全量下载导致
 # 超时 / 产物超限 / 缓存爆掉。未处理完的会留到下一轮继续(渐进式补齐)。
-MAX_NEW_PER_RUN = int(os.environ.get("MAX_NEW_PER_RUN", "50").strip() or "50")
+MAX_NEW_PER_RUN = int(os.environ.get("MAX_NEW_PER_RUN", "120").strip() or "120")
 # 本轮时间预算(分钟): 到点就主动收尾并落盘, 让后续步骤(生成画廊/部署/推送)
 # 正常执行。避免像"被 job 超时硬杀"那样导致本轮进度全部丢失。
 # 默认 45 分钟, 留出余量给缓存上传与 Pages 部署。
