@@ -44,10 +44,12 @@ import json
 import time
 import shutil
 import socket
+import hashlib
 import subprocess
 import threading
 import mimetypes
 import urllib.parse
+import urllib.request
 from pathlib import Path
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 # 保证同目录的 cloud_sync 等模块可被导入（部分环境下 sys.path[0] 不是脚本目录）
@@ -87,6 +89,17 @@ _cloud_env = str(os.environ.get("CLOUD_SYNC", "")).strip().lower()
 CLOUD_SYNC = (_cloud_env in ("1", "true", "yes", "on")
               or (_cloud_env in ("", "auto") and bool(os.environ.get("GITHUB_TOKEN", "").strip())))
 CLOUD_MAX_PER_RUN = max(1, int(os.environ.get("CLOUD_MAX_PER_RUN", "50")))
+
+# 云端画廊索引（Pages 上的 gallery.json）：把「只在云端」的作品也补进本地网页。
+CLOUD_CATALOG_TTL = max(60, int(os.environ.get("CLOUD_CATALOG_TTL", "600")))
+CLOUD_PROXY_MAX = max(1, int(os.environ.get("CLOUD_PROXY_MAX_MB", "150"))) * 1024 * 1024
+CLOUD_CACHE_DIR = CACHE_DIR / ".cloudcache"
+# 只允许代理这些主机的媒体（防止被当成任意 URL 跳板）
+_CLOUD_ALLOW_HOSTS = ("github.com", "objects.githubusercontent.com",
+                      "release-assets.githubusercontent.com", "raw.githubusercontent.com")
+_cat_cache = {"ts": 0.0, "accounts": None}
+_dl_locks = {}
+_dl_guard = threading.Lock()
 
 IMG_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp")
 VID_EXT = (".mp4", ".webm", ".mov", ".m4v")
@@ -130,8 +143,12 @@ class Monitor:
             self.last_status = "监控中…"
         try:
             env = dict(os.environ)
-            env["STORAGE_BACKEND"] = "local"          # 不上传云端, 只缓存到本地
+            env["STORAGE_BACKEND"] = "local"          # 不导入远端存储, 只缓存到本地
             env["DOWNLOAD_DIR"] = str(CACHE_DIR)       # 缓存根目录 = D:\gitdy
+            env["KEEP_LOCAL"] = "1"                    # 绝不允许删本地缓存
+            # 关键：清掉令牌，否则 monitor_run 会继承 .env 的 PAT -> 上传后删本地文件
+            env["GITHUB_TOKEN"] = ""
+            env["GITHUB_REPOSITORY"] = ""
             env["PYTHONUNBUFFERED"] = "1"
             self._log(f"===== {time.strftime('%Y-%m-%d %H:%M:%S')} 启动监控子进程 =====")
             proc = subprocess.Popen(
@@ -244,6 +261,100 @@ def _parse_caption(text):
     return pub, desc, link
 
 
+def cloud_catalog(force=False):
+    """读取线上 gallery.json（Pages 优先，其次 CLOUD_INDEX_URL），返回 accounts 列表。
+
+    结果缓存 CLOUD_CATALOG_TTL 秒（默认 10 分钟），避免每次刷新页面都去打 GitHub。
+    """
+    now = time.time()
+    if (not force and _cat_cache["accounts"] is not None
+            and now - _cat_cache["ts"] < CLOUD_CATALOG_TTL):
+        return _cat_cache["accounts"]
+    urls = []
+    custom = os.environ.get("CLOUD_INDEX_URL", "").strip()
+    if custom:
+        urls.append(custom)
+    try:
+        repo = cloud_sync.ensure_repo()[0]
+    except Exception:
+        repo = None
+    if repo:
+        owner, _, name = repo.partition("/")
+        urls.append(f"https://{owner}.github.io/{name}/gallery.json")
+    accounts = []
+    for u in urls:
+        try:
+            req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=40) as r:
+                raw = r.read()
+            if not raw.lstrip().startswith(b"{"):
+                continue
+            d = json.loads(raw.decode("utf-8", errors="ignore"))
+            accounts = d.get("accounts") or []
+            if accounts:
+                break
+        except Exception:
+            continue
+    _cat_cache["accounts"] = accounts
+    _cat_cache["ts"] = now
+    return accounts
+
+
+def _cloud_proxy_url(u):
+    """云端直链 -> 本地代理地址（由本机下载后按正确 MIME 输出，避免 octet-stream）。"""
+    return "/cloud?u=" + urllib.parse.quote(u, safe="")
+
+
+def _ext_of_url(u):
+    p = urllib.parse.urlparse(u).path
+    ext = os.path.splitext(p)[1].lower()
+    return ext if ext in (IMG_EXT + VID_EXT) else ""
+
+
+def fetch_cloud_to_cache(u, timeout=180):
+    """把云端媒体下载到 CLOUD_CACHE_DIR，返回本地路径；失败返回 None。
+
+    同一个 URL 只下载一次（按 URL 哈希命名 + 进程内锁去重），之后秒开。
+    """
+    ext = _ext_of_url(u)
+    key = hashlib.sha1(u.encode("utf-8")).hexdigest()
+    dst = CLOUD_CACHE_DIR / key[:2] / (key + (ext or ".bin"))
+    if dst.exists() and dst.stat().st_size > 0:
+        return dst
+    with _dl_guard:
+        lock = _dl_locks.setdefault(key, threading.Lock())
+    with lock:
+        if dst.exists() and dst.stat().st_size > 0:  # 等锁期间别人已经下好
+            return dst
+        try:
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            tmp = dst.with_name(dst.name + ".part")
+            req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                clen = int(r.headers.get("Content-Length") or 0)
+                if clen and clen > CLOUD_PROXY_MAX:
+                    plog(f"[云端代理] 文件过大({clen // 1048576}MB)，改直连: {u[-40:]}")
+                    return None
+                with open(tmp, "wb") as f:
+                    shutil.copyfileobj(r, f, 1024 * 256)
+            if tmp.stat().st_size == 0:
+                tmp.unlink(missing_ok=True)
+                return None
+            os.replace(tmp, dst)
+            plog(f"[云端代理] 已缓存 {dst.stat().st_size // 1024}KB <- {u[-50:]}")
+            return dst
+        except Exception as e:
+            try:
+                (dst.with_name(dst.name + ".part")).unlink(missing_ok=True)
+            except Exception:
+                pass
+            plog(f"[云端代理] 下载失败 ({e}) {u[-60:]}")
+            return None
+        finally:
+            with _dl_guard:
+                _dl_locks.pop(key, None)
+
+
 def build_index():
     """返回 {updated, total, accounts:[{name,count,posts:[...]}]}。带 60s 内存缓存。"""
     now = time.time()
@@ -257,8 +368,8 @@ def build_index():
     accounts = []
     total = 0
     for acc in sorted(CACHE_DIR.iterdir()):
-        if not acc.is_dir():
-            continue
+        if not acc.is_dir() or acc.name.startswith("."):
+            continue  # 跳过 .cloudcache 等内部目录
         nick = acc.name
         posts = []
         for post in sorted(acc.iterdir()):
@@ -311,7 +422,70 @@ def build_index():
         if posts:
             total += len(posts)
             accounts.append({"name": nick, "count": len(posts), "posts": posts})
-    result = {"updated": time.strftime("%Y-%m-%d %H:%M:%S"), "total": total, "accounts": accounts}
+
+    # ---- 补全「只在云端」的作品：本地没缓存过，但云端画廊（Pages 索引）已有 ----
+    local_total = total
+    cloud_only = 0
+    acc_index = {a["name"]: a for a in accounts}
+    local_keys = set()
+    for a in accounts:
+        for p in a["posts"]:
+            local_keys |= cloud_sync._work_keys(p["account"],
+                                               {"desc": p["desc"], "pub": p["pub"]})
+    try:
+        cats = cloud_catalog()
+    except Exception:
+        cats = []
+    for ca in cats:
+        nick = (ca.get("nick") or "").strip()
+        if not nick:
+            continue
+        for w in ca.get("works", []):
+            desc = (w.get("desc") or w.get("caption") or "").strip()
+            pub = w.get("pub") or ""
+            keys = cloud_sync._work_keys(nick, {"desc": desc, "pub": pub})
+            if keys & local_keys:
+                continue
+            items = [it for it in (w.get("items") or []) if it.get("url")]
+            if not items:
+                continue
+            media = []
+            for it in items:
+                u = it["url"]
+                media.append({"url": _cloud_proxy_url(u),
+                              "kind": ("video" if it.get("type") == "video" else "image"),
+                              "name": os.path.basename(urllib.parse.urlparse(u).path),
+                              "cloud": True, "remote": u})
+            has_v = any(m["kind"] == "video" for m in media)
+            has_i = any(m["kind"] == "image" for m in media)
+            kind = w.get("kind") or ("video" if (has_v and not has_i)
+                                     else ("live" if (has_v and has_i) else "image"))
+            if nick not in acc_index:
+                acc_index[nick] = {"name": nick, "count": 0, "posts": []}
+                accounts.append(acc_index[nick])
+            node = acc_index[nick]
+            node["posts"].append({
+                "id": f"cloud|{nick}|{pub}|{len(node['posts'])}",
+                "account": nick,
+                "kind": kind,
+                "desc": desc or "(无文案)",
+                "pub": pub,
+                "link": w.get("link") or "",
+                "media": media,
+                "cloud_only": True,
+            })
+            node["count"] = len(node["posts"])
+            local_keys |= keys
+            cloud_only += 1
+    for a in accounts:
+        a["posts"].sort(key=lambda p: p.get("pub") or "", reverse=True)
+        a["count"] = len(a["posts"])
+    accounts.sort(key=lambda a: a["name"])
+    total = sum(a["count"] for a in accounts)
+
+    result = {"updated": time.strftime("%Y-%m-%d %H:%M:%S"), "total": total,
+              "local_total": local_total, "cloud_only": cloud_only,
+              "accounts": accounts}
     monitor._idx_cache = result
     monitor._idx_time = now
     return result
@@ -417,6 +591,10 @@ APP_HTML = r"""<!DOCTYPE html>
   .btn:hover{filter:brightness(1.08)}
   .urlpill{font-size:12px;color:var(--accent2);background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);
     padding:6px 11px;border-radius:20px;text-decoration:none;max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .srcs{display:flex;gap:6px;margin-top:9px}
+  .src{font-size:12px;padding:4px 12px;border-radius:20px;cursor:pointer;color:var(--sub);
+    border:1px solid var(--line);background:var(--panel2);user-select:none}
+  .src.on{color:#fff;border-color:rgba(109,94,252,.6);background:linear-gradient(135deg,rgba(109,94,252,.35),rgba(34,211,238,.18))}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;cursor:pointer;
     transition:transform .15s ease,box-shadow .15s ease;position:relative}
@@ -427,6 +605,12 @@ APP_HTML = r"""<!DOCTYPE html>
   .badge.live{background:rgba(255,77,141,.92);color:#fff}
   .badge.video{background:rgba(34,211,238,.9);color:#06222a}
   .badge.image{background:rgba(20,24,35,.8);color:#cfd6e6}
+  .badge.cloud{left:auto;right:8px;background:rgba(109,94,252,.92);color:#fff}
+  /* 云端作品占位（不自动下载，点了才拉） */
+  .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    background:linear-gradient(135deg,#171c2b,#0e1219);color:var(--sub)}
+  .ph .phico{font-size:22px;opacity:.85}
+  .ph .phtxt{font-size:11px;opacity:.75}
   .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
   .play span{width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.45);backdrop-filter:blur(3px);
     display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
@@ -443,6 +627,8 @@ APP_HTML = r"""<!DOCTYPE html>
     border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
   .mstage{background:#000;display:flex;align-items:center;justify-content:center;max-height:68vh;min-height:240px;position:relative}
   .mstage img,.mstage video{max-width:100%;max-height:68vh;display:block}
+  .loadhint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:#cfd6e6;font-size:13px;background:rgba(0,0,0,.5);pointer-events:none;text-align:center;padding:20px}
   .mstrip{display:flex;gap:8px;padding:10px;overflow-x:auto;background:var(--panel2)}
   .mstrip img,.mstrip video{height:62px;border-radius:8px;object-fit:cover;cursor:pointer;opacity:.6;border:2px solid transparent}
   .mstrip .on{opacity:1;border-color:var(--accent)}
@@ -479,6 +665,11 @@ APP_HTML = r"""<!DOCTYPE html>
         <h1>我的收藏</h1>
         <div class="meta" id="meta">加载中…</div>
         <div class="meta" id="cloudMeta"></div>
+        <div class="srcs" id="srcs">
+          <span class="src on" data-src="all">全部</span>
+          <span class="src" data-src="local">本地</span>
+          <span class="src" data-src="cloud">云端</span>
+        </div>
       </div>
       <div class="acts">
         <a class="urlpill" id="urlpill" style="display:none"></a>
@@ -502,7 +693,7 @@ APP_HTML = r"""<!DOCTYPE html>
 </div>
 
 <script>
-let DATA=null, FILTER={acc:"__all__", q:""};
+let DATA=null, FILTER={acc:"__all__", q:"", src:"all"};
 const $=s=>document.querySelector(s);
 function esc(s){return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 function colorOf(n){let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))%360;return `hsl(${h} 70% 55%)`;}
@@ -521,7 +712,10 @@ async function loadStatus(){
     $("#statusTxt").textContent=s.monitor_running?"监控同步中…":"空闲 · 上次 "+(s.last_run||"无");
     $("#dot").className="dot"+(s.monitor_running?" busy":"");
     const m=$("#meta");
-    if(DATA) m.textContent=`共 ${DATA.total} 条作品 · ${DATA.accounts.length} 个账号 · 索引更新 ${DATA.updated}`;
+    if(DATA){
+      const lt=DATA.local_total??DATA.total, co=DATA.cloud_only??0;
+      m.textContent=`共 ${DATA.total} 条作品 · 本地 ${lt} · 云端 ${co} · ${DATA.accounts.length} 个账号 · 索引更新 ${DATA.updated}`;
+    }
     const pill=$("#urlpill");
     if(s.public_url && s.public_url.startsWith("http")){pill.style.display="";pill.href=s.public_url;pill.textContent="公网: "+s.public_url;}
   }catch(e){}
@@ -548,6 +742,8 @@ function flatPosts(){
   (DATA?DATA.accounts:[]).forEach(a=>{
     a.posts.forEach(p=>{ if(FILTER.acc==="__all__"||p.account===FILTER.acc) posts.push(p); });
   });
+  if(FILTER.src==="local") posts=posts.filter(p=>!p.cloud_only);
+  if(FILTER.src==="cloud") posts=posts.filter(p=>p.cloud_only);
   if(FILTER.q){ const q=FILTER.q.toLowerCase();
     posts=posts.filter(p=>(p.desc||"").toLowerCase().includes(q)||(p.account||"").toLowerCase().includes(q)); }
   return posts;
@@ -563,14 +759,18 @@ function renderGrid(){
   posts.forEach(p=>{
     const c=document.createElement("div"); c.className="card";
     const m=primary(p);
-    const thumb = m.kind==="video"
-      ? `<video src="${m.url}" muted preload="metadata" playsinline></video><div class="play"><span>▶</span></div>`
-      : `<img src="${m.url}" loading="lazy" alt=""/>`;
+    // 云端作品：不自动下载缩略图（366 条会拖垮首屏），点开才拉取并缓存到本地
+    const thumb = p.cloud_only
+      ? `<div class="ph"><div class="phico">${m.kind==="video"?"☁ ▶":"☁"}</div><div class="phtxt">云端 · 点击加载</div></div>`
+      : (m.kind==="video"
+        ? `<video src="${m.url}" muted preload="metadata" playsinline></video><div class="play"><span>▶</span></div>`
+        : `<img src="${m.url}" loading="lazy" alt=""/>`);
     const badge = p.kind==="live"?`<div class="badge live">实况图</div>`
                : p.kind==="video"?`<div class="badge video">视频</div>`
                : `<div class="badge image">图文</div>`;
+    const cbadge = p.cloud_only?`<div class="badge cloud">☁ 云端</div>`:"";
     const more = p.media.length>1?`<div class="more">${p.media.length} 项</div>`:"";
-    c.innerHTML=`<div class="thumb">${thumb}${badge}${more}</div>
+    c.innerHTML=`<div class="thumb">${thumb}${badge}${cbadge}${more}</div>
       <div class="cap"><div class="d">${esc(p.desc)}</div><div class="t">${esc(p.account)} · ${esc(p.pub||"")}</div></div>`;
     c.onclick=()=>openModal(p);
     grid.appendChild(c);
@@ -583,19 +783,34 @@ function openModal(p){ CUR=p; IDX=0; $("#modal").classList.add("on"); renderModa
 function renderModal(){
   const p=CUR; if(!p) return;
   const stage=$("#mstage"); const m=p.media[IDX];
+  const hint = p.cloud_only ? `<div class="loadhint" id="loadhint">☁ 正在从云端拉取到本地缓存…<br/>（已缓存的会秒开）</div>` : "";
   stage.innerHTML = m.kind==="video"
-    ? `<div class="mnav l" onclick="nav(-1)">‹</div><div class="mnav r" onclick="nav(1)">›</div><video src="${m.url}" controls autoplay playsinline style="max-height:68vh"></video>`
-    : `<div class="mnav l" onclick="nav(-1)">‹</div><div class="mnav r" onclick="nav(1)">›</div><img src="${m.url}"/>`;
+    ? `<div class="mnav l" onclick="nav(-1)">‹</div><div class="mnav r" onclick="nav(1)">›</div><video src="${m.url}" controls autoplay playsinline style="max-height:68vh"></video>${hint}`
+    : `<div class="mnav l" onclick="nav(-1)">‹</div><div class="mnav r" onclick="nav(1)">›</div><img src="${m.url}"/>${hint}`;
+  const mediaEl = stage.querySelector("video,img");
+  if(mediaEl && p.cloud_only){
+    const hide=()=>{ const h=document.getElementById("loadhint"); if(h) h.remove(); };
+    mediaEl.addEventListener("loadeddata", hide);
+    mediaEl.addEventListener("load", hide);
+    mediaEl.addEventListener("error", ()=>{ const h=document.getElementById("loadhint");
+      if(h) h.innerHTML="☁ 拉取失败<br/>（可能文件过大或网络不稳，点下方「下载」直连试试）"; });
+  }
   const strip=$("#mstrip"); strip.innerHTML="";
-  p.media.forEach((mm,i)=>{
-    const e=document.createElement(mm.kind==="video"?"video":"img");
-    e.src=mm.url; e.className=i===IDX?"on":""; e.onclick=()=>{IDX=i;renderModal();};
-    strip.appendChild(e);
-  });
+  if(p.cloud_only){
+    // 云端作品可能几十张图，不预取缩略图；只给序号导航
+    strip.innerHTML=`<div style="padding:4px 8px;color:#8b93a7;font-size:12px">
+      ☁ 云端作品 ${IDX+1}/${p.media.length} · 首次打开会下载到本地缓存，之后秒开${p.media.length>1?"（用 ← → 切换）":""}</div>`;
+  } else {
+    p.media.forEach((mm,i)=>{
+      const e=document.createElement(mm.kind==="video"?"video":"img");
+      e.src=mm.url; e.className=i===IDX?"on":""; e.onclick=()=>{IDX=i;renderModal();};
+      strip.appendChild(e);
+    });
+  }
   $("#minfo").innerHTML=`<div class="desc">${esc(p.desc)}</div>
     <div class="meta"><span>${esc(p.account)}</span><span>${esc(p.pub||"")}</span>
     ${p.link?`<a href="${esc(p.link)}" target="_blank">抖音原作品 ↗</a>`:""}
-    <a href="${m.url}" target="_blank" download>下载</a></div>`;
+    <a href="${esc(p.cloud_only&&m.remote?m.remote:m.url)}" target="_blank" download>下载</a></div>`;
 }
 function nav(d){ if(!CUR) return; IDX=(IDX+d+CUR.media.length)%CUR.media.length; renderModal(); }
 function closeModal(){ $("#modal").classList.remove("on"); CUR=null; }
@@ -603,6 +818,12 @@ $("#modal").addEventListener("click",e=>{ if(e.target.id==="modal") closeModal()
 document.addEventListener("keydown",e=>{ if(e.key==="Escape")closeModal(); if(e.key==="ArrowLeft")nav(-1); if(e.key==="ArrowRight")nav(1); });
 
 $("#search").addEventListener("input",e=>{ FILTER.q=e.target.value.trim(); renderGrid(); });
+$("#srcs").addEventListener("click",e=>{
+  const t=e.target.closest(".src"); if(!t) return;
+  FILTER.src=t.dataset.src;
+  document.querySelectorAll("#srcs .src").forEach(s=>s.classList.toggle("on",s===t));
+  renderGrid();
+});
 $("#syncBtn").addEventListener("click",async()=>{
   const b=$("#syncBtn"); b.disabled=true; b.textContent="同步中…";
   try{ await fetch("/api/trigger",{method:"POST"}); }catch(e){}
@@ -725,6 +946,12 @@ class Handler(BaseHTTPRequestHandler):
             return self._json({"triggered": ok, "running": monitor.running})
         if p.startswith("/media/"):
             return self.serve_media(p[len("/media/"):])
+        if p == "/cloud":
+            qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+            u = (qs.get("u") or [""])[0]
+            if not u:
+                return self.send_error(400, "Bad Request")
+            return self.serve_cloud(u)
         self.send_error(404, "Not Found")
 
     def do_POST(self):
@@ -737,6 +964,29 @@ class Handler(BaseHTTPRequestHandler):
         if u.path == "/api/cloud/rebuild":
             return self._json(cloud_sync.trigger_pages_rebuild())
         self.send_error(404, "Not Found")
+
+    def serve_cloud(self, u):
+        """云端媒体代理：先下载到本地缓存，再用正确 MIME / 支持 Range 输出。
+
+        GitHub Releases 附件下载一律是 application/octet-stream + attachment，
+        浏览器 <video> 可能拒播；走本地代理后由本机按扩展名发 MIME，实测可拖动。
+        """
+        try:
+            pr = urllib.parse.urlparse(u)
+        except Exception:
+            return self.send_error(400, "Bad Request")
+        if pr.scheme not in ("http", "https") or pr.hostname not in _CLOUD_ALLOW_HOSTS:
+            return self.send_error(403, "Forbidden")
+        fp = fetch_cloud_to_cache(u)
+        if not fp:
+            # 下载失败/超大文件：退化为 302 直连云端，浏览器自己处理
+            self.send_response(302)
+            self.send_header("Location", u)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        rel = fp.relative_to(CACHE_DIR.resolve()).as_posix()
+        return self.serve_media(rel)
 
     def serve_media(self, rel):
         # 防目录穿越
