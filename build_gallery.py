@@ -111,6 +111,41 @@ PAGE_HEAD = """<!doctype html>
   pre{white-space:pre-wrap;word-break:break-all;background:#f2f3f5;
       padding:10px;border-radius:8px;font-size:13px;margin:8px 0 0}
   .empty{text-align:center;color:var(--muted);padding:60px 0}
+  /* 近期更新 Top15 + 视频公告栏 */
+  .hl,.board{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+             padding:12px 14px;margin:12px 0;box-shadow:var(--shadow)}
+  .hl-head,.board-head{display:flex;align-items:baseline;gap:8px;font-size:14px;
+             font-weight:600;color:var(--brand);margin-bottom:10px}
+  .hl-head .sub,.board-head .sub{font-size:11px;font-weight:400;color:var(--muted)}
+  .hl-scroll,.board-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;
+             -webkit-overflow-scrolling:touch}
+  .hl-card{flex:0 0 auto;width:82px;text-align:center;cursor:pointer;border-radius:10px;
+             padding:6px 2px;position:relative;border:1px solid transparent}
+  .hl-card:hover{background:var(--accent-soft)}
+  .hl-card.active{border-color:var(--accent);background:var(--accent-soft)}
+  .hl-ava{width:48px;height:48px;border-radius:50%;margin:0 auto 6px;display:flex;
+             align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:600}
+  .hl-name{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .hl-time{font-size:10.5px;color:var(--muted);margin-top:2px}
+  .hl-rk{position:absolute;top:0;right:5px;font-size:9.5px;background:var(--accent);
+             color:#fff;border-radius:7px;padding:0 5px;line-height:14px}
+  .bd-card{flex:0 0 auto;width:152px;cursor:pointer;border-radius:10px;overflow:hidden;
+             background:#fafbfc;border:1px solid var(--line);transition:transform .15s,box-shadow .15s}
+  .bd-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
+  .bd-thumb{position:relative;aspect-ratio:16/10;background:#e9ecf2;display:flex;
+             align-items:center;justify-content:center;overflow:hidden}
+  .bd-thumb img{width:100%;height:100%;object-fit:cover;margin:0;border-radius:0}
+  .bd-ph{font-size:22px;color:#9aa3b2}
+  .bd-tag{position:absolute;left:6px;bottom:6px;font-size:10px;background:rgba(0,0,0,.6);
+             color:#fff;border-radius:6px;padding:1px 6px}
+  .bd-desc{font-size:12px;color:var(--ink);line-height:1.45;padding:7px 8px 0;
+             display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+             overflow:hidden;min-height:34px}
+  .bd-meta{font-size:10.5px;color:var(--muted);padding:4px 8px 8px;display:flex;
+             justify-content:space-between;gap:6px}
+  .bd-meta span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .work,h2.acct{scroll-margin-top:66px}
+  .work.flash{box-shadow:0 0 0 3px var(--accent),var(--shadow);transition:box-shadow .3s}
   @media (max-width:720px){
     .layout{flex-direction:column}
     .sidebar{position:static;width:100%;flex:none;max-height:none;border-right:none;
@@ -134,6 +169,7 @@ PAGE_HEAD = """<!doctype html>
 </nav>
 <main class="content">
   <div class="info" id="info"></div>
+  <!--HIGHLIGHTS-->
   <div id="sections"><!--SECTIONS--></div>
 </main>
 </div>
@@ -164,6 +200,9 @@ PAGE_HEAD = """<!doctype html>
     chips.forEach(function(c){c.classList.toggle('active',c.getAttribute('data-acct')===active);});
     info.textContent='当前显示 '+shownW+' 个作品 · '+shownS+' 个账号'
       +(term?'（搜索：'+term+'）':'');
+    [].forEach.call(document.querySelectorAll('.hl-card'),function(c){
+      c.classList.toggle('active',c.getAttribute('data-acct')===active);
+    });
   }
   chips.forEach(function(c){
     c.addEventListener('click',function(){
@@ -174,6 +213,28 @@ PAGE_HEAD = """<!doctype html>
     });
   });
   q.addEventListener('input',apply);
+  /* 近期更新 Top15：点击切到该作者 */
+  [].forEach.call(document.querySelectorAll('.hl-card'),function(c){
+    c.addEventListener('click',function(){
+      active=c.getAttribute('data-acct'); apply();
+      history.replaceState(null,'',location.pathname+location.search
+        +(active==='all'?'':'#'+active));
+      var el=document.getElementById('sec-'+active);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+  /* 视频公告栏：点击定位到具体作品并高亮 */
+  [].forEach.call(document.querySelectorAll('.bd-card'),function(c){
+    c.addEventListener('click',function(){
+      var w=document.getElementById(c.getAttribute('data-w'));
+      if(!w) return;
+      var sec=w.closest?w.closest('.acct-section'):null;
+      if(sec){ active=sec.getAttribute('data-acct'); apply(); }
+      w.scrollIntoView({behavior:'smooth',block:'center'});
+      w.classList.add('flash');
+      setTimeout(function(){w.classList.remove('flash');},1800);
+    });
+  });
   var h=location.hash?location.hash.slice(1):'';
   if(h && document.querySelector('.chip[data-acct="'+CSS.escape(h)+'"]')){active=h;}
   apply();
@@ -234,7 +295,7 @@ def media_tag(kind: str, src: str) -> str:
     return f'<img loading="lazy" decoding="async" src="{esc(src)}" alt="" />'
 
 
-def _work_card(e: dict) -> str:
+def _work_card(e: dict, wid: str = "") -> str:
     title = " · ".join(x for x in (e.get("pub", ""), e.get("desc", "")) if x)
     items = e.get("items", [])
     types = {it.get("type") for it in items}
@@ -243,7 +304,8 @@ def _work_card(e: dict) -> str:
     is_live = ("video" in types) and ("image" in types)
     # Live 图: 动态视频 + 其它静态图都展示(不丢内容); 视频自带封面帧。
     render = items
-    parts = [f'<div class="work">', f'<h3>{esc(title or "未命名作品")}</h3>']
+    idattr = f' id="{esc(wid)}"' if wid else ""
+    parts = [f'<div class="work"{idattr}>', f'<h3>{esc(title or "未命名作品")}</h3>']
     if is_live:
         parts.append('<div class="live-badge">实况图 · 点击播放动态</div>')
     for it in render:
@@ -314,6 +376,107 @@ def collect_from_local() -> list:
     return groups
 
 
+# ---------------------------------------------------------------------------
+# 近期更新 Top15 + 视频公告栏
+# ---------------------------------------------------------------------------
+def _ts_of(e: dict) -> float:
+    """取作品时间戳：优先 state 里的 ts，其次解析 pub 字符串。"""
+    t = e.get("ts")
+    try:
+        if t:
+            return float(t)
+    except Exception:
+        pass
+    pub = (e.get("pub") or "").strip()
+    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d"):
+        try:
+            return time.mktime(time.strptime(pub, fmt))
+        except Exception:
+            continue
+    return 0.0
+
+
+def _rel_time(ts: float) -> str:
+    if not ts:
+        return ""
+    d = time.time() - ts
+    if d < 60:
+        return "刚刚"
+    if d < 3600:
+        return f"{int(d // 60)} 分钟前"
+    if d < 86400:
+        return f"{int(d // 3600)} 小时前"
+    if d < 86400 * 30:
+        return f"{int(d // 86400)} 天前"
+    return time.strftime("%m-%d", time.localtime(ts))
+
+
+def _ava_color(name: str) -> str:
+    h = 0
+    for ch in str(name or "?"):
+        h = (h * 31 + ord(ch)) % 360
+    return f"hsl({h} 65% 52%)"
+
+
+def _highlights_html(groups: list) -> str:
+    if not groups:
+        return ""
+
+    # ---- 近期更新 Top 15：按各账号最新作品时间倒序 ----
+    ranked = sorted(groups,
+                    key=lambda g: _ts_of(g["items"][0]) if g["items"] else 0,
+                    reverse=True)[:15]
+    cards = []
+    for i, g in enumerate(ranked, 1):
+        latest = _ts_of(g["items"][0]) if g["items"] else 0
+        when = _rel_time(latest) or f'{len(g["items"])} 条'
+        rk = f'<span class="hl-rk">{i}</span>' if i <= 3 else ""
+        nick = g["nick"]
+        cards.append(
+            f'<div class="hl-card" data-acct="{esc(g["id"])}">{rk}'
+            f'<div class="hl-ava" style="background:{_ava_color(nick)}">'
+            f'{esc(nick[:1])}</div>'
+            f'<div class="hl-name">{esc(nick)}</div>'
+            f'<div class="hl-time">{esc(when)}</div>'
+            f'</div>')
+    top_html = ('<div class="hl"><div class="hl-head">🔥 近期更新'
+                f'<span class="sub">前 {len(ranked)} 位作者 · 点击切换</span></div>'
+                '<div class="hl-scroll">' + "".join(cards) + '</div></div>')
+
+    # ---- 视频公告栏：全局最新 12 条视频 ----
+    vids = []
+    for gi, g in enumerate(groups):
+        for ei, e in enumerate(g["items"]):
+            types = {it.get("type") for it in e.get("items", [])}
+            if "video" not in types:
+                continue
+            vids.append((_ts_of(e), gi, ei, g, e))
+    vids.sort(key=lambda x: x[0], reverse=True)
+    vids = vids[:12]
+    if not vids:
+        return top_html
+    bdc = []
+    for ts, gi, ei, g, e in vids:
+        cover = ""
+        for it in e.get("items", []):
+            if it.get("type") == "image":
+                cover = it.get("url", "")
+                break
+        thumb = (f'<img loading="lazy" decoding="async" src="{esc(cover)}" alt="">'
+                 if cover else '<div class="bd-ph">▶</div>')
+        desc = (e.get("desc") or "未命名作品")[:42]
+        bdc.append(
+            f'<div class="bd-card" data-w="w-{gi}-{ei}">'
+            f'<div class="bd-thumb">{thumb}<span class="bd-tag">视频</span></div>'
+            f'<div class="bd-desc">{esc(desc)}</div>'
+            f'<div class="bd-meta"><span>{esc(g["nick"])}</span>'
+            f'<span>{esc(_rel_time(ts))}</span></div></div>')
+    board_html = ('<div class="board"><div class="board-head">📢 视频公告栏'
+                  f'<span class="sub">最近更新的 {len(bdc)} 条视频 · 点击定位</span></div>'
+                  '<div class="board-scroll">' + "".join(bdc) + '</div></div>')
+    return top_html + board_html
+
+
 def build() -> None:
     if SITE.exists():
         shutil.rmtree(SITE)
@@ -336,8 +499,9 @@ def build() -> None:
 
     # 各账号分区
     sec_parts = []
-    for g in groups:
-        inner = "".join(_work_card(e) for e in g["items"])
+    for gi, g in enumerate(groups):
+        inner = "".join(_work_card(e, f"w-{gi}-{ei}")
+                        for ei, e in enumerate(g["items"]))
         sec_parts.append(
             f'<section class="acct-section" data-acct="{esc(g["id"])}" '
             f'id="sec-{esc(g["id"])}">\n'
@@ -352,6 +516,7 @@ def build() -> None:
 
     doc = (PAGE_HEAD
            .replace("<!--ACCOUNTS-->", nav_html)
+           .replace("<!--HIGHLIGHTS-->", _highlights_html(groups))
            .replace("<!--SECTIONS-->", sections_html)
            .replace('<span class="n" id="n-all">0</span>',
                     f'<span class="n" id="n-all">{total}</span>')
