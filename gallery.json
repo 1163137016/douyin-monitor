@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-30 17:28:43",
-  "total": 366,
+  "generated": "2026-10-30 17:52:47",
+  "total": 368,
   "source": "github-releases",
   "accounts": [
     {
@@ -14612,6 +14612,19 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-4/default.__20240305_154912_.__20-2.jpg"
             }
           ]
+        },
+        {
+          "pub": "2025-01-20 21:37:52",
+          "desc": "我的珠海和服体验卡volg #吴京超话十级铁粉#爷爷穿孙子的衣服 #洋装穿在身我心依然是中国心",
+          "caption": "发布时间: 2025-01-20 21:37:52\n作品类型: 视频\n\n文案:\n我的珠海和服体验卡volg #吴京超话十级铁粉#爷爷穿孙子的衣服 #洋装穿在身我心依然是中国心\n\n点赞 17 | 评论 3 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7461991356529904935",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-4/default.__20250120_213752_.volg.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7461991356529904935"
         }
       ]
     },
@@ -17460,7 +17473,26 @@
           ]
         }
       ]
+    },
+    {
+      "id": "",
+      "nick": ".cloudcache",
+      "works": [
+        {
+          "pub": "",
+          "desc": "",
+          "caption": "",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-4/default.cloudcache__bb__bb7e3a0517eea1cf856854fe70ed859979cf2c8a-3.mp4"
+            }
+          ],
+          "link": ""
+        }
+      ]
     }
   ],
-  "local_added": 0
+  "local_added": 2
 }
