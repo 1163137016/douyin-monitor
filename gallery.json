@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-31 03:55:55",
-  "total": 1306,
+  "generated": "2026-10-31 04:29:02",
+  "total": 1307,
   "source": "github-releases",
   "accounts": [
     {
@@ -7684,6 +7684,51 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-8/happy.__20240628_123714__07.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-03-06 20:04:36",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-03-06 20:04:36\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 235 | 评论 4 | 收藏 19 | 分享 5\n作品链接: https://www.douyin.com/video/7614112332574481030",
+          "kind": "live",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260306_200436__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260306_200436__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260306_200436__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260306_200436__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260306_200436__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260306_200436__06.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260306_200436__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260306_200436__08.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/happy.__20260306_200436__09.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7614112332574481030"
         },
         {
           "pub": "2026-02-20 14:40:52",
@@ -43793,5 +43838,5 @@
       ]
     }
   ],
-  "local_added": 133
+  "local_added": 134
 }
