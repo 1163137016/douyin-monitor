@@ -95,7 +95,10 @@ PAGE_HEAD = """<!doctype html>
           justify-content:space-between;align-items:baseline}
   h2.acct .cnt{font-weight:400;font-size:12px;color:var(--muted)}
   .work{background:var(--panel);border-radius:12px;padding:14px;margin:14px 0;
-        box-shadow:var(--shadow)}
+        box-shadow:var(--shadow);
+        /* 屏幕外的卡片跳过布局与绘制：366 条约 3600 个媒体标签，
+           不做这个在手机上首屏会很卡。不支持的浏览器会自动忽略。 */
+        content-visibility:auto;contain-intrinsic-size:auto 420px}
   h3{margin:0 0 8px;word-break:break-all;font-size:14px;color:#444}
   video,img{max-width:100%;border-radius:8px;margin:8px 0;display:block;background:#000}
   .live-badge{display:inline-block;background:#ff4d6d;color:#fff;font-size:12px;
@@ -228,7 +231,7 @@ def media_tag(kind: str, src: str) -> str:
                 f'</video>\n'
                 f'<div class="vbar"><a href="{esc(src)}" target="_blank" '
                 f'rel="noopener">⬇ 在新窗口打开 / 下载</a></div>')
-    return f'<img loading="lazy" src="{esc(src)}" alt="" />'
+    return f'<img loading="lazy" decoding="async" src="{esc(src)}" alt="" />'
 
 
 def _work_card(e: dict) -> str:
