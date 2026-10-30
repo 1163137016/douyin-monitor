@@ -30,165 +30,37 @@ SITE = ROOT / "site"
 # 每个监控账号一个独立状态文件 state/<sec_uid>.json
 STATE_DIR = ROOT / "state"
 
-# ---- PWA: Service Worker 离线缓存(本地只缓存, 云端为源) ----
-SW_JS = r"""// 抖音监控画廊 · 离线缓存 Service Worker
-// 策略: 媒体(图片/视频)首次从云端拉取并存入浏览器 Cache Storage;
-//      之后直接从本地秒开, 可离线观看。定期自动清理:
-//      超 TTL_DAYS 天未访问 或 总占用超 CAP_BYTES 自动删除最久未访问的。
-const CACHE = 'dm-media-v1';
-const META  = 'dm-meta';           // IndexedDB: url -> {size,cachedAt,lastAccess}
-const TTL_DAYS = 30;
-const CAP_BYTES = 5 * 1024 * 1024 * 1024;  // 5GB
-const MEDIA_HOSTS = ['github.com', 'objects.githubusercontent.com', 'raw.githubusercontent.com'];
-
-function isMedia(url){
-  try{
-    var u = new URL(url, self.location.href);
-    if(!MEDIA_HOSTS.some(function(h){return u.hostname.endsWith(h);})) return false;
-    return /\.(mp4|webm|mov|m4v|m3u8|jpg|jpeg|png|gif|webp|avif|heic)(\?|$)/i.test(u.pathname + u.search);
-  }catch(e){ return false; }
-}
-
-// ---- IndexedDB 元数据存储(记录大小/访问时间, 供清理用) ----
-function idb(){
-  return new Promise(function(res, rej){
-    var r = indexedDB.open('dm-cache', 1);
-    r.onupgradeneeded = function(){ r.result.createObjectStore(META); };
-    r.onsuccess = function(){ res(r.result); };
-    r.onerror = function(){ rej(r.error); };
-  });
-}
-function idbTx(mode){ return idb().then(function(db){ return db.transaction(META, mode).objectStore(META); }); }
-function idbPut(k, v){ return idbTx('readwrite').then(function(s){ return new Promise(function(res, rej){ var rq=s.put(v, k); rq.onsuccess=res; rq.onerror=function(){rej(rq.error);}; }); }); }
-function idbGet(k){ return idbTx('readonly').then(function(s){ return new Promise(function(res, rej){ var rq=s.get(k); rq.onsuccess=function(){res(rq.result);}; rq.onerror=function(){rej(rq.error);}; }); }); }
-function idbAll(){ return idbTx('readonly').then(function(s){ return new Promise(function(res, rej){
-  var keys=[], vals=[]; var rk=s.getAllKeys(), rv=s.getAll();
-  rk.onsuccess=function(){keys=rk.result;}; rv.onsuccess=function(){vals=rv.result;
-    var o={}; for(var i=0;i<keys.length;i++) o[keys[i]]=vals[i]; res(o);};
-  rk.onerror=rv.onerror=function(){rej(rk.error||rv.error);};
-}); }); }
-function idbDel(k){ return idbTx('readwrite').then(function(s){ return new Promise(function(res, rej){ var rq=s.delete(k); rq.onsuccess=res; rq.onerror=function(){rej(rq.error);}; }); }); }
-function idbClear(){ return idbTx('readwrite').then(function(s){ return new Promise(function(res, rej){ var rq=s.clear(); rq.onsuccess=res; rq.onerror=function(){rej(rq.error);}; }); }); }
-
-function getCache(){ return caches.open(CACHE); }
-
-// ---- 清理: 删除超期 + 超额(LRU) ----
-function cleanup(){
-  return getCache().then(function(cache){
-    return idbAll().then(function(meta){
-      var now = Date.now(), ttl = TTL_DAYS * 86400000;
-      var entries = Object.keys(meta).map(function(k){
-        var m = meta[k] || {};
-        var la = m.lastAccess || m.cachedAt || now;
-        return {k:k, size:m.size||0, la:la, expired:(now - la) > ttl};
-      });
-      var total = entries.reduce(function(a,e){return a+e.size;}, 0);
-      var del = 0;
-      var chain = Promise.resolve();
-      // 1) 超期删除
-      entries.filter(function(e){return e.expired;}).forEach(function(e){
-        chain = chain.then(function(){ return cache.delete(e.k).then(function(){ return idbDel(e.k); }); })
-                     .then(function(){ total -= e.size; del++; });
-      });
-      // 2) 超额删除(最久未访问优先)
-      var over = entries.filter(function(e){return !e.expired;}).sort(function(a,b){return a.la-b.la;});
-      chain = chain.then(function step(){
-        if(total <= CAP_BYTES) return;
-        var e = over.shift(); if(!e) return;
-        return cache.delete(e.k).then(function(){ return idbDel(e.k); })
-                    .then(function(){ total -= e.size; del++; return step(); });
-      });
-      return chain.then(function(){ return {deleted:del, total:total}; });
-    });
-  }).catch(function(e){ return {error:String(e)}; });
-}
-
-self.addEventListener('install', function(e){ self.skipWaiting(); });
+# ---- PWA 已停用 ----
+# 页面不再注册 Service Worker，也不再输出 manifest。
+# 但 sw.js 仍要保留一个「自注销」版本：浏览器导航时会检查 sw.js 是否更新，
+# 旧 SW 拉到这个新版本后会清空全部 Cache Storage 并注销自己，让老访客自动脱钩。
+# （若直接删掉 sw.js，旧 SW 会因 404 拿不到更新而长期赖着不走，页面反而更卡。）
+SW_JS = r"""// 抖音监控画廊 · 离线缓存已停用（本文件仅用于让旧版 SW 自行注销）
+self.addEventListener('install', function(){ self.skipWaiting(); });
 self.addEventListener('activate', function(e){
-  e.waitUntil(self.clients.claim().then(function(){ return cleanup(); }));
-});
-
-self.addEventListener('fetch', function(e){
-  var req = e.request;
-  if(req.method !== 'GET') return;
-  var url = req.url;
-  if(!isMedia(url)) return;   // 非媒体走默认(导航/HTML 不缓存, 始终走网络)
-  e.respondWith((function(){
-    var cache;
-    return getCache().then(function(c){ cache = c; return cache.match(url); }).then(function(hit){
-      if(hit){
-        // 命中: 刷新访问时间(异步, 不阻塞返回)
-        idbGet(url).then(function(m){ m = m || {}; m.lastAccess = Date.now();
-          return idbPut(url, m); }).catch(function(){});
-        return hit;
-      }
-      // 未命中: 从云端拉全量(no-cors -> 不依赖对方 CORS 头), 存入缓存
-      return fetch(new Request(url, {mode:'no-cors', credentials:'omit'})).then(function(cres){
-        if(cres && (cres.ok || cres.type === 'opaque')){
-          var size = 0, clone = cres.clone();
-          clone.blob().then(function(b){ size = b ? b.size : 0;
-            return idbPut(url, {size:size, cachedAt:Date.now(), lastAccess:Date.now()});
-          }).catch(function(){});
-          return cache.put(new Request(url), cres.clone()).then(function(){ return cres; });
-        }
-        return cres;
-      }).catch(function(){
-        return cache.match(url).then(function(fb){ return fb || Response.error(); });
-      });
-    });
+  e.waitUntil((async function(){
+    try{
+      var keys = await caches.keys();
+      await Promise.all(keys.map(function(k){ return caches.delete(k); }));
+    }catch(err){}
+    try{ await self.registration.unregister(); }catch(err){}
+    try{
+      var cs = await self.clients.matchAll({type:'window'});
+      cs.forEach(function(c){ try{ c.navigate(c.url); }catch(err){} });
+    }catch(err){}
   })());
 });
-
-self.addEventListener('message', function(e){
-  var d = e.data || {};
-  if(d.type === 'stats'){
-    Promise.all([getCache(), idbAll()]).then(function(arr){
-      var meta = arr[1], total = 0, keys = Object.keys(meta);
-      keys.forEach(function(k){ total += (meta[k].size || 0); });
-      (e.source && e.source.postMessage({type:'stats', count:keys.length, total:total}));
-    });
-  } else if(d.type === 'cleanup'){
-    cleanup().then(function(r){ (e.source && e.source.postMessage({type:'cleanup-done', r:r})); });
-  } else if(d.type === 'clearall'){
-    caches.delete(CACHE).then(function(){
-      return idbClear().then(function(){ (e.source && e.source.postMessage({type:'cleared'})); });
-    });
-  }
-});
-"""
-
-MANIFEST = r"""{
-  "name": "抖音监控作品库",
-  "short_name": "抖音库",
-  "description": "抖音监控作品离线缓存画廊",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#f5f6f8",
-  "theme_color": "#2c3550",
-  "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-  ]
-}
+// 注销生效前若还有请求进来：直接放行，不拦截、不缓存。
+self.addEventListener('fetch', function(){});
 """
 
 PAGE_HEAD = """<!doctype html>
 <html lang="zh">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>抖音监控作品库（云端 · 可离线缓存）</title>
-<link rel="manifest" href="manifest.webmanifest">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>抖音监控作品库</title>
 <meta name="theme-color" content="#2c3550">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="抖音库">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <style>
   :root{--bg:#f5f6f8;--panel:#fff;--ink:#222;--muted:#667;--brand:#2c3550;
         --accent:#3b6ef5;--accent-soft:#e8eefc;--line:#e6e8ec;--shadow:0 1px 4px rgba(0,0,0,.08)}
@@ -244,35 +116,12 @@ PAGE_HEAD = """<!doctype html>
     .chip{width:auto;white-space:nowrap;flex:0 0 auto}
     .content{padding:12px}
   }
-  .cache-btn{margin-left:auto;padding:6px 12px;border:1px solid var(--line);
-    border-radius:16px;background:#fff;font-size:13px;cursor:pointer;color:var(--brand)}
-  .cache-btn:hover{background:var(--accent-soft)}
-  .cache-panel{position:fixed;right:14px;top:54px;z-index:50;width:264px;background:#fff;
-    border:1px solid var(--line);border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.14);
-    padding:14px;font-size:13px;color:var(--ink)}
-  .cache-panel[hidden]{display:none}
-  .cp-row{display:flex;justify-content:space-between;padding:4px 0}
-  .cp-actions{display:flex;gap:8px;margin:10px 0 6px}
-  .cp-actions button{flex:1;padding:7px 0;border:1px solid var(--line);border-radius:8px;
-    background:#fff;cursor:pointer;font-size:12px}
-  .cp-actions button:hover{background:var(--accent-soft)}
-  .cp-note{color:var(--muted);font-size:11px;line-height:1.5;margin-top:4px}
 </style>
 </head>
 <body>
 <div class="topbar">
-  <div class="brand">抖音监控作品库<span class="sub">云端 · 可离线缓存</span></div>
+  <div class="brand">抖音监控作品库<span class="sub">云端 · 在线观看</span></div>
   <input id="q" class="search" placeholder="搜索标题 / 文案…" autocomplete="off">
-  <button id="cacheBtn" class="cache-btn">本地缓存</button>
-</div>
-<div id="cachePanel" class="cache-panel" hidden>
-  <div class="cp-row"><span>已缓存媒体</span><b id="cpCount">—</b></div>
-  <div class="cp-row"><span>占用空间</span><b id="cpSize">—</b></div>
-  <div class="cp-actions">
-    <button id="cpClean">清理超期/超额</button>
-    <button id="cpClear">清空缓存</button>
-  </div>
-  <div class="cp-note">本地仅作缓存，云端为源；超 30 天未看 或 超 5GB 自动删。已缓存的可离线看。</div>
 </div>
 <div class="layout">
 <nav class="sidebar" id="nav">
@@ -328,51 +177,22 @@ PAGE_HEAD = """<!doctype html>
 })();
 </script>
 <script>
-/* 离线缓存面板 + Service Worker 注册 */
+/* PWA 已停用：自动注销历史 Service Worker 并清空离线缓存，
+   避免旧缓存接管请求导致页面变慢 / 内容不更新。只跑一次，无副作用。 */
 (function(){
-  var panel = document.getElementById('cachePanel');
-  var btn = document.getElementById('cacheBtn');
-  btn.addEventListener('click', function(){ panel.hidden = !panel.hidden; if(!panel.hidden) refresh(); });
-  function fmt(b){
-    if(b === null || b === undefined) return '—';
-    var u=['B','KB','MB','GB','TB'], i=0;
-    while(b>=1024 && i<u.length-1){ b/=1024; i++; }
-    return (i? b.toFixed(1): b.toFixed(0)) + ' ' + u[i];
+  if(!('serviceWorker' in navigator)) return;
+  navigator.serviceWorker.getRegistrations().then(function(rs){
+    if(!rs.length) return;
+    rs.forEach(function(r){ r.unregister(); });
+    console.info('[PWA] 已注销 ' + rs.length + ' 个 Service Worker');
+  }).catch(function(){});
+  if(window.caches && caches.keys){
+    caches.keys().then(function(keys){
+      if(!keys.length) return;
+      keys.forEach(function(k){ caches.delete(k); });
+      console.info('[PWA] 已清空 ' + keys.length + ' 个离线缓存');
+    }).catch(function(){});
   }
-  function refresh(){
-    var sw = navigator.serviceWorker;
-    if(!sw || !sw.controller){
-      document.getElementById('cpCount').textContent = '刷新一次生效';
-      document.getElementById('cpSize').textContent = '—';
-      return;
-    }
-    sw.controller.postMessage({type:'stats'});
-  }
-  document.getElementById('cpClean').addEventListener('click', function(){
-    if(navigator.serviceWorker.controller) navigator.serviceWorker.controller.postMessage({type:'cleanup'});
-  });
-  document.getElementById('cpClear').addEventListener('click', function(){
-    if(confirm('确定清空全部本地缓存？云端内容不受影响，下次观看会重新从云端拉取。'))
-      if(navigator.serviceWorker.controller) navigator.serviceWorker.controller.postMessage({type:'clearall'});
-  });
-  navigator.serviceWorker.addEventListener('message', function(e){
-    var d = e.data || {};
-    if(d.type === 'stats'){
-      document.getElementById('cpCount').textContent = d.count + ' 个';
-      document.getElementById('cpSize').textContent = fmt(d.total);
-    } else if(d.type === 'cleanup-done' || d.type === 'cleared'){
-      refresh();
-    }
-  });
-  if('serviceWorker' in navigator){
-    window.addEventListener('load', function(){
-      navigator.serviceWorker.register('sw.js').catch(function(err){ console.warn('SW 注册失败', err); });
-    });
-  }
-  // 页面常开时, 每 5 分钟自动清理一次(超期/超额)
-  setInterval(function(){
-    if(navigator.serviceWorker.controller) navigator.serviceWorker.controller.postMessage({type:'cleanup'});
-  }, 5*60*1000);
 })();
 </script>
 </body>
@@ -538,16 +358,18 @@ def build() -> None:
 
     (SITE / "index.html").write_text(doc, "utf-8", errors="ignore")
     (SITE / "sw.js").write_text(SW_JS, "utf-8", errors="ignore")
-    (SITE / "manifest.webmanifest").write_text(MANIFEST, "utf-8", errors="ignore")
 
-    # 复制 PWA 图标（手机「添加到主屏幕」用的 App 图标）
-    ASSETS = ROOT / "assets"
-    for icon in ("icon-192.png", "icon-512.png", "apple-touch-icon.png"):
-        src = ASSETS / icon
-        if src.exists():
-            (SITE / icon).write_bytes(src.read_bytes())
-        else:
-            print(f"    !! 缺少图标 {src}，手机添加主屏幕将无自定义图标")
+    # PWA 已停用：不再输出 manifest.webmanifest 与图标；
+    # 旧版本遗留的同名文件若还在站点目录里，一并删掉，避免浏览器继续读到。
+    for stale in ("manifest.webmanifest", "icon-192.png", "icon-512.png",
+                  "apple-touch-icon.png"):
+        f = SITE / stale
+        if f.exists():
+            try:
+                f.unlink()
+                print(f"    已移除旧 PWA 文件: {stale}")
+            except Exception as e:
+                print(f"    !! 移除 {stale} 失败: {e}")
 
     # 导出结构化索引 gallery.json: 供「本地缓存服务」读取, 避免解析 HTML。
     # 本地服务用它构建本地画廊 + 代理/缓存云端媒体, 实现页面本地秒开。
