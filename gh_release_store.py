@@ -45,6 +45,47 @@ _ready = False
 # 附件名 -> 直链，用于上传前幂等复用（回灌时避免重复上传同名文件）
 _asset_index = {}
 
+# 上次重建附件索引的时间戳。422 撞名时若每个文件都去重列 6 个 release、
+# 几千个附件，API 调用与耗时都会爆掉（实测一轮能被打满 45 分钟预算），
+# 因此这里做节流：短时间内最多重建一次。
+_last_index_refresh = 0.0
+_INDEX_REFRESH_GAP = 120  # 秒
+
+# 单个 release 的 附件名 -> 直链 缓存。422 撞名时只翻这一个 release，
+# 且每个 release 只翻一次，避免反复全量列取。
+_release_names = {}
+
+
+def _release_names(rid):
+    """懒加载某个 release 的 附件名 -> 直链（命中缓存直接返回）。"""
+    if rid in _release_names:
+        return _release_names[rid]
+    names = {}
+    for page in range(1, 13):
+        try:
+            r = requests.get(f"{API}/repos/{_REPO}/releases/{rid}/assets",
+                             headers=_headers(),
+                             params={"per_page": 100, "page": page}, timeout=30)
+            if r.status_code != 200:
+                break
+            batch = r.json()
+        except Exception:
+            break
+        if not batch:
+            break
+        for a in batch:
+            n = a.get("name")
+            if n:
+                names.setdefault(n, a.get("browser_download_url", ""))
+        if len(batch) < 100:
+            break
+    _release_names[rid] = names
+    return names
+
+# 最近一次失败的结构化信息（供上层区分「权限不足 / 网络抖动 / 撞名」）
+# 形如 {"status": 403, "body": "Resource not accessible by personal access token"}
+LAST_ERROR = {}
+
 
 def reload():
     """重新读取配置（本地 .env 场景用；Actions 已通过 env 注入）。"""
@@ -115,13 +156,14 @@ def safe_name(key: str) -> str:
 
 def _load_index(releases):
     """构建 附件名 -> 直链 映射，供上传前做幂等复用。"""
-    global _asset_index
+    global _asset_index, _last_index_refresh
     _asset_index = {}
     for rel in releases:
         for a in rel.get("assets", []):
             name, url = a.get("name"), a.get("url")
             if name and url:
                 _asset_index.setdefault(safe_name(name), url)
+    _last_index_refresh = time.time()
 
 
 def _tag_index(tag: str):
@@ -281,17 +323,31 @@ def upload(path: Path, key: str, retries: int = 3) -> str:
                 _asset_index[asset_name] = url
                 return url
             if r.status_code == 422 and attempt == 1:
-                # 多半是同名附件已存在(GitHub 规范化名字后可能撞名)。
-                # 刷新一次索引再查, 命中就复用, 否则靠后续改名重试解决。
-                _load_index(_list_releases())
-                hit = _asset_index.get(asset_name)
+                # 同名附件已存在(GitHub 规范化名字后撞名)。只翻「当前 release」
+                # 的附件表(带缓存)拿直链，不重建全量索引、也不改名重试——改名
+                # 重试会不断产生重复附件，让索引越来越臃肿、越跑越慢。
+                hit = _asset_index.get(asset_name) or \
+                    _release_names(_cur_id).get(asset_name, "")
                 if hit:
+                    _asset_index[asset_name] = hit
                     print(f"    [store] 附件已存在(422), 复用直链: {asset_name}")
                     return hit
+                print(f"    [store] 附件已存在(422)但取不到直链, 跳过: {asset_name}")
+                return ""
             print(f"    !! GH release 上传失败(第{attempt}次) {name_try}: "
                   f"HTTP {r.status_code} {r.text[:200]}")
+            LAST_ERROR.clear()
+            LAST_ERROR.update({"status": r.status_code, "body": r.text[:300],
+                               "name": name_try})
+            if r.status_code == 403:
+                # 权限问题重试没有意义（同一令牌每次都 403），直接退出
+                print("    !! 令牌缺少写权限（需要 Contents: Read and write），"
+                      "已停止本轮上传")
+                return ""
         except Exception as e:
             print(f"    !! GH release 上传异常(第{attempt}次) {name_try}: {e}")
+            LAST_ERROR.clear()
+            LAST_ERROR.update({"status": 0, "body": str(e)[:300], "name": name_try})
         time.sleep(2 * attempt)
     return ""
 
