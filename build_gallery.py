@@ -60,7 +60,7 @@ PAGE_HEAD = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>抖音监控作品库</title>
-<meta name="theme-color" content="#2c3550">
+<meta name="theme-color" content="#ffffff">
 <style>
   :root{--bg:#f5f6f8;--panel:#fff;--ink:#222;--muted:#667;--brand:#2c3550;
         --accent:#3b6ef5;--accent-soft:#e8eefc;--line:#e6e8ec;--shadow:0 1px 4px rgba(0,0,0,.08)}
@@ -101,6 +101,7 @@ PAGE_HEAD = """<!doctype html>
         content-visibility:auto;contain-intrinsic-size:auto 420px}
   h3{margin:0 0 8px;word-break:break-all;font-size:14px;color:#444}
   video,img{max-width:100%;border-radius:8px;margin:8px 0;display:block;background:#000}
+  video{max-height:72vh}
   .live-badge{display:inline-block;background:#ff4d6d;color:#fff;font-size:12px;
     padding:2px 8px;border-radius:10px;margin:4px 0;}
   .vbar{font-size:13px;margin:-2px 0 10px}
@@ -111,48 +112,72 @@ PAGE_HEAD = """<!doctype html>
   pre{white-space:pre-wrap;word-break:break-all;background:#f2f3f5;
       padding:10px;border-radius:8px;font-size:13px;margin:8px 0 0}
   .empty{text-align:center;color:var(--muted);padding:60px 0}
-  /* 近期更新 Top15 + 视频公告栏 */
-  .hl,.board{background:var(--panel);border:1px solid var(--line);border-radius:12px;
-             padding:12px 14px;margin:12px 0;box-shadow:var(--shadow)}
-  .hl-head,.board-head{display:flex;align-items:baseline;gap:8px;font-size:14px;
-             font-weight:600;color:var(--brand);margin-bottom:10px}
+  /* ===== 近期更新 Top15 + 视频公告栏（与全站同一套圆角/间距/品牌色） ===== */
+  .topzone{margin:2px 0 18px}
+  .hl,.board{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+             padding:13px 14px;margin:0 0 10px;box-shadow:var(--shadow)}
+  .board{margin-bottom:0}
+  .hl-head,.board-head{display:flex;align-items:center;gap:8px;font-size:13.5px;
+             font-weight:600;color:var(--brand);margin-bottom:11px}
   .hl-head .sub,.board-head .sub{font-size:11px;font-weight:400;color:var(--muted)}
-  .hl-scroll,.board-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;
+  .hl-scroll,.board-scroll{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 6px;
+             scrollbar-width:thin;scrollbar-color:#d3d8e2 transparent;
              -webkit-overflow-scrolling:touch}
-  .hl-card{flex:0 0 auto;width:82px;text-align:center;cursor:pointer;border-radius:10px;
-             padding:6px 2px;position:relative;border:1px solid transparent}
+  .hl-scroll::-webkit-scrollbar,.board-scroll::-webkit-scrollbar{height:6px}
+  .hl-scroll::-webkit-scrollbar-thumb,.board-scroll::-webkit-scrollbar-thumb{
+             background:#d3d8e2;border-radius:3px}
+  .hl-scroll::-webkit-scrollbar-track,.board-scroll::-webkit-scrollbar-track{background:transparent}
+  .hl-card{flex:0 0 auto;width:88px;text-align:center;cursor:pointer;border-radius:12px;
+             padding:8px 3px 7px;position:relative;border:1px solid transparent;
+             transition:background .15s,border-color .15s}
   .hl-card:hover{background:var(--accent-soft)}
   .hl-card.active{border-color:var(--accent);background:var(--accent-soft)}
-  .hl-ava{width:48px;height:48px;border-radius:50%;margin:0 auto 6px;display:flex;
-             align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:600}
-  .hl-name{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .hl-time{font-size:10.5px;color:var(--muted);margin-top:2px}
-  .hl-rk{position:absolute;top:0;right:5px;font-size:9.5px;background:var(--accent);
-             color:#fff;border-radius:7px;padding:0 5px;line-height:14px}
-  .bd-card{flex:0 0 auto;width:152px;cursor:pointer;border-radius:10px;overflow:hidden;
-             background:#fafbfc;border:1px solid var(--line);transition:transform .15s,box-shadow .15s}
-  .bd-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
-  .bd-thumb{position:relative;aspect-ratio:16/10;background:#e9ecf2;display:flex;
+  .hl-ava{width:50px;height:50px;border-radius:50%;margin:0 auto 7px;display:flex;
+             align-items:center;justify-content:center;color:#fff;font-size:19px;
+             font-weight:600;box-shadow:0 2px 6px rgba(44,53,80,.18)}
+  .hl-name{font-size:12px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;
+             white-space:nowrap}
+  .hl-time{font-size:10.5px;color:var(--muted);margin-top:3px}
+  .hl-rk{position:absolute;top:5px;left:7px;font-size:9.5px;font-weight:600;
+             color:#fff;border-radius:7px;padding:0 5px;line-height:14px;
+             background:var(--brand);opacity:.9}
+  .hl-card[data-rk="1"] .hl-rk{background:#e0a03c;opacity:1}
+  .hl-card[data-rk="2"] .hl-rk{background:#98a2b3;opacity:1}
+  .hl-card[data-rk="3"] .hl-rk{background:#c2895c;opacity:1}
+  .bd-card{flex:0 0 auto;width:158px;cursor:pointer;border-radius:12px;overflow:hidden;
+             background:var(--panel);border:1px solid var(--line);
+             transition:transform .15s,box-shadow .15s,border-color .15s}
+  .bd-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1);
+             border-color:#d6dbe6}
+  .bd-thumb{position:relative;aspect-ratio:16/10;background:#eef0f4;display:flex;
              align-items:center;justify-content:center;overflow:hidden}
   .bd-thumb img{width:100%;height:100%;object-fit:cover;margin:0;border-radius:0}
-  .bd-ph{font-size:22px;color:#9aa3b2}
-  .bd-tag{position:absolute;left:6px;bottom:6px;font-size:10px;background:rgba(0,0,0,.6);
+  .bd-ph{font-size:22px;color:#aab2c0}
+  .bd-tag{position:absolute;left:7px;bottom:7px;font-size:10px;background:rgba(20,24,35,.62);
              color:#fff;border-radius:6px;padding:1px 6px}
-  .bd-desc{font-size:12px;color:var(--ink);line-height:1.45;padding:7px 8px 0;
+  .bd-desc{font-size:12px;color:var(--ink);line-height:1.45;padding:8px 9px 0;
              display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
-             overflow:hidden;min-height:34px}
-  .bd-meta{font-size:10.5px;color:var(--muted);padding:4px 8px 8px;display:flex;
+             overflow:hidden;min-height:35px}
+  .bd-meta{font-size:10.5px;color:var(--muted);padding:5px 9px 9px;display:flex;
              justify-content:space-between;gap:6px}
   .bd-meta span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .work,h2.acct{scroll-margin-top:66px}
+  /* content-visibility 的卡片在屏外只有估算高度, 定位会漂; 跳转前临时关掉 */
+  .work.cv-on{content-visibility:visible}
   .work.flash{box-shadow:0 0 0 3px var(--accent),var(--shadow);transition:box-shadow .3s}
   @media (max-width:720px){
     .layout{flex-direction:column}
-    .sidebar{position:static;width:100%;flex:none;max-height:none;border-right:none;
-             border-bottom:1px solid var(--line);display:flex;gap:6px;overflow:auto}
+    .sidebar{position:sticky;top:52px;z-index:15;width:100%;flex:none;max-height:none;
+             background:rgba(255,255,255,.95);backdrop-filter:blur(6px);
+             border-right:none;border-bottom:1px solid var(--line);display:flex;
+             gap:6px;overflow:auto;padding:8px 10px}
     .sidebar .navtitle{display:none}
     .chip{width:auto;white-space:nowrap;flex:0 0 auto}
     .content{padding:12px}
+    .hl-card{width:80px}
+    .hl-ava{width:46px;height:46px;font-size:17px}
+    .bd-card{width:146px}
+    h2.acct,.work{scroll-margin-top:104px}
   }
 </style>
 </head>
@@ -200,9 +225,35 @@ PAGE_HEAD = """<!doctype html>
     chips.forEach(function(c){c.classList.toggle('active',c.getAttribute('data-acct')===active);});
     info.textContent='当前显示 '+shownW+' 个作品 · '+shownS+' 个账号'
       +(term?'（搜索：'+term+'）':'');
+    var hlShown=0;
     [].forEach.call(document.querySelectorAll('.hl-card'),function(c){
-      c.classList.toggle('active',c.getAttribute('data-acct')===active);
+      var ok=(active==='all'||c.getAttribute('data-acct')===active)
+             &&(!term||(c.getAttribute('data-name')||'').toLowerCase().indexOf(term)>=0);
+      c.style.display=ok?'':'none';
+      if(ok) hlShown++;
+      c.classList.toggle('active',active!=='all'&&c.getAttribute('data-acct')===active);
     });
+    var bdShown=0;
+    [].forEach.call(document.querySelectorAll('.bd-card'),function(c){
+      var ok=(active==='all'||c.getAttribute('data-acct')===active)
+             &&(!term||(c.getAttribute('data-txt')||'').toLowerCase().indexOf(term)>=0);
+      c.style.display=ok?'':'none';
+      if(ok) bdShown++;
+    });
+    /* 小标题跟着当前视图走, 否则"前 15 位作者"在单账号视图下是自相矛盾的 */
+    var hs=document.querySelector('.hl-head .sub');
+    if(hs) hs.textContent=(active==='all')
+      ? (hlShown+' 位作者 · 点击切换') : '已切到该作者 · 再点一次回到全部';
+    var bs=document.querySelector('.board-head .sub');
+    if(bs) bs.textContent=bdShown+' 条视频 · 点击定位';
+    toggleZone('hl'); toggleZone('board');
+  }
+  /* 该模块一张卡片都不剩时整块收起，避免留下空壳 */
+  function toggleZone(cls){
+    var cards=[].slice.call(document.querySelectorAll('.'+cls+'-card'));
+    var any=cards.some(function(c){return c.style.display!=='none';});
+    var box=document.querySelector('.'+cls);
+    if(box) box.style.display=any?'':'none';
   }
   chips.forEach(function(c){
     c.addEventListener('click',function(){
@@ -213,12 +264,15 @@ PAGE_HEAD = """<!doctype html>
     });
   });
   q.addEventListener('input',apply);
-  /* 近期更新 Top15：点击切到该作者 */
+  /* 近期更新 Top15：点击切到该作者, 再点一次回到全部 */
   [].forEach.call(document.querySelectorAll('.hl-card'),function(c){
     c.addEventListener('click',function(){
-      active=c.getAttribute('data-acct'); apply();
+      var acct=c.getAttribute('data-acct');
+      active=(active===acct)?'all':acct;
+      q.value=''; apply();
       history.replaceState(null,'',location.pathname+location.search
         +(active==='all'?'':'#'+active));
+      if(active==='all'){ window.scrollTo({top:0,behavior:'smooth'}); return; }
       var el=document.getElementById('sec-'+active);
       if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
     });
@@ -229,8 +283,10 @@ PAGE_HEAD = """<!doctype html>
       var w=document.getElementById(c.getAttribute('data-w'));
       if(!w) return;
       var sec=w.closest?w.closest('.acct-section'):null;
-      if(sec){ active=sec.getAttribute('data-acct'); apply(); }
-      w.scrollIntoView({behavior:'smooth',block:'center'});
+      if(sec){ active=sec.getAttribute('data-acct'); }
+      q.value=''; apply();        /* 清搜索: 保证目标作品没被过滤掉 */
+      w.classList.add('cv-on');   /* 关掉离屏高度估算, 否则滚动定位会漂 */
+      w.scrollIntoView({behavior:'smooth',block:'start'});
       w.classList.add('flash');
       setTimeout(function(){w.classList.remove('flash');},1800);
     });
@@ -411,11 +467,20 @@ def _rel_time(ts: float) -> str:
     return time.strftime("%m-%d", time.localtime(ts))
 
 
-def _ava_color(name: str) -> str:
+def _ava_style(name: str, rank: int = 0) -> str:
+    """头像底色：统一收在品牌蓝紫色域内( hue 206~252 ), 不再用随机彩虹色。
+
+    彩虹色头像和整站的蓝灰品牌色冲突, 视觉上最"跳"。这里只让色相在窄区间
+    内浮动以区分不同作者, 饱和度/亮度保持一致, 排名越靠前略微提亮。
+    """
     h = 0
     for ch in str(name or "?"):
         h = (h * 31 + ord(ch)) % 360
-    return f"hsl({h} 65% 52%)"
+    hue = 206 + (h % 47)              # 206~252: 蓝 → 蓝紫
+    lift = max(0, 4 - rank)           # 前 3 名提亮 4/3/2
+    s, l1, l2 = 58, 56 + lift, 44 + lift
+    return (f"linear-gradient(135deg,hsl({hue} {s}% {l1}%),"
+            f"hsl({hue + 10} {s}% {l2}%))")
 
 
 def _highlights_html(groups: list) -> str:
@@ -431,10 +496,12 @@ def _highlights_html(groups: list) -> str:
         latest = _ts_of(g["items"][0]) if g["items"] else 0
         when = _rel_time(latest) or f'{len(g["items"])} 条'
         rk = f'<span class="hl-rk">{i}</span>' if i <= 3 else ""
+        rkattr = f' data-rk="{i}"' if i <= 3 else ""
         nick = g["nick"]
         cards.append(
-            f'<div class="hl-card" data-acct="{esc(g["id"])}">{rk}'
-            f'<div class="hl-ava" style="background:{_ava_color(nick)}">'
+            f'<div class="hl-card" data-acct="{esc(g["id"])}"'
+            f' data-name="{esc(nick)}"{rkattr}>{rk}'
+            f'<div class="hl-ava" style="background:{_ava_style(nick, i)}">'
             f'{esc(nick[:1])}</div>'
             f'<div class="hl-name">{esc(nick)}</div>'
             f'<div class="hl-time">{esc(when)}</div>'
@@ -454,7 +521,7 @@ def _highlights_html(groups: list) -> str:
     vids.sort(key=lambda x: x[0], reverse=True)
     vids = vids[:12]
     if not vids:
-        return top_html
+        return f'<div class="topzone">{top_html}</div>'
     bdc = []
     for ts, gi, ei, g, e in vids:
         cover = ""
@@ -465,8 +532,11 @@ def _highlights_html(groups: list) -> str:
         thumb = (f'<img loading="lazy" decoding="async" src="{esc(cover)}" alt="">'
                  if cover else '<div class="bd-ph">▶</div>')
         desc = (e.get("desc") or "未命名作品")[:42]
+        # data-txt 供搜索联动：作者 + 文案一起参与匹配
+        txt = f'{g["nick"]} {e.get("desc") or ""}'
         bdc.append(
-            f'<div class="bd-card" data-w="w-{gi}-{ei}">'
+            f'<div class="bd-card" data-w="w-{gi}-{ei}" '
+            f'data-acct="{esc(g["id"])}" data-txt="{esc(txt)}">'
             f'<div class="bd-thumb">{thumb}<span class="bd-tag">视频</span></div>'
             f'<div class="bd-desc">{esc(desc)}</div>'
             f'<div class="bd-meta"><span>{esc(g["nick"])}</span>'
@@ -474,7 +544,7 @@ def _highlights_html(groups: list) -> str:
     board_html = ('<div class="board"><div class="board-head">📢 视频公告栏'
                   f'<span class="sub">最近更新的 {len(bdc)} 条视频 · 点击定位</span></div>'
                   '<div class="board-scroll">' + "".join(bdc) + '</div></div>')
-    return top_html + board_html
+    return f'<div class="topzone">{top_html}{board_html}</div>'
 
 
 def build() -> None:
