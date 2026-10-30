@@ -48,7 +48,37 @@ from src.encrypt.douyin_params import DouYinParams, USERAGENT  # noqa: E402
 # 设 STORAGE_BACKEND=r2 可切回 Cloudflare R2(需配置 R2_* 环境变量)。
 sys.path.insert(0, str(ROOT))
 _BACKEND = os.environ.get("STORAGE_BACKEND", "gh_release").strip().lower()
-if _BACKEND == "r2":
+# KEEP_LOCAL=1：本地服务器模式下，上传云端后**不允许删除本地副本**（D:\gitdy 是长期缓存）
+KEEP_LOCAL = str(os.environ.get("KEEP_LOCAL", "")).strip().lower() in ("1", "true", "yes", "on")
+
+
+class _LocalOnlyStore:
+    """STORAGE_BACKEND=local 时使用的空存储：不联网、不上传、不删本地。
+
+    注意：不能只靠「没配 token」来判定本地模式——本地服务器的 .env 里通常带着
+    PAT（用于本地→云端直传），子进程一旦继承它，就会走 gh_release 分支把本地
+    缓存上传后删掉。所以这里显式禁用。
+    """
+
+    def reload(self):
+        return None
+
+    def enabled(self):
+        return False
+
+    def upload(self, *a, **k):
+        return ""
+
+    def peek(self, *a, **k):
+        return ""
+
+    def self_heal_mime(self, *a, **k):
+        return 0
+
+
+if _BACKEND == "local":
+    store = _LocalOnlyStore()
+elif _BACKEND == "r2":
     import r2_store as store  # noqa: E402
 else:
     import gh_release_store as store  # noqa: E402
@@ -359,6 +389,10 @@ def _parse_account_rows(reader, rows, disabled) -> None:
         url = parts[1].strip() if len(parts) > 1 else ""
         nick = parts[2].strip() if len(parts) > 2 else ""
         enabled = parts[3].strip().lower() if len(parts) > 3 else "1"
+        # 跳过示例/占位行（如 REPLACE_WITH_DOUYIN_URL），否则会拿假链接去抓
+        if url and (not url.lower().startswith(("http://", "https://"))
+                    or "replace_with" in url.lower()):
+            continue
         sec = sec_uid or (extract_sec_user_id(url) if url else "")
         if not sec:
             continue
@@ -586,6 +620,10 @@ def archive_work(saved: list) -> list:
         else:
             ok = False
     if uploaded and ok:
+        if KEEP_LOCAL:
+            # 本地服务器模式：D:\gitdy 是长期缓存，只上传不删本地
+            print(f"    [store] 已上传(保留本地副本, KEEP_LOCAL=1): {rel}")
+            return uploaded
         try:
             shutil.rmtree(folder)
             print(f"    [store] 已上传并清理本地: {rel}")
