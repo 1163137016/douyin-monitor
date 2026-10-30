@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-30 19:35:58",
-  "total": 426,
+  "generated": "2026-10-30 19:52:28",
+  "total": 438,
   "source": "github-releases",
   "accounts": [
     {
@@ -1609,7 +1609,7 @@
           "items": [
             {
               "type": "video",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-5/Szeyee__20261022_011826__.mp4"
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/Szeyee__20261022_011826__.mp4"
             }
           ],
           "link": "https://www.douyin.com/video/7699171693214513849"
@@ -20794,7 +20794,7 @@
           "items": [
             {
               "type": "image",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-5/default.cloudcache__19__19f71685f1cb37389a24268349ff054ea069167b.jpg"
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.cloudcache__19__19f71685f1cb37389a24268349ff054ea069167b.jpg"
             }
           ],
           "link": ""
@@ -21774,7 +21774,321 @@
           "link": "https://www.douyin.com/video/7361690617094606117"
         }
       ]
+    },
+    {
+      "id": "",
+      "nick": "happy小狗",
+      "works": [
+        {
+          "pub": "2025-02-09 01:29:45",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2025-02-09 01:29:45\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 62 | 评论 4 | 收藏 3 | 分享 0\n作品链接: https://www.douyin.com/video/7469101546257517851",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20250209_012945__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20250209_012945__02.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7469101546257517851"
+        },
+        {
+          "pub": "2024-10-02 21:16:01",
+          "desc": "#ootd穿搭",
+          "caption": "发布时间: 2024-10-02 21:16:01\n作品类型: 图文\n\n文案:\n#ootd穿搭\n\n点赞 270 | 评论 9 | 收藏 15 | 分享 9\n作品链接: https://www.douyin.com/video/7421166419271781642",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20241002_211601_.ootd.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20241002_211601_.ootd.__02.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7421166419271781642"
+        },
+        {
+          "pub": "2024-09-21 20:18:49",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2024-09-21 20:18:49\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 202 | 评论 9 | 收藏 9 | 分享 12\n作品链接: https://www.douyin.com/video/7417069739467345162",
+          "kind": "live",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240921_201849__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240921_201849__02.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240921_201849__03.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240921_201849__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240921_201849__05.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7417069739467345162"
+        },
+        {
+          "pub": "2024-09-03 16:18:56",
+          "desc": "#jk 我的流量密码#硬照",
+          "caption": "发布时间: 2024-09-03 16:18:56\n作品类型: 图文\n\n文案:\n#jk 我的流量密码#硬照\n\n点赞 1816 | 评论 95 | 收藏 87 | 分享 103\n作品链接: https://www.douyin.com/video/7410328363815947557",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240903_161856_.jk.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240903_161856_.jk.__02.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7410328363815947557"
+        },
+        {
+          "pub": "2024-09-02 01:12:35",
+          "desc": "#jk",
+          "caption": "发布时间: 2024-09-02 01:12:35\n作品类型: 视频\n\n文案:\n#jk\n\n点赞 153 | 评论 2 | 收藏 5 | 分享 6\n作品链接: https://www.douyin.com/video/7409723518176316681",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240902_011235_.jk__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240902_011235_.jk__02.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7409723518176316681"
+        },
+        {
+          "pub": "2024-08-24 23:51:44",
+          "desc": "我不是一个电量很足的人，我拒绝一切会预知的痛苦",
+          "caption": "发布时间: 2024-08-24 23:51:44\n作品类型: 图文\n\n文案:\n我不是一个电量很足的人，我拒绝一切会预知的痛苦\n\n点赞 31 | 评论 9 | 收藏 1 | 分享 0\n作品链接: https://www.douyin.com/video/7406734184724696355",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240824_235144_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240824_235144_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240824_235144_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240824_235144_.__04.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7406734184724696355"
+        },
+        {
+          "pub": "2024-07-25 19:32:04",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2024-07-25 19:32:04\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 107 | 评论 6 | 收藏 3 | 分享 14\n作品链接: https://www.douyin.com/video/7395534751739809076",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240725_193204__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7395534751739809076"
+        },
+        {
+          "pub": "2024-07-23 21:50:32",
+          "desc": "也许不必太复杂  不必太强求 松弛鲜活的感受就好",
+          "caption": "发布时间: 2024-07-23 21:50:32\n作品类型: 图文\n\n文案:\n也许不必太复杂  不必太强求 松弛鲜活的感受就好\n\n点赞 86 | 评论 5 | 收藏 1 | 分享 6\n作品链接: https://www.douyin.com/video/7394828269209636148",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240723_215032_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240723_215032_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240723_215032_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240723_215032_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240723_215032_.__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240723_215032_.__06.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7394828269209636148"
+        },
+        {
+          "pub": "2024-07-20 23:36:19",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2024-07-20 23:36:19\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 68 | 评论 7 | 收藏 2 | 分享 7\n作品链接: https://www.douyin.com/video/7393742234006408483",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240720_233619__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240720_233619__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240720_233619__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240720_233619__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240720_233619__05.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7393742234006408483"
+        },
+        {
+          "pub": "2024-06-29 21:05:11",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2024-06-29 21:05:11\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 36 | 评论 0 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7385910517057047860",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_210511__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_210511__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_210511__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_210511__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_210511__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_210511__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_210511__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_210511__08.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7385910517057047860"
+        },
+        {
+          "pub": "2024-06-29 15:26:40",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2024-06-29 15:26:40\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 135 | 评论 5 | 收藏 20 | 分享 7\n作品链接: https://www.douyin.com/video/7385823246723075363",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_152640__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_152640__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_152640__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_152640__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_152640__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240629_152640__06.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7385823246723075363"
+        },
+        {
+          "pub": "2024-06-28 20:37:14",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2024-06-28 20:37:14\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 45 | 评论 2 | 收藏 7 | 分享 0\n作品链接: https://www.douyin.com/video/7385532242711334184",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240628_203714__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240628_203714__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240628_203714__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240628_203714__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240628_203714__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240628_203714__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/happy.__20240628_203714__07.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7385532242711334184"
+        }
+      ]
     }
   ],
-  "local_added": 60
+  "local_added": 72
 }
