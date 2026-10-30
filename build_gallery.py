@@ -164,9 +164,14 @@ MANIFEST = r"""{
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#f5f6f8",
   "theme_color": "#2c3550",
-  "icons": []
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
 }
 """
 
@@ -174,9 +179,16 @@ PAGE_HEAD = """<!doctype html>
 <html lang="zh">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>抖音监控作品库（云端 · 可离线缓存）</title>
 <link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#2c3550">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="抖音库">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <style>
   :root{--bg:#f5f6f8;--panel:#fff;--ink:#222;--muted:#667;--brand:#2c3550;
         --accent:#3b6ef5;--accent-soft:#e8eefc;--line:#e6e8ec;--shadow:0 1px 4px rgba(0,0,0,.08)}
@@ -527,6 +539,15 @@ def build() -> None:
     (SITE / "index.html").write_text(doc, "utf-8", errors="ignore")
     (SITE / "sw.js").write_text(SW_JS, "utf-8", errors="ignore")
     (SITE / "manifest.webmanifest").write_text(MANIFEST, "utf-8", errors="ignore")
+
+    # 复制 PWA 图标（手机「添加到主屏幕」用的 App 图标）
+    ASSETS = ROOT / "assets"
+    for icon in ("icon-192.png", "icon-512.png", "apple-touch-icon.png"):
+        src = ASSETS / icon
+        if src.exists():
+            (SITE / icon).write_bytes(src.read_bytes())
+        else:
+            print(f"    !! 缺少图标 {src}，手机添加主屏幕将无自定义图标")
 
     # 导出结构化索引 gallery.json: 供「本地缓存服务」读取, 避免解析 HTML。
     # 本地服务用它构建本地画廊 + 代理/缓存云端媒体, 实现页面本地秒开。
