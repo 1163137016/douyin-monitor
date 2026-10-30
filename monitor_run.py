@@ -233,7 +233,17 @@ def select_media(aweme: dict):
         urls = []
         for img in imgs:
             ul = img.get("url_list") or []
-            if ul:
+            # Live 图 / 动态照片: 动态视频藏在 image.video 里
+            #   (images[].video.play_addr.url_list)。视频自带封面帧, 因此
+            #   该图只存视频即可, 不重复存静态封面(否则画廊封面与动态重复)。
+            iv = (img.get("video") or {})
+            ivnode = iv.get("play_addr") or iv.get("download_addr") or {}
+            ivul = ivnode.get("url_list") or []
+            if ivul:
+                vu = ivul[-1]
+                vext = "mov" if ".mov" in vu.lower() else "mp4"
+                urls.append((vu, vext, "video"))
+            elif ul:
                 urls.append((ul[-1], "jpg", "image"))  # 取最高清的一张
         if urls:
             return urls
@@ -463,10 +473,7 @@ def download_work(session: Session, cookie: dict, aweme: dict, sec: str) -> list
     kind = media[0][2]
     saved = []
     for i, (u, ext, kind_i) in enumerate(media):
-        if len(media) > 1:  # 图文: 01.jpg 02.jpg ...
-            fname = f"{i + 1:02d}.{ext}"
-        else:  # 单文件: 视频.mp4 / 01.jpg
-            fname = f"视频.{ext}" if kind_i == "video" else f"01.{ext}"
+        fname = _media_filename(i, media)
         path = folder / fname
         if download_file(session, u, cookie, path):
             saved.append(path)
@@ -484,6 +491,40 @@ def download_work(session: Session, cookie: dict, aweme: dict, sec: str) -> list
     return saved
 
 
+def _download_subset(session: Session, cookie: dict, aweme: dict, sec: str,
+                    media: list, missing_idx: list) -> list:
+    """只下载 media 中指定下标(缺失)的条目, 返回落盘文件列表。
+
+    用于"补抓": 已 known 作品云端缺 live 动态视频等媒体时, 仅补下载
+    缺失部分, 不重复下载已归档的图/视频。
+    """
+    if not missing_idx:
+        return []
+    folder, _nick, _raw, _pub = work_folder(aweme, sec)
+    folder.mkdir(parents=True, exist_ok=True)
+    saved = []
+    for i in missing_idx:
+        u, ext, kind_i = media[i]
+        path = folder / _media_filename(i, media)
+        if download_file(session, u, cookie, path):
+            saved.append(path)
+            print(f"    [补] {kind_i} 已下载: {path.parent.name}/{path.name} "
+                  f"({path.stat().st_size // 1024} KB)")
+    return saved
+
+
+def _media_filename(i: int, media: list) -> str:
+    """与 download_work / predicted_keys 一致的本地文件名规则。
+
+    多图作品: 01.jpg 02.jpg ...; 单文件: 视频.mp4 / 01.jpg。
+    抽成共用函数, 保证"下载命名"与"补抓预测 key"永远对齐。
+    """
+    _u, ext, kind_i = media[i]
+    if len(media) > 1:                 # 图文 / 多图
+        return f"{i + 1:02d}.{ext}"
+    return f"视频.{ext}" if kind_i == "video" else f"01.{ext}"
+
+
 def predicted_keys(aweme: dict, sec: str, media: list) -> list:
     """不下载的前提下，预测该作品上传后会用到的 key 列表。
 
@@ -493,12 +534,8 @@ def predicted_keys(aweme: dict, sec: str, media: list) -> list:
     folder, _nick, _raw, _pub = work_folder(aweme, sec)
     rel = folder.relative_to(DOWNLOAD_DIR).as_posix()
     keys = []
-    for i, (_u, ext, kind_i) in enumerate(media):
-        if len(media) > 1:
-            fname = f"{i + 1:02d}.{ext}"
-        else:
-            fname = f"视频.{ext}" if kind_i == "video" else f"01.{ext}"
-        keys.append(f"{rel}/{fname}")
+    for i, _ in enumerate(media):
+        keys.append(f"{rel}/{_media_filename(i, media)}")
     return keys
 
 
@@ -638,9 +675,39 @@ def main() -> int:
                 print(f"    [达到时间预算 {TIME_BUDGET_MIN} 分钟] 剩余作品下轮继续")
                 break
             aid = a.get("aweme_id")
-            if not aid or aid in known:
+            if not aid:
                 continue
             media = select_media(a)
+            if aid in known:
+                # 补抓: 已 known 作品云端可能缺 live 动态视频等媒体
+                if store_on:
+                    rec = (st.get("works") or {}).get(aid)
+                    if rec and media:
+                        pk = predicted_keys(a, sec, media)
+                        peek = getattr(store, "peek", None)
+                        missing = [i for i, k in enumerate(pk)
+                                   if not (peek(k) if peek else None)]
+                        if missing:
+                            print(f"    [补抓] {aid} 云端缺 {len(missing)} 个媒体"
+                                  f"(如 live 动态), 补充下载")
+                            saved = _download_subset(session, cookie, a, sec,
+                                                    media, missing)
+                            if saved:
+                                new_items = archive_work(saved)
+                                if new_items:
+                                    exist = rec.setdefault("items", [])
+                                    have = {(it.get("type"), it.get("url"))
+                                            for it in exist}
+                                    for t, u in new_items:
+                                        if (t, u) not in have:
+                                            exist.append({"type": t, "url": u})
+                                    if any(it.get("type") == "video"
+                                           for it in exist):
+                                        rec["kind"] = "live"
+                                    _flush()
+                                    print(f"    [补抓完成] {aid} 现共 "
+                                          f"{len(exist)} 个媒体")
+                continue
             if not media:
                 print(f"    [跳过] {aid} 无可下载媒体")
                 known.add(aid)  # 确实没有可下媒体的, 不必反复重试
@@ -657,7 +724,8 @@ def main() -> int:
                     "desc": _sanitize(a.get("desc", "") or "无标题"),
                     "pub": pub,
                     "ts": ct,
-                    "kind": media[0][2],
+                    "kind": ("live" if any(m[2] == "video" for m in media)
+                             and media[0][2] != "video" else media[0][2]),
                     "items": [{"type": t, "url": u} for t, u in reused],
                     "caption": build_caption(a, pub, raw_desc, media[0][2]),
                 }
@@ -689,7 +757,8 @@ def main() -> int:
                             "desc": desc or "无标题",
                             "pub": pub,
                             "ts": ct,
-                            "kind": media[0][2],
+                            "kind": ("live" if any(m[2] == "video" for m in media)
+                             and media[0][2] != "video" else media[0][2]),
                             "items": [{"type": t, "url": u} for t, u in items],
                             "caption": caption,
                         }
