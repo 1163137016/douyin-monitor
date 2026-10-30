@@ -19,9 +19,11 @@ rem ---- 云端直传开关（auto：有 PAT 才开，无 PAT 自动退回纯本
 if /I "%~1"=="cloud" set "CLOUD_SYNC=auto"
 if /I "%~2"=="cloud" set "CLOUD_SYNC=auto"
 
-rem ---- 公网模式: 确保 cloudflared 存在 ----
-if /I "%~1"=="public" (
-  set "EXPOSE_PUBLIC=1"
+rem ---- 公网模式: 确保 cloudflared 存在（public 可能在第 1 或第 2 个参数位）----
+set "EXPOSE_PUBLIC=0"
+if /I "%~1"=="public" set "EXPOSE_PUBLIC=1"
+if /I "%~2"=="public" set "EXPOSE_PUBLIC=1"
+if "%EXPOSE_PUBLIC%"=="1" (
   if not exist "tools\cloudflared.exe" (
     echo 正在下载 cloudflared（公网隧道所需，仅首次）…
     if not exist "tools" mkdir "tools"
