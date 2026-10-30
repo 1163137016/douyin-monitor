@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-30 17:26:54",
-  "total": 368,
+  "generated": "2026-10-30 17:27:37",
+  "total": 366,
   "source": "github-releases",
   "accounts": [
     {
@@ -15604,32 +15604,6 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-4/default.0__20251231_211402_.s.__.mp4"
             }
           ]
-        },
-        {
-          "pub": "2026-04-01 11:23:07",
-          "desc": "#音乐灵感推荐 #生命感写真 #girlfeel",
-          "caption": "发布时间: 2026-04-01 11:23:07\n作品类型: 视频\n\n文案:\n#音乐灵感推荐 #生命感写真 #girlfeel\n\n点赞 2 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7623626166096655547",
-          "kind": "video",
-          "items": [
-            {
-              "type": "video",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-4/default.0__20260401_112307_.girlfeel__.mp4"
-            }
-          ],
-          "link": "https://www.douyin.com/video/7623626166096655547"
-        },
-        {
-          "pub": "2026-01-01 05:14:02",
-          "desc": "#s级颜值",
-          "caption": "发布时间: 2026-01-01 05:14:02\n作品类型: 视频\n\n文案:\n#s级颜值\n\n点赞 1 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7590133365106323450",
-          "kind": "video",
-          "items": [
-            {
-              "type": "video",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-4/default.0__20260101_051402_.s.__.mp4"
-            }
-          ],
-          "link": "https://www.douyin.com/video/7590133365106323450"
         }
       ]
     },
@@ -17488,6 +17462,5 @@
       ]
     }
   ],
-  "_source_url": "https://1163137016.github.io/douyin-monitor/gallery.json",
-  "local_added": 2
+  "local_added": 0
 }
