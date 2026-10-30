@@ -124,7 +124,15 @@ class _Tee:
                 pass
 
 
-_LOG = open(ROOT / "run_log.txt", "a", encoding="utf-8", errors="ignore")
+# 日志默认落在项目目录；本地可用 LOG_DIR 改到别处（如 D:\gitdy），
+# 让「作品缓存 + 状态 + 日志」三处都在同一个盘，C 盘不再被持续写入。
+_LOG_DIR = Path(os.environ.get("LOG_DIR", ROOT))
+try:
+    _LOG_DIR.mkdir(parents=True, exist_ok=True)
+except Exception:
+    _LOG_DIR = ROOT
+
+_LOG = open(_LOG_DIR / "run_log.txt", "a", encoding="utf-8", errors="ignore")
 _LOG.write(f"\n===== {time.strftime('%Y-%m-%d %H:%M:%S')} 运行开始 =====\n")
 _LOG.flush()
 sys.stdout = _Tee(sys.stdout, _LOG)
@@ -138,7 +146,7 @@ for _k in ("HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy", "ALL_PROXY"
 DOWNLOAD_DIR = Path(os.environ.get("DOWNLOAD_DIR", ROOT / "downloads"))
 # 每个监控账号一个独立状态文件 state/<sec_uid>.json（已知作品 known + 已归档直链 works），
 # 不再把所有账号全部堆进同一个 state.json，便于按账号管理/排查/单独重置。
-STATE_DIR = ROOT / "state"
+STATE_DIR = Path(os.environ.get("STATE_DIR", ROOT / "state"))
 # 可编程账号表格：在仓库里直接编辑 accounts.csv 即可增删监控对象
 ACCOUNTS_CSV = ROOT / "accounts.csv"
 SENDKEY = os.environ.get("SERVERCHAN_SENDKEY", "").strip()
