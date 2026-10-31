@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-31 13:11:18",
-  "total": 1522,
+  "generated": "2026-10-31 13:46:04",
+  "total": 1524,
   "source": "github-releases",
   "accounts": [
     {
@@ -31102,6 +31102,40 @@
           ]
         },
         {
+          "pub": "2024-07-18 20:47:08",
+          "desc": "babe～終於准备好放假咯 #我chao甜 #sweetbaby #甜妹 #女大学生",
+          "caption": "发布时间: 2024-07-18 20:47:08\n作品类型: 视频\n\n文案:\nbabe～終於准备好放假咯 #我chao甜 #sweetbaby #甜妹 #女大学生\n\n点赞 57 | 评论 6 | 收藏 0 | 分享 3\n作品链接: https://www.douyin.com/video/7392956506230082825",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-14/Yannn___20240718_204708_babe.chao.sweetba__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7392956506230082825"
+        },
+        {
+          "pub": "2024-01-09 13:37:58",
+          "desc": "Are u ready？不懂得又难了",
+          "caption": "发布时间: 2024-01-09 13:37:58\n作品类型: 图文\n\n文案:\nAre u ready？不懂得又难了\n#jennie #lisa #jenlisa #jennie唱的我先用了\n\n点赞 46 | 评论 8 | 收藏 0 | 分享 5\n作品链接: https://www.douyin.com/video/7321968612409904394",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-14/Yannn___20240109_133758_Are.u.ready._.jennie.li__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-14/Yannn___20240109_133758_Are.u.ready._.jennie.li__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-14/Yannn___20240109_133758_Are.u.ready._.jennie.li__03.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7321968612409904394"
+        },
+        {
           "pub": "2022-08-06 01:08:09",
           "desc": "不好意思  不是看不起你，是压根没看。#分享照片 #射手座 #高级感 #怼脸拍 #不是吧这都拿不下你",
           "caption": "发布时间: 2022-08-06 01:08:09\n作品类型: 图文\n\n文案:\n不好意思  不是看不起你，是压根没看。#分享照片 #射手座 #高级感 #怼脸拍 #不是吧这都拿不下你\n\n点赞 81 | 评论 16 | 收藏 2 | 分享 5\n作品链接: https://www.douyin.com/video/7128439951162723623",
@@ -51867,5 +51901,5 @@
       ]
     }
   ],
-  "local_added": 143
+  "local_added": 145
 }
