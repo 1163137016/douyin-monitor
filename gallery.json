@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-31 08:20:31",
-  "total": 1376,
+  "generated": "2026-10-31 08:53:38",
+  "total": 1380,
   "source": "github-releases",
   "accounts": [
     {
@@ -46287,7 +46287,93 @@
           "link": "https://www.douyin.com/video/7361690617094606117"
         }
       ]
+    },
+    {
+      "id": "",
+      "nick": "sev7",
+      "works": [
+        {
+          "pub": "2021-08-08 16:14:16",
+          "desc": "“什么时候才能和你一起去吹吹海风听听周杰伦的歌” #海",
+          "caption": "发布时间: 2021-08-08 16:14:16\n作品类型: 图文\n\n文案:\n“什么时候才能和你一起去吹吹海风听听周杰伦的歌” #海\n\n点赞 842 | 评论 61 | 收藏 10 | 分享 89\n作品链接: https://www.douyin.com/video/6993969644956667166",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20210808_161416_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20210808_161416_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20210808_161416_.__03.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/6993969644956667166"
+        },
+        {
+          "pub": "2021-07-31 15:09:33",
+          "desc": "私奔吧 在日落之前#天秤座 #夏天",
+          "caption": "发布时间: 2021-07-31 15:09:33\n作品类型: 图文\n\n文案:\n私奔吧 在日落之前#天秤座 #夏天\n\n点赞 341 | 评论 46 | 收藏 9 | 分享 16\n作品链接: https://www.douyin.com/video/6990984280583294239",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20210731_150933_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20210731_150933_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20210731_150933_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20210731_150933_.__04.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/6990984280583294239"
+        },
+        {
+          "pub": "2021-07-13 14:07:37",
+          "desc": "无语了 你要是实在没事做 能不能做我男朋友#天秤座",
+          "caption": "发布时间: 2021-07-13 14:07:37\n作品类型: 视频\n\n文案:\n无语了 你要是实在没事做 能不能做我男朋友#天秤座\n\n点赞 563 | 评论 113 | 收藏 6 | 分享 61\n作品链接: https://www.douyin.com/video/6984288792727293214",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20210713_140737_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/6984288792727293214"
+        },
+        {
+          "pub": "2021-07-04 17:06:34",
+          "desc": "我贪心 我想要百分百的爱#天秤座",
+          "caption": "发布时间: 2021-07-04 17:06:34\n作品类型: 图文\n\n文案:\n我贪心 我想要百分百的爱#天秤座\n\n点赞 1127 | 评论 109 | 收藏 9 | 分享 57\n作品链接: https://www.douyin.com/video/6980995141351886093",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20210704_170634_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20210704_170634_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20210704_170634_.__03.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/6980995141351886093"
+        }
+      ]
     }
   ],
-  "local_added": 103
+  "local_added": 107
 }
