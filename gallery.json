@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-31 23:26:26",
-  "total": 1635,
+  "generated": "2026-11-01 00:01:17",
+  "total": 1637,
   "source": "github-releases",
   "accounts": [
     {
@@ -43755,6 +43755,96 @@
           ]
         },
         {
+          "pub": "2026-06-05 19:15:52",
+          "desc": "My angel 梦见你一直在我的左右🪽#angel",
+          "caption": "发布时间: 2026-06-05 19:15:52\n作品类型: 视频\n\n文案:\nMy angel 梦见你一直在我的左右🪽#angel \n#天使 #棍丝 #toangel\n\n点赞 4395 | 评论 157 | 收藏 138 | 分享 157\n作品链接: https://www.douyin.com/video/7647868525148171112",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260605_191552_My.angel.angel._.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7647868525148171112"
+        },
+        {
+          "pub": "2026-06-02 19:06:58",
+          "desc": "虽然五线谱我还是没能看懂/•᷅•᷄\\୭#棍丝 #plog",
+          "caption": "发布时间: 2026-06-02 19:06:58\n作品类型: 图文\n\n文案:\n虽然五线谱我还是没能看懂/•᷅•᷄\\୭#棍丝 #plog \n#桂丝 #inmyfeeling\n\n点赞 454 | 评论 30 | 收藏 7 | 分享 13\n作品链接: https://www.douyin.com/video/7646752978418995554",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__09.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__10.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__11.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__12.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__13.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__14.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__15.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__16.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20260602_190658_._._.plog__17.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7646752978418995554"
+        },
+        {
           "pub": "2025-12-17 22:28:34",
           "desc": "每一刻都像永远",
           "caption": "发布时间: 2025-12-17 22:28:34\n作品类型: 图文\n\n文案:\n每一刻都像永远\n#毕业季\n\n点赞 346 | 评论 26 | 收藏 11 | 分享 89\n作品链接: https://www.douyin.com/video/7584833628200733987",
@@ -56639,5 +56729,5 @@
       ]
     }
   ],
-  "local_added": 253
+  "local_added": 255
 }
