@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-31 10:00:01",
-  "total": 1511,
+  "generated": "2026-10-31 10:22:27",
+  "total": 1519,
   "source": "github-releases",
   "accounts": [
     {
@@ -1131,11 +1131,15 @@
           "pub": "2026-01-17 13:29:48",
           "desc": "你说话好伤人 不过没关系#无法接通的电话",
           "caption": "发布时间: 2026-01-17 13:29:48\n作品类型: 视频\n\n文案:\n你说话好伤人 不过没关系#无法接通的电话\n\n点赞 61 | 评论 13 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7596322191303505019",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20260117_132948_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260117_132948_.__.mp4"
             }
           ]
         },
@@ -1155,11 +1159,15 @@
           "pub": "2025-09-22 13:07:24",
           "desc": "幸福的秘诀原来是装聋作哑",
           "caption": "发布时间: 2025-09-22 13:07:24\n作品类型: 视频\n\n文案:\n幸福的秘诀原来是装聋作哑\n\n点赞 171 | 评论 15 | 收藏 3 | 分享 3\n作品链接: https://www.douyin.com/video/7552899445387988282",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20250922_130724_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250922_130724_.__.mp4"
             }
           ]
         },
@@ -1176,6 +1184,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20250515_125719_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250515_125719_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250515_125719_.__02.jpg"
             }
           ]
         },
@@ -1188,6 +1204,10 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20250226_134105_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250226_134105_.__01.jpg"
             }
           ]
         },
@@ -1208,6 +1228,18 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20241208_070827_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20241208_070827_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20241208_070827_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20241208_070827_.__03.jpg"
             }
           ]
         },
@@ -1215,11 +1247,15 @@
           "pub": "2024-07-21 08:23:40",
           "desc": "无标题",
           "caption": "发布时间: 2024-07-21 08:23:40\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 130 | 评论 8 | 收藏 1 | 分享 1\n作品链接: https://www.douyin.com/video/7394001842046291234",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20240721_082340__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20240721_082340__.mp4"
             }
           ]
         },
@@ -1227,11 +1263,15 @@
           "pub": "2024-07-16 09:27:32",
           "desc": "为何出现在彼此的生活又离开",
           "caption": "发布时间: 2024-07-16 09:27:32\n作品类型: 视频\n\n文案:\n为何出现在彼此的生活又离开\n\n点赞 56 | 评论 1 | 收藏 1 | 分享 1\n作品链接: https://www.douyin.com/video/7392162896983199028",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20240716_092732_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20240716_092732_.__.mp4"
             }
           ]
         },
@@ -1239,11 +1279,15 @@
           "pub": "2024-07-14 01:14:04",
           "desc": "爱上一个人眼睛不说谎",
           "caption": "发布时间: 2024-07-14 01:14:04\n作品类型: 视频\n\n文案:\n爱上一个人眼睛不说谎\n\n点赞 53 | 评论 3 | 收藏 0 | 分享 2\n作品链接: https://www.douyin.com/video/7391293541995121935",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20240714_011404_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20240714_011404_.__.mp4"
             }
           ]
         },
@@ -1276,6 +1320,30 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20240404_041909_.__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20240404_041909_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20240404_041909_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20240404_041909_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20240404_041909_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20240404_041909_.__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20240404_041909_.__06.jpg"
             }
           ]
         },
@@ -1288,6 +1356,10 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20240219_131956_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20240219_131956_.__01.jpg"
             }
           ]
         },
@@ -1295,11 +1367,15 @@
           "pub": "2024-01-18 08:53:36",
           "desc": "生活不是电影 幸福源于珍惜#生活碎片记录",
           "caption": "发布时间: 2024-01-18 08:53:36\n作品类型: 视频\n\n文案:\n生活不是电影 幸福源于珍惜#生活碎片记录\n\n点赞 95 | 评论 14 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7325358776695967015",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20240118_085336_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20240118_085336_.__.mp4"
             }
           ]
         },
@@ -1316,6 +1392,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20231127_053104_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20231127_053104_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20231127_053104_.__02.jpg"
             }
           ]
         },
@@ -1323,11 +1407,15 @@
           "pub": "2023-07-01 15:26:17",
           "desc": "好想每天都在你左右#小狗日记",
           "caption": "发布时间: 2023-07-01 15:26:17\n作品类型: 视频\n\n文案:\n好想每天都在你左右#小狗日记\n\n点赞 111 | 评论 11 | 收藏 0 | 分享 5\n作品链接: https://www.douyin.com/video/7250871883132865796",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20230701_152617_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20230701_152617_.__.mp4"
             }
           ]
         },
@@ -1344,6 +1432,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20230209_132352_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20230209_132352_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20230209_132352_.__02.jpg"
             }
           ]
         },
@@ -1351,11 +1447,15 @@
           "pub": "2022-12-04 06:45:00",
           "desc": "那段看似糜烂的生活才是我真正快乐的时候#livehouse#灯红酒绿",
           "caption": "发布时间: 2022-12-04 06:45:00\n作品类型: 视频\n\n文案:\n那段看似糜烂的生活才是我真正快乐的时候#livehouse#灯红酒绿\n\n点赞 7022 | 评论 783 | 收藏 282 | 分享 1330\n作品链接: https://www.douyin.com/video/7173180746528591112",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20221204_064500_.livehouse.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20221204_064500_.livehouse.__.mp4"
             }
           ]
         },
@@ -1363,11 +1463,15 @@
           "pub": "2022-09-16 15:16:18",
           "desc": "才发现爱不代表一切#晚风很温柔",
           "caption": "发布时间: 2022-09-16 15:16:18\n作品类型: 视频\n\n文案:\n才发现爱不代表一切#晚风很温柔\n\n点赞 805 | 评论 102 | 收藏 11 | 分享 68\n作品链接: https://www.douyin.com/video/7143996788297583880",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20220916_151618_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20220916_151618_.__.mp4"
             }
           ]
         }
@@ -2743,7 +2847,7 @@
           "pub": "2026-10-29 13:59:41",
           "desc": "独属于你的香水 尾调竟是我的泪 #齐刘海 #fyp #08",
           "caption": "发布时间: 2026-10-29 13:59:41\n作品类型: 视频\n\n文案:\n独属于你的香水 尾调竟是我的泪 #齐刘海 #fyp #08\n\n点赞 51 | 评论 6 | 收藏 0 | 分享 6\n作品链接: https://www.douyin.com/video/7702089176838361152",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
@@ -2776,6 +2880,42 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20261029_135941_.fyp.08__09.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20261029_135941_.fyp.08__01.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20261029_135941_.fyp.08__02.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20261029_135941_.fyp.08__03.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20261029_135941_.fyp.08__04.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20261029_135941_.fyp.08__05.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20261029_135941_.fyp.08__06.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20261029_135941_.fyp.08__07.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20261029_135941_.fyp.08__08.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20261029_135941_.fyp.08__09.jpg"
             }
           ]
         },
@@ -2783,11 +2923,15 @@
           "pub": "2026-10-27 14:55:54",
           "desc": "有人说等待一个人是最痛苦的 有人说忘记一个人是最痛苦的 但我觉得最大的痛苦 是你",
           "caption": "发布时间: 2026-10-27 14:55:54\n作品类型: 视频\n\n文案:\n有人说等待一个人是最痛苦的 有人说忘记一个人是最痛苦的 但我觉得最大的痛苦 是你不知道该等待还是忘记#宿舍化妆 #甜系妆容分享 #08 #忘记一个人需要多长时间\n\n点赞 117 | 评论 7 | 收藏 2 | 分享 12\n作品链接: https://www.douyin.com/video/7701361492553496896",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20261027_145554_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20261027_145554_.__.mp4"
             }
           ]
         },
@@ -2804,6 +2948,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20261004_054721_.ins.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20261004_054721_.ins.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20261004_054721_.ins.__02.jpg"
             }
           ]
         },
@@ -2811,7 +2963,7 @@
           "pub": "2026-08-07 12:09:51",
           "desc": "和我下地狱也算是上天堂了。#日常分享 #fyp #自拍",
           "caption": "发布时间: 2026-08-07 12:09:51\n作品类型: 视频\n\n文案:\n和我下地狱也算是上天堂了。#日常分享 #fyp #自拍\n\n点赞 87 | 评论 10 | 收藏 0 | 分享 4\n作品链接: https://www.douyin.com/video/7671260806612834152",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
@@ -2876,6 +3028,66 @@
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20260807_120951_.fyp.__17.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__05.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__06.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__07.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__08.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__09.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__10.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__12.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__13.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__14.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__16.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260807_120951_.fyp.__17.mp4"
             }
           ]
         },
@@ -2892,6 +3104,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20260723_205906_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260723_205906_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260723_205906_.__02.jpg"
             }
           ]
         },
@@ -2916,6 +3136,22 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20260522_032921_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260522_032921_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260522_032921_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260522_032921_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260522_032921_.__04.jpg"
             }
           ]
         },
@@ -2940,6 +3176,22 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20260521_041421_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260521_041421_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260521_041421_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260521_041421_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260521_041421_.__04.jpg"
             }
           ]
         },
@@ -2964,6 +3216,22 @@
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20260520_130303_.ootd.fyp.in__04.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260520_130303_.ootd.fyp.in__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260520_130303_.ootd.fyp.in__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260520_130303_.ootd.fyp.in__03.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260520_130303_.ootd.fyp.in__04.mp4"
             }
           ]
         },
@@ -2971,7 +3239,7 @@
           "pub": "2025-12-20 09:07:01",
           "desc": "我也时常因为有你的存在而感到幸福",
           "caption": "发布时间: 2025-12-20 09:07:01\n作品类型: 视频\n\n文案:\n我也时常因为有你的存在而感到幸福\n\n点赞 107 | 评论 1 | 收藏 3 | 分享 0\n作品链接: https://www.douyin.com/video/7585864005518249231",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
@@ -2984,6 +3252,18 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20251220_090701_.__03.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20251220_090701_.__01.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20251220_090701_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20251220_090701_.__03.jpg"
             }
           ]
         },
@@ -3000,6 +3280,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20251106_085937_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20251106_085937_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20251106_085937_.__02.jpg"
             }
           ]
         },
@@ -3016,6 +3304,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20250311_023431_.spring.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250311_023431_.spring.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250311_023431_.spring.__02.jpg"
             }
           ]
         },
@@ -3028,6 +3324,10 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20241029_103947_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20241029_103947_.__01.jpg"
             }
           ]
         }
@@ -12752,6 +13052,153 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-1/Xiaotong.tt__20240102_045322_.2024.__11.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-01-03 22:13:45",
+          "desc": "走近解解只需要三个小时 戒断需要很久很久 #邓紫棋 #邓紫棋演唱会 #邓紫棋广州演唱会 #邓紫棋广州站加场嗨疯了",
+          "caption": "发布时间: 2026-01-03 22:13:45\n作品类型: 图文\n\n文案:\n走近解解只需要三个小时 戒断需要很久很久 #邓紫棋 #邓紫棋演唱会 #邓紫棋广州演唱会 #邓紫棋广州站加场嗨疯了\n\n点赞 126 | 评论 11 | 收藏 7 | 分享 5\n作品链接: https://www.douyin.com/video/7591138327315645684",
+          "kind": "live",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20260103_221345_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20260103_221345_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20260103_221345_.__03.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20260103_221345_.__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20260103_221345_.__05.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20260103_221345_.__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20260103_221345_.__07.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20260103_221345_.__08.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20260103_221345_.__09.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7591138327315645684"
+        },
+        {
+          "pub": "2025-08-21 12:35:29",
+          "desc": "I AM GLORIA💜 解解！我终于来见你啦！圆梦了！#邓紫棋演唱会 #演唱会 #神级现场 #惊艳瞬间 #帅炸了",
+          "caption": "发布时间: 2025-08-21 12:35:29\n作品类型: 视频\n\n文案:\nI AM GLORIA💜 解解！我终于来见你啦！圆梦了！#邓紫棋演唱会 #演唱会 #神级现场 #惊艳瞬间 #帅炸了\n\n点赞 36 | 评论 4 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7540892801199263010",
+          "kind": "live",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20250821_123529_I.AM.GLORIA.__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20250821_123529_I.AM.GLORIA.__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20250821_123529_I.AM.GLORIA.__03.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20250821_123529_I.AM.GLORIA.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20250821_123529_I.AM.GLORIA.__05.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20250821_123529_I.AM.GLORIA.__06.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/Xiaotong.tt__20250821_123529_I.AM.GLORIA.__07.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20250821_123529_I.AM.GLORIA.__08.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20250821_123529_I.AM.GLORIA.__09.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20250821_123529_I.AM.GLORIA.__10.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7540892801199263010"
+        },
+        {
+          "pub": "2024-01-02 12:53:22",
+          "desc": "新年快乐呀🎆🎆。#2024跨年 #向烟花许个愿 #岁岁常欢愉年年皆胜意 #珠海长隆海洋王国 #诸事顺利",
+          "caption": "发布时间: 2024-01-02 12:53:22\n作品类型: 图文\n\n文案:\n新年快乐呀🎆🎆。#2024跨年 #向烟花许个愿 #岁岁常欢愉年年皆胜意 #珠海长隆海洋王国 #诸事顺利\n\n点赞 88 | 评论 6 | 收藏 1 | 分享 5\n作品链接: https://www.douyin.com/video/7319359509925825807",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20240102_125322_.2024.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20240102_125322_.2024.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20240102_125322_.2024.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20240102_125322_.2024.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20240102_125322_.2024.__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20240102_125322_.2024.__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20240102_125322_.2024.__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20240102_125322_.2024.__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20240102_125322_.2024.__09.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20240102_125322_.2024.__10.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-7/Xiaotong.tt__20240102_125322_.2024.__11.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7319359509925825807"
         }
       ]
     },
@@ -39654,6 +40101,46 @@
           ]
         },
         {
+          "pub": "2025-04-05 15:42:21",
+          "desc": "怎么忍心怪你犯了错",
+          "caption": "发布时间: 2025-04-05 15:42:21\n作品类型: 图文\n\n文案:\n怎么忍心怪你犯了错\n\n点赞 114 | 评论 21 | 收藏 2 | 分享 7\n作品链接: https://www.douyin.com/video/7489854771927469347",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250405_154221_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250405_154221_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250405_154221_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250405_154221_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250405_154221_.__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250405_154221_.__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250405_154221_.__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250405_154221_.__08.jpg"
+            }
+          ]
+        },
+        {
           "pub": "2025-03-28 10:20:32",
           "desc": "有一天晚上你突然头痛 旁边的人问你怎么了 你说来财 但心里你知道 在遥远的贡台上",
           "caption": "发布时间: 2025-03-28 10:20:32\n作品类型: 视频\n\n文案:\n有一天晚上你突然头痛 旁边的人问你怎么了 你说来财 但心里你知道 在遥远的贡台上有一个白黄牌 那晚拜三拜变成憋老仔\n\n点赞 70 | 评论 20 | 收藏 0 | 分享 2\n作品链接: https://www.douyin.com/video/7486803259739409664",
@@ -41256,6 +41743,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20260519_125254_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260519_125254_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20260519_125254_.__02.jpg"
             }
           ]
         },
@@ -48855,6 +49350,86 @@
       "nick": "sev7",
       "works": [
         {
+          "pub": "2025-03-27 14:45:44",
+          "desc": "更新一下#日落🌇 #日落沉溺于橘色的海 #椿 #lon #nbgt",
+          "caption": "发布时间: 2025-03-27 14:45:44\n作品类型: 视频\n\n文案:\n更新一下#日落🌇 #日落沉溺于橘色的海 #椿 #lon #nbgt\n\n点赞 159 | 评论 6 | 收藏 6 | 分享 10\n作品链接: https://www.douyin.com/video/7486376821693402409",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20250327_144544_.lon.n__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20250327_144544_.lon.n__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20250327_144544_.lon.n__03.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7486376821693402409"
+        },
+        {
+          "pub": "2024-08-07 11:57:47",
+          "desc": "hello #lifestylevision #分享照片 #天秤",
+          "caption": "发布时间: 2024-08-07 11:57:47\n作品类型: 视频\n\n文案:\nhello #lifestylevision #分享照片 #天秤\n\n点赞 44 | 评论 7 | 收藏 0 | 分享 3\n作品链接: https://www.douyin.com/video/7400241769452997927",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20240807_115747_hello.lifestylevision.__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20240807_115747_hello.lifestylevision.__02.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7400241769452997927"
+        },
+        {
+          "pub": "2024-06-29 23:19:30",
+          "desc": "Hi#天秤 #分享照片 #背影 #lifestylevision",
+          "caption": "发布时间: 2024-06-29 23:19:30\n作品类型: 图文\n\n文案:\nHi#天秤 #分享照片 #背影 #lifestylevision\n\n点赞 52 | 评论 6 | 收藏 1 | 分享 1\n作品链接: https://www.douyin.com/video/7385945127857949964",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20240629_231930_Hi.lifestylevisi__01.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7385945127857949964"
+        },
+        {
+          "pub": "2023-10-12 19:51:11",
+          "desc": "我想要的 是绝对占有#天秤座 #这个bgm的氛围感太绝了 #宝宝辅食 #氛围感拿捏",
+          "caption": "发布时间: 2023-10-12 19:51:11\n作品类型: 图文\n\n文案:\n我想要的 是绝对占有#天秤座 #这个bgm的氛围感太绝了 #宝宝辅食 #氛围感拿捏\n\n点赞 85 | 评论 8 | 收藏 3 | 分享 3\n作品链接: https://www.douyin.com/video/7289038238063414591",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20231012_195111_.bgm.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20231012_195111_.bgm.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20231012_195111_.bgm.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20231012_195111_.bgm.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/sev7__20231012_195111_.bgm.__05.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7289038238063414591"
+        },
+        {
           "pub": "2023-08-27 17:07:26",
           "desc": "不好意思DJ 这次我选r&b#背影 #天秤座",
           "caption": "发布时间: 2023-08-27 17:07:26\n作品类型: 图文\n\n文案:\n不好意思DJ 这次我选r&b#背影 #天秤座\n\n点赞 83 | 评论 9 | 收藏 5 | 分享 1\n作品链接: https://www.douyin.com/video/7271926124509203753",
@@ -49589,5 +50164,5 @@
       ]
     }
   ],
-  "local_added": 133
+  "local_added": 140
 }
