@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 06:43:53",
-  "total": 1696,
+  "generated": "2026-11-01 07:18:02",
+  "total": 1698,
   "source": "github-releases",
   "accounts": [
     {
@@ -27200,6 +27200,48 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240306_044132_.__.mp4"
             }
           ]
+        },
+        {
+          "pub": "2024-03-24 17:10:52",
+          "desc": "p1小敏拍滴嘻嘻 我觉得是卷毛这辈子最可爱的一张照片了！#小土狗 马尔是真的什么都吃 冰激凌也馋到马尔了",
+          "caption": "发布时间: 2024-03-24 17:10:52\n作品类型: 图文\n\n文案:\np1小敏拍滴嘻嘻 我觉得是卷毛这辈子最可爱的一张照片了！#小土狗 马尔是真的什么都吃 冰激凌也馋到马尔了\n\n点赞 12 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7349854885220732171",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20240324_171052_p1.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20240324_171052_p1.__02.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7349854885220732171"
+        },
+        {
+          "pub": "2024-03-12 08:42:43",
+          "desc": "一摊马尔猪猪。#笨蛋美女 有一天去上课看见马尔躺成这样吓一跳 幸好一叫马上就抬头了哈哈哈（马尔14岁了有！）马尔要健健康康每一天！",
+          "caption": "发布时间: 2024-03-12 08:42:43\n作品类型: 图文\n\n文案:\n一摊马尔猪猪。#笨蛋美女 有一天去上课看见马尔躺成这样吓一跳 幸好一叫马上就抬头了哈哈哈（马尔14岁了有！）马尔要健健康康每一天！\n\n点赞 3 | 评论 3 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7345270844542815527",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20240312_084243_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20240312_084243_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20240312_084243_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20240312_084243_.__04.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7345270844542815527"
         }
       ]
     },
@@ -58792,5 +58834,5 @@
       ]
     }
   ],
-  "local_added": 314
+  "local_added": 316
 }
