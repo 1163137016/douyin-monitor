@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31 20:48:05",
+  "generated": "2026-10-31 21:41:00",
   "total": 1630,
   "source": "github-releases",
   "accounts": [
@@ -11,7 +11,7 @@
           "pub": "2026-10-31 12:05:04",
           "desc": "10月完美落幕",
           "caption": "发布时间: 2026-10-31 12:05:04\n作品类型: 视频\n\n文案:\n10月完美落幕\n\n点赞 0 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7702801811799697258",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
@@ -44,6 +44,10 @@
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/happy.__20261031_120504_10.__09.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/happy.__20261031_120504_10.__08.mp4"
             }
           ]
         },
@@ -25050,6 +25054,22 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240430_051915_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240430_051915_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240430_051915_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240430_051915_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240430_051915_.__04.jpg"
             }
           ]
         },
@@ -25074,6 +25094,22 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240430_051718_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240430_051718_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240430_051718_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240430_051718_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240430_051718_.__04.jpg"
             }
           ]
         },
@@ -25090,6 +25126,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240424_132720_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240424_132720_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240424_132720_.__02.jpg"
             }
           ]
         },
@@ -25114,6 +25158,22 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240424_132316_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240424_132316_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240424_132316_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240424_132316_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240424_132316_.__04.jpg"
             }
           ]
         },
@@ -25158,6 +25218,22 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240409_175123_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240409_175123_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240409_175123_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240409_175123_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240409_175123_.__04.jpg"
             }
           ]
         },
@@ -25181,11 +25257,15 @@
           "pub": "2024-04-09 02:13:00",
           "desc": "卷毛好漂亮哦",
           "caption": "发布时间: 2024-04-09 02:13:00\n作品类型: 视频\n\n文案:\n卷毛好漂亮哦\n\n点赞 7 | 评论 4 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7355684541203303699",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240409_021300_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240409_021300_.__.mp4"
             }
           ]
         },
@@ -25222,6 +25302,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240408_105010_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240408_105010_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240408_105010_.__02.jpg"
             }
           ]
         },
@@ -25242,6 +25330,18 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240408_073037_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240408_073037_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240408_073037_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240408_073037_.__03.jpg"
             }
           ]
         },
@@ -25262,6 +25362,18 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240408_072822_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240408_072822_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240408_072822_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240408_072822_.__03.jpg"
             }
           ]
         },
@@ -25290,6 +25402,26 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240406_135443_.__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240406_135443_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240406_135443_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240406_135443_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240406_135443_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240406_135443_.__05.jpg"
             }
           ]
         },
@@ -25297,11 +25429,15 @@
           "pub": "2024-04-06 04:14:18",
           "desc": "快乐小狗🐶",
           "caption": "发布时间: 2024-04-06 04:14:18\n作品类型: 视频\n\n文案:\n快乐小狗🐶\n\n点赞 4 | 评论 3 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7354602559744527655",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240406_041418_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240406_041418_.__.mp4"
             }
           ]
         },
@@ -25342,6 +25478,22 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240405_050235_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240405_050235_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240405_050235_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240405_050235_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240405_050235_.__04.jpg"
             }
           ]
         },
@@ -25349,11 +25501,15 @@
           "pub": "2024-04-03 16:34:28",
           "desc": "卷毛眼睛是不是不好使哈哈哈哈以前大老远就跑过来了 现在一动不动要我说话才过来#小",
           "caption": "发布时间: 2024-04-03 16:34:28\n作品类型: 视频\n\n文案:\n卷毛眼睛是不是不好使哈哈哈哈以前大老远就跑过来了 现在一动不动要我说话才过来#小土狗 好可爱嘤嘤怪\n\n点赞 9 | 评论 3 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7353679941898177831",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240403_163428_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240403_163428_.__.mp4"
             }
           ]
         },
@@ -25370,6 +25526,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240403_144755_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240403_144755_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240403_144755_.__02.jpg"
             }
           ]
         },
@@ -25406,6 +25570,22 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240402_033234_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240402_033234_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240402_033234_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240402_033234_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240402_033234_.__04.jpg"
             }
           ]
         },
@@ -25426,6 +25606,18 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240327_075803_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240327_075803_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240327_075803_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240327_075803_.__03.jpg"
             }
           ]
         },
@@ -25433,11 +25625,15 @@
           "pub": "2024-03-25 04:52:21",
           "desc": "神同步了两只🐶#小土狗",
           "caption": "发布时间: 2024-03-25 04:52:21\n作品类型: 视频\n\n文案:\n神同步了两只🐶#小土狗\n\n点赞 23 | 评论 7 | 收藏 0 | 分享 2\n作品链接: https://www.douyin.com/video/7350159339488824595",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240325_045221_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240325_045221_.__.mp4"
             }
           ]
         },
@@ -25454,6 +25650,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240324_091052_p1.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240324_091052_p1.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240324_091052_p1.__02.jpg"
             }
           ]
         },
@@ -25461,11 +25665,15 @@
           "pub": "2024-03-24 09:03:30",
           "desc": "好大一坨马尔☺️#小土狗",
           "caption": "发布时间: 2024-03-24 09:03:30\n作品类型: 视频\n\n文案:\n好大一坨马尔☺️#小土狗\n\n点赞 5 | 评论 3 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7349852975579385099",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240324_090330_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240324_090330_.__.mp4"
             }
           ]
         },
@@ -25486,6 +25694,18 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240323_070829_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240323_070829_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240323_070829_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240323_070829_.__03.jpg"
             }
           ]
         },
@@ -25510,6 +25730,22 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240319_171111_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240319_171111_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240319_171111_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240319_171111_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240319_171111_.__04.jpg"
             }
           ]
         },
@@ -25517,11 +25753,15 @@
           "pub": "2024-03-18 08:05:00",
           "desc": "和卷毛两天没见啦！#小土狗",
           "caption": "发布时间: 2024-03-18 08:05:00\n作品类型: 视频\n\n文案:\n和卷毛两天没见啦！#小土狗\n\n点赞 13 | 评论 2 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7347611383405514047",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240318_080500_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240318_080500_.__.mp4"
             }
           ]
         },
@@ -25538,6 +25778,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240317_150730_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240317_150730_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240317_150730_.__02.jpg"
             }
           ]
         },
@@ -25545,11 +25793,15 @@
           "pub": "2024-03-17 05:02:18",
           "desc": "#小土狗真的很可爱",
           "caption": "发布时间: 2024-03-17 05:02:18\n作品类型: 视频\n\n文案:\n#小土狗真的很可爱\n\n点赞 30 | 评论 3 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7347193216090803519",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-9/default.__20240317_050218_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240317_050218_.__.mp4"
             }
           ]
         },
