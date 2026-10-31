@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 07:18:02",
-  "total": 1698,
+  "generated": "2026-11-01 07:51:19",
+  "total": 1700,
   "source": "github-releases",
   "accounts": [
     {
@@ -27200,6 +27200,40 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240306_044132_.__.mp4"
             }
           ]
+        },
+        {
+          "pub": "2024-04-09 00:27:50",
+          "desc": "小狗狗们晚安💤。喜欢每次来到画室时 卷毛哒哒哒跑过来找我 马尔也来找我要吃的哈哈哈 喜欢两小只陪伴在身边的时刻！学习学累了就摸摸它们，和它们说说话就会变的动力满满很开心！#小土狗也可爱",
+          "caption": "发布时间: 2024-04-09 00:27:50\n作品类型: 图文\n\n文案:\n小狗狗们晚安💤。喜欢每次来到画室时 卷毛哒哒哒跑过来找我 马尔也来找我要吃的哈哈哈 喜欢两小只陪伴在身边的时刻！学习学累了就摸摸它们，和它们说说话就会变的动力满满很开心！#小土狗也可爱\n\n点赞 12 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7355533653096680745",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20240409_002750_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20240409_002750_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20240409_002750_.__03.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7355533653096680745"
+        },
+        {
+          "pub": "2024-04-04 00:34:28",
+          "desc": "卷毛眼睛是不是不好使哈哈哈哈以前大老远就跑过来了 现在一动不动要我说话才过来#小土狗 好可爱嘤嘤怪",
+          "caption": "发布时间: 2024-04-04 00:34:28\n作品类型: 视频\n\n文案:\n卷毛眼睛是不是不好使哈哈哈哈以前大老远就跑过来了 现在一动不动要我说话才过来#小土狗 好可爱嘤嘤怪\n\n点赞 9 | 评论 3 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7353679941898177831",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20240404_003428_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7353679941898177831"
         },
         {
           "pub": "2024-03-24 17:10:52",
@@ -58834,5 +58868,5 @@
       ]
     }
   ],
-  "local_added": 316
+  "local_added": 318
 }
