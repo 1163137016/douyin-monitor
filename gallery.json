@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 08:24:54",
-  "total": 1700,
+  "generated": "2026-11-01 08:58:37",
+  "total": 1701,
   "source": "github-releases",
   "accounts": [
     {
@@ -27200,6 +27200,31 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20240306_044132_.__.mp4"
             }
           ]
+        },
+        {
+          "pub": "2025-12-14 17:03:15",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2025-12-14 17:03:15\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 159 | 评论 20 | 收藏 12 | 分享 12\n作品链接: https://www.douyin.com/video/7583636492012457268",
+          "kind": "live",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20251214_170315__01.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20251214_170315__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20251214_170315__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20251214_170315__04.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7583636492012457268"
         },
         {
           "pub": "2024-04-09 00:27:50",
@@ -58868,5 +58893,5 @@
       ]
     }
   ],
-  "local_added": 318
+  "local_added": 319
 }
