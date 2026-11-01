@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 09:31:53",
-  "total": 1702,
+  "generated": "2026-11-01 10:04:57",
+  "total": 1705,
   "source": "github-releases",
   "accounts": [
     {
@@ -6378,6 +6378,45 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20220916_151618_.__.mp4"
             }
           ]
+        },
+        {
+          "pub": "2026-08-15 13:50:20",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-08-15 13:50:20\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 77 | 评论 2 | 收藏 1 | 分享 2\n作品链接: https://www.douyin.com/video/7674131687706019259",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20260815_135020__01.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7674131687706019259"
+        },
+        {
+          "pub": "2026-07-27 22:32:45",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-07-27 22:32:45\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 54 | 评论 1 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7667215694551499941",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20260727_223245__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7667215694551499941"
+        },
+        {
+          "pub": "2026-07-15 22:24:21",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-07-15 22:24:21\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 72 | 评论 9 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7662760504540341371",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20260715_222421__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7662760504540341371"
         },
         {
           "pub": "2024-07-21 16:23:40",
@@ -58906,5 +58945,5 @@
       ]
     }
   ],
-  "local_added": 320
+  "local_added": 323
 }
