@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 11:13:34",
-  "total": 1707,
+  "generated": "2026-11-01 11:47:37",
+  "total": 1708,
   "source": "github-releases",
   "accounts": [
     {
@@ -10244,6 +10244,19 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20220315_080326_.__.mp4"
             }
           ]
+        },
+        {
+          "pub": "2024-11-16 22:26:42",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2024-11-16 22:26:42\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 174 | 评论 9 | 收藏 5 | 分享 16\n作品链接: https://www.douyin.com/video/7437883455649746235",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20241116_222642__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7437883455649746235"
         },
         {
           "pub": "2023-11-30 04:13:24",
@@ -43465,6 +43478,10 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-12/default.__20260817_180503_.forgetit__01-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260817_180503_.forgetit__01.jpg"
             }
           ]
         },
@@ -43492,11 +43509,15 @@
           "pub": "2026-06-05 11:15:52",
           "desc": "My angel 梦见你一直在我的左右🪽#angel _#天使 #棍丝 #toa",
           "caption": "发布时间: 2026-06-05 11:15:52\n作品类型: 视频\n\n文案:\nMy angel 梦见你一直在我的左右🪽#angel \n#天使 #棍丝 #toangel\n\n点赞 4395 | 评论 157 | 收藏 138 | 分享 157\n作品链接: https://www.douyin.com/video/7647868525148171112",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-12/default.__20260605_111552_My.angel.angel._.__.-2.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260605_111552_My.angel.angel._.__.mp4"
             }
           ]
         },
@@ -43573,6 +43594,74 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-12/default.__20260602_110658_._._.plog__17-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__09.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__10.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__11.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__12.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__13.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__14.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__15.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__16.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260602_110658_._._.plog__17.jpg"
             }
           ]
         },
@@ -43597,6 +43686,22 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-12/default.__20260505_150713_Maymaymay.inmyfeeling__04-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260505_150713_Maymaymay.inmyfeeling__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260505_150713_Maymaymay.inmyfeeling__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260505_150713_Maymaymay.inmyfeeling__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260505_150713_Maymaymay.inmyfeeling__04.jpg"
             }
           ]
         },
@@ -43649,6 +43754,50 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-12/default.__20251227_161638_.__11-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251227_161638_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251227_161638_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251227_161638_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251227_161638_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251227_161638_.__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251227_161638_.__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251227_161638_.__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251227_161638_.__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251227_161638_.__09.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251227_161638_.__10.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251227_161638_.__11.jpg"
             }
           ]
         },
@@ -43749,6 +43898,98 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-12/default.__20251217_142834_._.__23-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__09.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__10.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__11.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__12.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__13.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__14.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__15.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__16.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__17.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__18.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__19.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__20.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__21.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__22.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251217_142834_._.__23.jpg"
             }
           ]
         },
@@ -43809,6 +44050,38 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-12/default.__20251114_161617_.__08-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251114_161617_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251114_161617_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251114_161617_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251114_161617_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251114_161617_.__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251114_161617_.__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251114_161617_.__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251114_161617_.__08.jpg"
             }
           ]
         },
@@ -43893,6 +44166,82 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-12/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__19-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__04.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__05.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__09.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__10.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__11.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__12.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__13.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__14.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__15.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__16.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__17.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__18.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251108_185411_Just.leave.me.alone.inmyfeelin__19.jpg"
             }
           ]
         },
@@ -43945,6 +44294,50 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20251102_161635_._.ootd.inmyfeeling__11.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251102_161635_._.ootd.inmyfeeling__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251102_161635_._.ootd.inmyfeeling__02.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251102_161635_._.ootd.inmyfeeling__03.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251102_161635_._.ootd.inmyfeeling__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251102_161635_._.ootd.inmyfeeling__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251102_161635_._.ootd.inmyfeeling__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251102_161635_._.ootd.inmyfeeling__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251102_161635_._.ootd.inmyfeeling__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251102_161635_._.ootd.inmyfeeling__09.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251102_161635_._.ootd.inmyfeeling__10.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251102_161635_._.ootd.inmyfeeling__11.jpg"
             }
           ]
         },
@@ -43952,11 +44345,15 @@
           "pub": "2025-11-01 04:04:46",
           "desc": "无标题",
           "caption": "发布时间: 2025-11-01 04:04:46\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 103 | 评论 6 | 收藏 0 | 分享 4\n作品链接: https://www.douyin.com/video/7567603001583911779",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20251101_040446__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251101_040446__.mp4"
             }
           ]
         },
@@ -43997,6 +44394,38 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20251024_140546_.__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251024_140546_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251024_140546_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251024_140546_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251024_140546_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251024_140546_.__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251024_140546_.__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251024_140546_.__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251024_140546_.__08.jpg"
             }
           ]
         },
@@ -44009,6 +44438,10 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20251018_101917_Some.people.want.it.all__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251018_101917_Some.people.want.it.all__01.jpg"
             }
           ]
         },
@@ -44065,6 +44498,54 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20251015_125619_._.garetht.i__12.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251015_125619_._.garetht.i__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251015_125619_._.garetht.i__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251015_125619_._.garetht.i__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251015_125619_._.garetht.i__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251015_125619_._.garetht.i__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251015_125619_._.garetht.i__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251015_125619_._.garetht.i__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251015_125619_._.garetht.i__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251015_125619_._.garetht.i__09.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251015_125619_._.garetht.i__10.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251015_125619_._.garetht.i__11.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251015_125619_._.garetht.i__12.jpg"
             }
           ]
         },
@@ -44132,11 +44613,15 @@
           "pub": "2025-10-02 07:42:21",
           "desc": "一拍就忘#angel #柠檬叉angel #跟着音乐动起来吧",
           "caption": "发布时间: 2025-10-02 07:42:21\n作品类型: 视频\n\n文案:\n一拍就忘#angel #柠檬叉angel #跟着音乐动起来吧\n\n点赞 247 | 评论 5 | 收藏 6 | 分享 14\n作品链接: https://www.douyin.com/video/7556526539052109090",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20251002_074221_.angel.angel.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20251002_074221_.angel.angel.__.mp4"
             }
           ]
         },
@@ -44229,6 +44714,70 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250919_172243_.plog__16.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__09.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__10.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__11.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__12.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__13.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__14.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__15.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250919_172243_.plog__16.jpg"
             }
           ]
         },
@@ -44236,11 +44785,15 @@
           "pub": "2025-09-11 16:13:32",
           "desc": "我爱上早八",
           "caption": "发布时间: 2025-09-11 16:13:32\n作品类型: 视频\n\n文案:\n我爱上早八\n\n点赞 1441 | 评论 109 | 收藏 29 | 分享 251\n作品链接: https://www.douyin.com/video/7548865453461998882",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250911_161332_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250911_161332_.__.mp4"
             }
           ]
         },
@@ -44261,6 +44814,18 @@
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250905_130638_.__03.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250905_130638_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250905_130638_.__02.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250905_130638_.__03.mp4"
             }
           ]
         },
@@ -44321,6 +44886,58 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250625_100347_.newmasus.ne__13.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__09.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__10.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__11.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__12.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250625_100347_.newmasus.ne__13.jpg"
             }
           ]
         },
@@ -44349,6 +44966,26 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250530_150000_.__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250530_150000_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250530_150000_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250530_150000_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250530_150000_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250530_150000_.__05.jpg"
             }
           ]
         },
@@ -44393,6 +45030,26 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250425_130203_.__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250425_130203_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250425_130203_.__02.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250425_130203_.__03.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250425_130203_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250425_130203_.__05.jpg"
             }
           ]
         },
@@ -44400,11 +45057,15 @@
           "pub": "2025-04-21 11:50:16",
           "desc": "以爱之名你还愿意吗#enfp快乐小狗 #infp小蝴蝶 #手势舞 #08",
           "caption": "发布时间: 2025-04-21 11:50:16\n作品类型: 视频\n\n文案:\n以爱之名你还愿意吗#enfp快乐小狗 #infp小蝴蝶 #手势舞 #08\n\n点赞 173 | 评论 14 | 收藏 9 | 分享 9\n作品链接: https://www.douyin.com/video/7495732449474153762",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250421_115016_.enfp.infp.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250421_115016_.enfp.infp.__.mp4"
             }
           ]
         },
@@ -44452,11 +45113,15 @@
           "pub": "2025-03-28 10:20:32",
           "desc": "有一天晚上你突然头痛 旁边的人问你怎么了 你说来财 但心里你知道 在遥远的贡台上",
           "caption": "发布时间: 2025-03-28 10:20:32\n作品类型: 视频\n\n文案:\n有一天晚上你突然头痛 旁边的人问你怎么了 你说来财 但心里你知道 在遥远的贡台上有一个白黄牌 那晚拜三拜变成憋老仔\n\n点赞 70 | 评论 20 | 收藏 0 | 分享 2\n作品链接: https://www.douyin.com/video/7486803259739409664",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250328_102032_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250328_102032_.__.mp4"
             }
           ]
         },
@@ -44464,11 +45129,15 @@
           "pub": "2025-03-25 10:42:18",
           "desc": "so baby girl#别叫我达芬奇 #转场 #校园 #inmyfeeling",
           "caption": "发布时间: 2025-03-25 10:42:18\n作品类型: 视频\n\n文案:\nso baby girl#别叫我达芬奇 #转场 #校园 #inmyfeeling\n\n点赞 252 | 评论 25 | 收藏 3 | 分享 28\n作品链接: https://www.douyin.com/video/7485695581042527522",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250325_104218_so.baby.girl.i__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250325_104218_so.baby.girl.i__.mp4"
             }
           ]
         },
@@ -44489,6 +45158,18 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20250322_033835_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250322_033835_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250322_033835_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250322_033835_.__03.jpg"
             }
           ]
         },
@@ -58971,5 +59652,5 @@
       ]
     }
   ],
-  "local_added": 325
+  "local_added": 326
 }
