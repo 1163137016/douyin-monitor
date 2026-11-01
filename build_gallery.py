@@ -105,6 +105,11 @@ PAGE_HEAD = """<!doctype html>
   video{max-height:72vh}
   .live-badge{display:inline-block;background:#ff4d6d;color:#fff;font-size:12px;
     padding:2px 8px;border-radius:10px;margin:4px 0;}
+  .type-badge{display:inline-block;font-size:12px;font-weight:600;
+    padding:2px 9px;border-radius:8px;margin:2px 0 8px}
+  .type-badge.t-视频{background:rgba(34,211,238,.9);color:#06222a}
+  .type-badge.t-图文{background:rgba(20,24,35,.8);color:#cfd6e6}
+  .type-badge.t-实况图{background:rgba(255,77,141,.92);color:#fff}
   .vbar{font-size:13px;margin:-2px 0 10px}
   .vbar a{color:#4da3ff;text-decoration:none}
   .vbar{font-size:12px;margin:0 0 6px}
@@ -145,6 +150,11 @@ PAGE_HEAD = """<!doctype html>
   .hl-card[data-rk="1"] .hl-rk{background:#e0a03c;opacity:1}
   .hl-card[data-rk="2"] .hl-rk{background:#98a2b3;opacity:1}
   .hl-card[data-rk="3"] .hl-rk{background:#c2895c;opacity:1}
+  .hl-kind{display:inline-block;margin-top:3px;font-size:9.5px;font-weight:600;
+    padding:1px 6px;border-radius:7px;color:#fff;line-height:1.5}
+  .hl-kind-视频{background:rgba(34,211,238,.92);color:#06222a}
+  .hl-kind-图文{background:rgba(20,24,35,.82);color:#cfd6e6}
+  .hl-kind-实况{background:rgba(255,77,141,.92);color:#fff}
   .bd-card{flex:0 0 auto;width:158px;cursor:pointer;border-radius:12px;overflow:hidden;
              background:var(--panel);border:1px solid var(--line);
              transition:transform .15s,box-shadow .15s,border-color .15s}
@@ -228,23 +238,21 @@ PAGE_HEAD = """<!doctype html>
       +(term?'（搜索：'+term+'）':'');
     var hlShown=0;
     [].forEach.call(document.querySelectorAll('.hl-card'),function(c){
-      var ok=(active==='all'||c.getAttribute('data-acct')===active)
-             &&(!term||(c.getAttribute('data-name')||'').toLowerCase().indexOf(term)>=0);
+      /* 近期更新始终是跨账号 Top15，点进某人只过滤下方分区，不收掉榜单 */
+      var ok=(!term||(c.getAttribute('data-name')||'').toLowerCase().indexOf(term)>=0);
       c.style.display=ok?'':'none';
       if(ok) hlShown++;
       c.classList.toggle('active',active!=='all'&&c.getAttribute('data-acct')===active);
     });
     var bdShown=0;
     [].forEach.call(document.querySelectorAll('.bd-card'),function(c){
-      var ok=(active==='all'||c.getAttribute('data-acct')===active)
-             &&(!term||(c.getAttribute('data-txt')||'').toLowerCase().indexOf(term)>=0);
+      var ok=(!term||(c.getAttribute('data-txt')||'').toLowerCase().indexOf(term)>=0);
       c.style.display=ok?'':'none';
       if(ok) bdShown++;
     });
-    /* 小标题跟着当前视图走, 否则"前 15 位作者"在单账号视图下是自相矛盾的 */
+    /* 小标题固定为跨账号 Top15，不再随单账号视图改写 */
     var hs=document.querySelector('.hl-head .sub');
-    if(hs) hs.textContent=(active==='all')
-      ? (hlShown+' 位作者 · 点击切换') : '已切到该作者 · 再点一次回到全部';
+    if(hs) hs.textContent=hlShown+' 位作者 · 点击查看该作者';
     var bs=document.querySelector('.board-head .sub');
     if(bs) bs.textContent=bdShown+' 条视频 · 点击定位';
     toggleZone('hl'); toggleZone('board');
@@ -359,12 +367,20 @@ def _work_card(e: dict, wid: str = "") -> str:
     # Live 图 / 动态照片: 同一作品同时含 image(封面) 与 video(动态),
     # 视频自带封面帧, 过滤掉静态图避免重复显示, 并标注实况。
     is_live = ("video" in types) and ("image" in types)
+    if is_live:
+        tlabel = "实况图"
+    elif "video" in types:
+        tlabel = "视频"
+    else:
+        tlabel = "图文"
     # Live 图: 动态视频 + 其它静态图都展示(不丢内容); 视频自带封面帧。
     render = items
     idattr = f' id="{esc(wid)}"' if wid else ""
     parts = [f'<div class="work"{idattr}>', f'<h3>{esc(title or "未命名作品")}</h3>']
     if is_live:
         parts.append('<div class="live-badge">实况图 · 点击播放动态</div>')
+    else:
+        parts.append(f'<div class="type-badge t-{tlabel}">{tlabel}</div>')
     for it in render:
         parts.append(media_tag(it.get("type", "image"), it.get("url", "")))
     if e.get("caption"):
@@ -499,6 +515,10 @@ def _highlights_html(groups: list) -> str:
         rk = f'<span class="hl-rk">{i}</span>' if i <= 3 else ""
         rkattr = f' data-rk="{i}"' if i <= 3 else ""
         nick = g["nick"]
+        lat = g["items"][0].get("items", []) if g["items"] else []
+        lt = {it.get("type") for it in lat}
+        klabel = ("实况" if ("video" in lt and "image" in lt)
+                  else ("视频" if "video" in lt else "图文"))
         cards.append(
             f'<div class="hl-card" data-acct="{esc(g["id"])}"'
             f' data-name="{esc(nick)}"{rkattr}>{rk}'
@@ -506,9 +526,10 @@ def _highlights_html(groups: list) -> str:
             f'{esc(nick[:1])}</div>'
             f'<div class="hl-name">{esc(nick)}</div>'
             f'<div class="hl-time">{esc(when)}</div>'
+            f'<span class="hl-kind hl-kind-{klabel}">{esc(klabel)}</span>'
             f'</div>')
     top_html = ('<div class="hl"><div class="hl-head">🔥 近期更新'
-                f'<span class="sub">前 {len(ranked)} 位作者 · 点击切换</span></div>'
+                f'<span class="sub">前 {len(ranked)} 位作者 · 点击查看该作者</span></div>'
                 '<div class="hl-scroll">' + "".join(cards) + '</div></div>')
 
     # ---- 视频公告栏：全局最新 12 条视频 ----
