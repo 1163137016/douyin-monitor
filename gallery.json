@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-02 07:02:59",
-  "total": 1975,
+  "generated": "2026-11-02 07:36:04",
+  "total": 1976,
   "source": "github-releases",
   "accounts": [
     {
@@ -50461,6 +50461,19 @@
           ]
         },
         {
+          "pub": "2025-08-29 21:01:51",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2025-08-29 21:01:51\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 14 | 评论 3 | 收藏 0 | 分享 2\n作品链接: https://www.douyin.com/video/7543991981703040306",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20250829_210151__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7543991981703040306"
+        },
+        {
           "pub": "2025-03-29 23:17:29",
           "desc": "bae we should let go #livephoto #慵懒 #永远屈服于温柔",
           "caption": "发布时间: 2025-03-29 23:17:29\n作品类型: 视频\n\n文案:\nbae we should let go #livephoto #慵懒 #永远屈服于温柔\n\n点赞 49 | 评论 1 | 收藏 0 | 分享 4\n作品链接: https://www.douyin.com/video/7487250746627460371",
@@ -67395,5 +67408,5 @@
       ]
     }
   ],
-  "local_added": 417
+  "local_added": 418
 }
