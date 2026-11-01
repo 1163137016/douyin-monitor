@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 12:55:33",
-  "total": 1712,
+  "generated": "2026-11-01 13:29:52",
+  "total": 1713,
   "source": "github-releases",
   "accounts": [
     {
@@ -55579,6 +55579,23 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/default.__20220523_020915_.__02.jpg"
             }
           ]
+        },
+        {
+          "pub": "2022-09-16 09:29:38",
+          "desc": "睡醒了吗 出来晒晒太阳咯#阳光明媚的一天 #美好的一天从我的问候开始 #开心度过每一天",
+          "caption": "发布时间: 2022-09-16 09:29:38\n作品类型: 图文\n\n文案:\n睡醒了吗 出来晒晒太阳咯#阳光明媚的一天 #美好的一天从我的问候开始 #开心度过每一天\n\n点赞 203 | 评论 33 | 收藏 2 | 分享 45\n作品链接: https://www.douyin.com/video/7143783751133252904",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20220916_092938_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20220916_092938_.__02.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7143783751133252904"
         }
       ]
     },
@@ -59724,5 +59741,5 @@
       ]
     }
   ],
-  "local_added": 330
+  "local_added": 331
 }
