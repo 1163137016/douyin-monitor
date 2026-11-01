@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 18:43:33",
-  "total": 1729,
+  "generated": "2026-11-01 19:18:08",
+  "total": 1730,
   "source": "github-releases",
   "accounts": [
     {
@@ -22297,6 +22297,19 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-12/default.__20240725_150535_.__01-2.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-10-04 00:21:41",
+          "desc": "尽量的学习 尽量的经历 尽量的旅游 尽量的吃点好东西 人生就会美好一点#plog #首尔",
+          "caption": "发布时间: 2026-10-04 00:21:41\n作品类型: 视频\n\n文案:\n尽量的学习 尽量的经历 尽量的旅游 尽量的吃点好东西 人生就会美好一点#plog #首尔\n\n点赞 35 | 评论 0 | 收藏 2 | 分享 0\n作品链接: https://www.douyin.com/video/7692477554032155044",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20261004_002141_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7692477554032155044"
         },
         {
           "pub": "2026-03-26 22:26:59",
@@ -60388,5 +60401,5 @@
       ]
     }
   ],
-  "local_added": 346
+  "local_added": 347
 }
