@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 14:40:18",
-  "total": 1713,
+  "generated": "2026-11-01 15:14:54",
+  "total": 1717,
   "source": "github-releases",
   "accounts": [
     {
@@ -22285,6 +22285,78 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-12/default.__20240725_150535_.__01-2.jpg"
             }
           ]
+        },
+        {
+          "pub": "2025-01-24 21:41:09",
+          "desc": "宝宝*ଘ(੭*ˊᵕˋ)੭*一个人上网吗☆₊⁺🦴🐾₊⁺★#今天长这样 #甜妹 #分享照片",
+          "caption": "发布时间: 2025-01-24 21:41:09\n作品类型: 视频\n\n文案:\n宝宝*ଘ(੭*ˊᵕˋ)੭*一个人上网吗☆₊⁺🦴🐾₊⁺★#今天长这样 #甜妹 #分享照片\n\n点赞 146 | 评论 2 | 收藏 6 | 分享 5\n作品链接: https://www.douyin.com/video/7463476518296112411",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250124_214109_._._._.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7463476518296112411"
+        },
+        {
+          "pub": "2025-01-20 13:08:08",
+          "desc": "我许愿成为世界大王让女孩子不再流泪೭(˵ˉ̴͒ꇴˉ̴͒˵)౨#happybirthday #分享照片",
+          "caption": "发布时间: 2025-01-20 13:08:08\n作品类型: 图文\n\n文案:\n我许愿成为世界大王让女孩子不再流泪೭(˵ˉ̴͒ꇴˉ̴͒˵)౨#happybirthday #分享照片\n\n点赞 32 | 评论 2 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7461859876206169371",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250120_130808_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250120_130808_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250120_130808_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250120_130808_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250120_130808_.__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250120_130808_.__06.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7461859876206169371"
+        },
+        {
+          "pub": "2025-01-05 19:28:30",
+          "desc": "今天唯一的运动量#今天长这样 #分享照片 #浅跳一下 #我的穿搭日记 #今天穿什么",
+          "caption": "发布时间: 2025-01-05 19:28:30\n作品类型: 视频\n\n文案:\n今天唯一的运动量#今天长这样 #分享照片 #浅跳一下 #我的穿搭日记 #今天穿什么\n\n点赞 100 | 评论 0 | 收藏 2 | 分享 7\n作品链接: https://www.douyin.com/video/7456391681114524938",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250105_192830_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7456391681114524938"
+        },
+        {
+          "pub": "2025-01-01 23:25:03",
+          "desc": "被女人喜欢是我的宿命",
+          "caption": "发布时间: 2025-01-01 23:25:03\n作品类型: 视频\n\n文案:\n被女人喜欢是我的宿命\n#今天长这样 #我的穿搭日记 #分享照片\n\n点赞 91 | 评论 0 | 收藏 3 | 分享 2\n作品链接: https://www.douyin.com/video/7454968272111324454",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20250101_232503_._.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7454968272111324454"
         }
       ]
     },
@@ -59741,5 +59813,5 @@
       ]
     }
   ],
-  "local_added": 331
+  "local_added": 335
 }
