@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 10:39:06",
-  "total": 1705,
+  "generated": "2026-11-01 11:13:34",
+  "total": 1707,
   "source": "github-releases",
   "accounts": [
     {
@@ -10244,6 +10244,32 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20220315_080326_.__.mp4"
             }
           ]
+        },
+        {
+          "pub": "2023-11-30 04:13:24",
+          "desc": "条件很艰辛 没人帮忙拿手机 没有光线#路灯下的我 #扭一扭 #一学就会系列 #这是一种感觉",
+          "caption": "发布时间: 2023-11-30 04:13:24\n作品类型: 视频\n\n文案:\n条件很艰辛 没人帮忙拿手机 没有光线#路灯下的我 #扭一扭 #一学就会系列 #这是一种感觉\n\n点赞 151 | 评论 15 | 收藏 5 | 分享 4\n作品链接: https://www.douyin.com/video/7306979283354914087",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20231130_041324_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7306979283354914087"
+        },
+        {
+          "pub": "2022-10-14 17:48:41",
+          "desc": "说好来陪我上课 没想到为了这点东西#校园 #校园生活 #白羊射手 @暴躁西兰花（开学版",
+          "caption": "发布时间: 2022-10-14 17:48:41\n作品类型: 视频\n\n文案:\n说好来陪我上课 没想到为了这点东西#校园 #校园生活 #白羊射手 @暴躁西兰花（开学版\n\n点赞 3957 | 评论 1233 | 收藏 123 | 分享 3515\n作品链接: https://www.douyin.com/video/7154302741366525224",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20221014_174841_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7154302741366525224"
         }
       ]
     },
@@ -58945,5 +58971,5 @@
       ]
     }
   ],
-  "local_added": 323
+  "local_added": 325
 }
