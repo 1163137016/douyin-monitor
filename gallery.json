@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 22:15:06",
-  "total": 1760,
+  "generated": "2026-11-01 22:50:19",
+  "total": 1761,
   "source": "github-releases",
   "accounts": [
     {
@@ -22330,6 +22330,19 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-12/default.__20240725_150535_.__01-2.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-11-01 22:42:06",
+          "desc": "过去的人就像氧化的苹果 就算记得当初有多美好 也恢复不了当初的原貌#一张",
+          "caption": "发布时间: 2026-11-01 22:42:06\n作品类型: 视频\n\n文案:\n过去的人就像氧化的苹果 就算记得当初有多美好 也恢复不了当初的原貌#一张\n\n点赞 0 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7703213359089566569",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20261101_224206_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7703213359089566569"
         },
         {
           "pub": "2026-10-04 00:21:41",
@@ -61366,5 +61379,5 @@
       ]
     }
   ],
-  "local_added": 376
+  "local_added": 377
 }
