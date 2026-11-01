@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 08:58:37",
-  "total": 1701,
+  "generated": "2026-11-01 09:31:53",
+  "total": 1702,
   "source": "github-releases",
   "accounts": [
     {
@@ -6378,6 +6378,19 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20220916_151618_.__.mp4"
             }
           ]
+        },
+        {
+          "pub": "2024-07-21 16:23:40",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2024-07-21 16:23:40\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 130 | 评论 8 | 收藏 1 | 分享 1\n作品链接: https://www.douyin.com/video/7394001842046291234",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20240721_162340__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7394001842046291234"
         }
       ]
     },
@@ -58893,5 +58906,5 @@
       ]
     }
   ],
-  "local_added": 319
+  "local_added": 320
 }
