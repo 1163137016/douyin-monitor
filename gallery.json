@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-02 06:29:41",
-  "total": 1973,
+  "generated": "2026-11-02 07:02:59",
+  "total": 1975,
   "source": "github-releases",
   "accounts": [
     {
@@ -36829,6 +36829,19 @@
           ]
         },
         {
+          "pub": "2026-10-16 17:30:41",
+          "desc": "我保证我是个恶魔只是偶尔有点好 #蕾姆万圣节cos #蕾姆cos #蕾姆万圣节小恶魔",
+          "caption": "发布时间: 2026-10-16 17:30:41\n作品类型: 视频\n\n文案:\n我保证我是个恶魔只是偶尔有点好 #蕾姆万圣节cos #蕾姆cos #蕾姆万圣节小恶魔\n\n点赞 940 | 评论 22 | 收藏 67 | 分享 42\n作品链接: https://www.douyin.com/video/7697195748823386725",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20261016_173041_.cos.c__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7697195748823386725"
+        },
+        {
           "pub": "2026-08-22 20:22:31",
           "desc": "对不起队友 我真的很努力在捣鼓我的两只小猪蹄了 一会儿游戏结束 我就去菜市场买点八角桂皮香叶 先把我的两只小猪蹄焯水 再用冰糖熬出糖色 把我焯过水的小猪蹄放进去炒香 再加老抽上色 最后倒入开水料汁 小火慢炖2小时 大火收汁 撒点葱花出锅 你别骂我了行不#游戏菜狗爱情舔狗 #钓鱼爱好者 #enfp拍照",
           "caption": "发布时间: 2026-08-22 20:22:31\n作品类型: 图文\n\n文案:\n对不起队友 我真的很努力在捣鼓我的两只小猪蹄了 一会儿游戏结束 我就去菜市场买点八角桂皮香叶 先把我的两只小猪蹄焯水 再用冰糖熬出糖色 把我焯过水的小猪蹄放进去炒香 再加老抽上色 最后倒入开水料汁 小火慢炖2小时 大火收汁 撒点葱花出锅 你别骂我了行不#游戏菜狗爱情舔狗 #钓鱼爱好者 #enfp拍照\n\n点赞 237 | 评论 20 | 收藏 6 | 分享 15\n作品链接: https://www.douyin.com/video/7676830348832309925",
@@ -50446,6 +50459,43 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-6/default.__20240305_154912_.__20.jpg"
             }
           ]
+        },
+        {
+          "pub": "2025-03-29 23:17:29",
+          "desc": "bae we should let go #livephoto #慵懒 #永远屈服于温柔",
+          "caption": "发布时间: 2025-03-29 23:17:29\n作品类型: 视频\n\n文案:\nbae we should let go #livephoto #慵懒 #永远屈服于温柔\n\n点赞 49 | 评论 1 | 收藏 0 | 分享 4\n作品链接: https://www.douyin.com/video/7487250746627460371",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20250329_231729_bae.we.should.let.go.livephot__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20250329_231729_bae.we.should.let.go.livephot__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20250329_231729_bae.we.should.let.go.livephot__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20250329_231729_bae.we.should.let.go.livephot__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20250329_231729_bae.we.should.let.go.livephot__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20250329_231729_bae.we.should.let.go.livephot__06.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20250329_231729_bae.we.should.let.go.livephot__07.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7487250746627460371"
         },
         {
           "pub": "2025-01-20 21:37:52",
@@ -67345,5 +67395,5 @@
       ]
     }
   ],
-  "local_added": 415
+  "local_added": 417
 }
