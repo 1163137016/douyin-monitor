@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 20:30:17",
-  "total": 1741,
+  "generated": "2026-11-01 21:04:44",
+  "total": 1742,
   "source": "github-releases",
   "accounts": [
     {
@@ -31208,6 +31208,27 @@
           ]
         },
         {
+          "pub": "2023-10-04 15:58:24",
+          "desc": "这辈子是女的 因为上辈子屌炸了#06 #社恐 #大帅哥 #ootd穿搭 #拍照姿势挑战",
+          "caption": "发布时间: 2023-10-04 15:58:24\n作品类型: 图文\n\n文案:\n这辈子是女的 因为上辈子屌炸了#06 #社恐 #大帅哥 #ootd穿搭 #拍照姿势挑战\n\n点赞 230 | 评论 28 | 收藏 5 | 分享 61\n作品链接: https://www.douyin.com/video/7286009535758617868",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20231004_155824_.06.o__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20231004_155824_.06.o__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20231004_155824_.06.o__03.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7286009535758617868"
+        },
+        {
           "pub": "2022-09-18 02:20:49",
           "desc": "说实话 如果女朋友不作的话 还挺无聊的",
           "caption": "发布时间: 2022-09-18 02:20:49\n作品类型: 视频\n\n文案:\n说实话 如果女朋友不作的话 还挺无聊的\n#美女 #内向 #社恐 #害羞 #文静小女生\n\n点赞 637 | 评论 135 | 收藏 9 | 分享 305\n作品链接: https://www.douyin.com/video/7144415240417987878",
@@ -61079,5 +61100,5 @@
       ]
     }
   ],
-  "local_added": 357
+  "local_added": 358
 }
