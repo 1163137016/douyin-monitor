@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 17:00:31",
-  "total": 1725,
+  "generated": "2026-11-01 17:35:23",
+  "total": 1726,
   "source": "github-releases",
   "accounts": [
     {
@@ -22299,6 +22299,19 @@
           ]
         },
         {
+          "pub": "2026-03-14 13:01:15",
+          "desc": "我们就这样萌到老ᯠ_   ̫ _ ̥ᯄ#我和我的舞搭子 #等等我先摆好造型 @兔子的世界下了萝卜雨",
+          "caption": "发布时间: 2026-03-14 13:01:15\n作品类型: 视频\n\n文案:\n我们就这样萌到老ᯠ_   ̫ _ ̥ᯄ#我和我的舞搭子 #等等我先摆好造型 @兔子的世界下了萝卜雨\n\n点赞 29 | 评论 2 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7616971915328249555",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260314_130115_._._.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7616971915328249555"
+        },
+        {
           "pub": "2026-01-02 00:08:02",
           "desc": "既没有想去庆贺的一年",
           "caption": "发布时间: 2026-01-02 00:08:02\n作品类型: 图文\n\n文案:\n既没有想去庆贺的一年\n也不需为来年许下什么愿望\n还年轻 拥有的让我满足\n若还有需要的，就脚踏实地去创造\n#生日快乐\n\n点赞 82 | 评论 3 | 收藏 2 | 分享 1\n作品链接: https://www.douyin.com/video/7590425618467528617",
@@ -22327,6 +22340,10 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260102_000802_._._.__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-17/default.__20260102_000802_._._.__07.jpg"
             }
           ],
           "link": "https://www.douyin.com/video/7590425618467528617"
@@ -60316,5 +60333,5 @@
       ]
     }
   ],
-  "local_added": 342
+  "local_added": 343
 }
