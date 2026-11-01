@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-01 21:40:21",
-  "total": 1756,
+  "generated": "2026-11-01 22:15:06",
+  "total": 1760,
   "source": "github-releases",
   "accounts": [
     {
@@ -31208,6 +31208,74 @@
           ]
         },
         {
+          "pub": "2025-12-04 20:47:08",
+          "desc": "此行无目的 只为解相思",
+          "caption": "发布时间: 2025-12-04 20:47:08\n作品类型: 视频\n\n文案:\n此行无目的 只为解相思\n#非常甜妹\n\n点赞 118 | 评论 5 | 收藏 2 | 分享 15\n作品链接: https://www.douyin.com/video/7579983444165680997",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20251204_204708_._.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7579983444165680997"
+        },
+        {
+          "pub": "2025-03-17 22:18:28",
+          "desc": "先记录再记住",
+          "caption": "发布时间: 2025-03-17 22:18:28\n作品类型: 图文\n\n文案:\n先记录再记住\n#inmyfeelings #生活碎片\n\n点赞 248 | 评论 11 | 收藏 9 | 分享 45\n作品链接: https://www.douyin.com/video/7482782635870227769",
+          "kind": "live",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20250317_221828_._.inmyfeelings.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20250317_221828_._.inmyfeelings.__02.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20250317_221828_._.inmyfeelings.__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20250317_221828_._.inmyfeelings.__04.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7482782635870227769"
+        },
+        {
+          "pub": "2024-09-28 23:17:28",
+          "desc": "不错的最近fine",
+          "caption": "发布时间: 2024-09-28 23:17:28\n作品类型: 视频\n\n文案:\n不错的最近fine\n#inmyfeelings #天蝎\n\n点赞 496 | 评论 33 | 收藏 23 | 分享 162\n作品链接: https://www.douyin.com/video/7419713317796580659",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20240928_231728_.fine_.inmyfeelings.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7419713317796580659"
+        },
+        {
+          "pub": "2024-09-10 22:00:56",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2024-09-10 22:00:56\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 524 | 评论 14 | 收藏 29 | 分享 149\n作品链接: https://www.douyin.com/video/7413014111866424586",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20240910_220056__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-18/default.__20240910_220056__02.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7413014111866424586"
+        },
+        {
           "pub": "2024-08-17 00:24:07",
           "desc": "我只記得那天陽光明媚",
           "caption": "发布时间: 2024-08-17 00:24:07\n作品类型: 视频\n\n文案:\n我只記得那天陽光明媚\n#生活碎片 #inmyfeelings\n\n点赞 553 | 评论 40 | 收藏 19 | 分享 132\n作品链接: https://www.douyin.com/video/7403773809775480105",
@@ -61298,5 +61366,5 @@
       ]
     }
   ],
-  "local_added": 372
+  "local_added": 376
 }
