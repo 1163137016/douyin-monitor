@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-02 18:12:55",
-  "total": 1977,
+  "generated": "2026-11-02 18:45:19",
+  "total": 1978,
   "source": "github-releases",
   "accounts": [
     {
@@ -65260,6 +65260,45 @@
     },
     {
       "id": "",
+      "nick": "MS4wLjABAAAAtRFN4y_-tPmW3GFvq3KbX9K6p9zlk7BZM5aKV3TBDX0",
+      "works": [
+        {
+          "pub": "2026-11-02 18:26:20",
+          "desc": "今天的冒险会遇见什么呢？ #鬼妈妈 #卡洛琳#halloweencos #万圣街cos #致歉一切",
+          "caption": "发布时间: 2026-11-02 18:26:20\n作品类型: 图文\n\n文案:\n今天的冒险会遇见什么呢？ #鬼妈妈 #卡洛琳#halloweencos #万圣街cos #致歉一切\n\n点赞 68 | 评论 5 | 收藏 1 | 分享 0\n作品链接: https://www.douyin.com/video/7703518539050907770",
+          "kind": "live",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAAtRFN4y_-tPmW3GFvq3KbX9K6p9zlk7BZM5aKV3TBDX0__20261102_182620_.hallowe__01.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAAtRFN4y_-tPmW3GFvq3KbX9K6p9zlk7BZM5aKV3TBDX0__20261102_182620_.hallowe__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAAtRFN4y_-tPmW3GFvq3KbX9K6p9zlk7BZM5aKV3TBDX0__20261102_182620_.hallowe__03.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAAtRFN4y_-tPmW3GFvq3KbX9K6p9zlk7BZM5aKV3TBDX0__20261102_182620_.hallowe__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAAtRFN4y_-tPmW3GFvq3KbX9K6p9zlk7BZM5aKV3TBDX0__20261102_182620_.hallowe__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAAtRFN4y_-tPmW3GFvq3KbX9K6p9zlk7BZM5aKV3TBDX0__20261102_182620_.hallowe__06.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7703518539050907770"
+        }
+      ]
+    },
+    {
+      "id": "",
       "nick": "MS4wLjABAAAATYi-chL4Nf5UZLswloITvRNQ28fnfGRvwvMMu0zboq8Li4jrxuiS3B4_35oSvXTP",
       "works": [
         {
@@ -67620,5 +67659,5 @@
       ]
     }
   ],
-  "local_added": 418
+  "local_added": 419
 }
