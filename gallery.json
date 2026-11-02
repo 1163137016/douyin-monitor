@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02 21:57:22",
+  "generated": "2026-11-02 22:30:06",
   "total": 1983,
   "source": "github-releases",
   "accounts": [
@@ -5016,6 +5016,30 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20261102_102620_.hallowe__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20261102_102620_.hallowe__01-2.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20261102_102620_.hallowe__02-2.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20261102_102620_.hallowe__03-2.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20261102_102620_.hallowe__04-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20261102_102620_.hallowe__05-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20261102_102620_.hallowe__06-2.jpg"
             }
           ]
         },
