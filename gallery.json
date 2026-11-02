@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-03 00:06:59",
-  "total": 1983,
+  "generated": "2026-11-03 00:39:46",
+  "total": 1984,
   "source": "github-releases",
   "accounts": [
     {
@@ -65656,6 +65656,65 @@
     },
     {
       "id": "",
+      "nick": "MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw",
+      "works": [
+        {
+          "pub": "2026-11-03 00:15:18",
+          "desc": "只低头调整自己",
+          "caption": "发布时间: 2026-11-03 00:15:18\n作品类型: 视频\n\n文案:\n只低头调整自己\n\n点赞 4 | 评论 1 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7703608467794276851",
+          "kind": "live",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw__20261103_001518_.__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw__20261103_001518_.__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw__20261103_001518_.__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw__20261103_001518_.__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw__20261103_001518_.__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw__20261103_001518_.__06.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw__20261103_001518_.__07.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw__20261103_001518_.__08.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw__20261103_001518_.__10.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw__20261103_001518_.__11.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw__20261103_001518_.__12.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7703608467794276851"
+        }
+      ]
+    },
+    {
+      "id": "",
       "nick": "MS4wLjABAAAADaDvhenHwGabPZoulTNE3nJNr6CA7wJ8tbKZn_x07H2EB8oL2Thr0L0gzoPUItEX",
       "works": [
         {
@@ -68113,5 +68172,5 @@
       ]
     }
   ],
-  "local_added": 421
+  "local_added": 422
 }
