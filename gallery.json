@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-02 07:36:04",
-  "total": 1976,
+  "generated": "2026-11-02 08:08:56",
+  "total": 1977,
   "source": "github-releases",
   "accounts": [
     {
@@ -50461,6 +50461,27 @@
           ]
         },
         {
+          "pub": "2026-07-08 14:20:00",
+          "desc": "時間 塑造我成為勇敢有力量的人。#birthdaygirl  #世界不能没有小蛋糕",
+          "caption": "发布时间: 2026-07-08 14:20:00\n作品类型: 图文\n\n文案:\n時間 塑造我成為勇敢有力量的人。#birthdaygirl  #世界不能没有小蛋糕\n\n点赞 72 | 评论 13 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7659997703305157513",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20260708_142000_.birthdaygirl__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20260708_142000_.birthdaygirl__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-20/default.__20260708_142000_.birthdaygirl__03.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7659997703305157513"
+        },
+        {
           "pub": "2025-08-29 21:01:51",
           "desc": "(无文案)",
           "caption": "发布时间: 2025-08-29 21:01:51\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 14 | 评论 3 | 收藏 0 | 分享 2\n作品链接: https://www.douyin.com/video/7543991981703040306",
@@ -67408,5 +67429,5 @@
       ]
     }
   ],
-  "local_added": 418
+  "local_added": 419
 }
