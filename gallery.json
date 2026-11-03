@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-03 20:48:18",
-  "total": 2176,
+  "generated": "2026-11-03 21:21:38",
+  "total": 2177,
   "source": "github-releases",
   "accounts": [
     {
@@ -70685,6 +70685,25 @@
     },
     {
       "id": "",
+      "nick": "MS4wLjABAAAAmaB9RnDUoQcDz8J3dO3WPCdzxF_m_XciDD7oEGI2IUg",
+      "works": [
+        {
+          "pub": "2026-11-03 21:02:38",
+          "desc": "快来喝汤吧😆",
+          "caption": "发布时间: 2026-11-03 21:02:38\n作品类型: 视频\n\n文案:\n快来喝汤吧😆\n\n点赞 4 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7703929898649343211",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/MS4wLjABAAAAmaB9RnDUoQcDz8J3dO3WPCdzxF_m_XciDD7oEGI2IUg__20261103_210238_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7703929898649343211"
+        }
+      ]
+    },
+    {
+      "id": "",
       "nick": "MS4wLjABAAAArG6NNo6mD3LjSeXhuzpAaLjqG3Abc7k-A5CjYMt9ezk",
       "works": [
         {
@@ -73299,5 +73318,5 @@
       ]
     }
   ],
-  "local_added": 519
+  "local_added": 520
 }
