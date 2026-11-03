@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-04 00:34:28",
-  "total": 2182,
+  "generated": "2026-11-04 01:37:27",
+  "total": 2183,
   "source": "github-releases",
   "accounts": [
     {
@@ -68466,6 +68466,25 @@
     },
     {
       "id": "",
+      "nick": "MS4wLjABAAAA0pX1J4U8NP50W6PyD_ewE8zTT6xhH7oViA3MVNybYwQ",
+      "works": [
+        {
+          "pub": "2026-11-03 23:24:18",
+          "desc": "累到整个人都恍惚了，可偏偏还没办法按下暂停键",
+          "caption": "发布时间: 2026-11-03 23:24:18\n作品类型: 图文\n\n文案:\n累到整个人都恍惚了，可偏偏还没办法按下暂停键\n\n点赞 0 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7703966409051559290",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/MS4wLjABAAAA0pX1J4U8NP50W6PyD_ewE8zTT6xhH7oViA3MVNybYwQ__20261103_232418_.__01.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7703966409051559290"
+        }
+      ]
+    },
+    {
+      "id": "",
       "nick": "MS4wLjABAAAA9y9nREgjeHoocLZ-Ge7W7ys77BIo_g_BZRjmh8Yjigw",
       "works": [
         {
@@ -73586,5 +73605,5 @@
       ]
     }
   ],
-  "local_added": 520
+  "local_added": 521
 }
