@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-03 23:31:24",
-  "total": 2181,
+  "generated": "2026-11-04 00:34:28",
+  "total": 2182,
   "source": "github-releases",
   "accounts": [
     {
@@ -11,11 +11,15 @@
           "pub": "2026-11-03 13:02:38",
           "desc": "快来喝汤吧😆",
           "caption": "发布时间: 2026-11-03 13:02:38\n作品类型: 视频\n\n文案:\n快来喝汤吧😆\n\n点赞 27 | 评论 6 | 收藏 5 | 分享 0\n作品链接: https://www.douyin.com/video/7703929898649343211",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/Zeus__20261103_130238_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/Zeus__20261103_130238_.__.-2.mp4"
             }
           ]
         },
@@ -44100,6 +44104,30 @@
           ]
         },
         {
+          "pub": "2022-05-22 03:31:18",
+          "desc": "我说我有点腼腆容易被骗 你却到处说我在缅甸_做诈骗.@DOU+小助手 #甜辣妹 ",
+          "caption": "发布时间: 2022-05-22 03:31:18\n作品类型: 图文\n\n文案:\n我说我有点腼腆容易被骗 你却到处说我在缅甸\n做诈骗.@DOU+小助手 #甜辣妹 #辣妹\n\n点赞 444 | 评论 63 | 收藏 21 | 分享 112\n作品链接: https://www.douyin.com/video/7100398169585913101",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/Nuo.__20220522_033118_._.DOU__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/Nuo.__20220522_033118_._.DOU__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/Nuo.__20220522_033118_._.DOU__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/Nuo.__20220522_033118_._.DOU__04.jpg"
+            }
+          ]
+        },
+        {
           "pub": "2022-03-16 11:06:37",
           "desc": "今天去买肉夹馍，让老板多放点辣椒，结果刚吃一口诶！就掉地上，还沾了泥，原来这就叫",
           "caption": "发布时间: 2022-03-16 11:06:37\n作品类型: 图文\n\n文案:\n今天去买肉夹馍，让老板多放点辣椒，结果刚吃一口诶！就掉地上，还沾了泥，原来这就叫做辣馍喜欢泥！#夏天的味道 #钢琴 #显白发色 @DOU+小助手\n\n点赞 394 | 评论 82 | 收藏 14 | 分享 53\n作品链接: https://www.douyin.com/video/7075652802487274788",
@@ -66632,7 +66660,7 @@
           "pub": "2025-03-27 06:45:44",
           "desc": "更新一下#日落🌇 #日落沉溺于橘色的海 #椿 #lon #nbgt",
           "caption": "发布时间: 2025-03-27 06:45:44\n作品类型: 视频\n\n文案:\n更新一下#日落🌇 #日落沉溺于橘色的海 #椿 #lon #nbgt\n\n点赞 159 | 评论 6 | 收藏 6 | 分享 10\n作品链接: https://www.douyin.com/video/7486376821693402409",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
