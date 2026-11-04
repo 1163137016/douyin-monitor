@@ -348,7 +348,27 @@ def esc(s) -> str:
     return html.escape(str(s or ""))
 
 
+# GitHub Releases 直链(objects.githubusercontent.com)在国内网络普遍不可达,
+# 页面里的媒体直链改走 GitHub 加速镜像; 可用 GH_MIRRORS 环境变量覆盖(逗号分隔)。
+GH_MIRRORS = [m.strip().rstrip("/") for m in os.environ.get(
+    "GH_MIRRORS",
+    "https://ghfast.top,https://ghproxy.net,https://gh-proxy.com",
+).split(",") if m.strip()]
+
+
+def _gh_mirror(u: str) -> str:
+    """仅重写 github 域名的绝对链接; 本地相对路径不动。"""
+    try:
+        host = urllib.parse.urlparse(u).hostname or ""
+    except Exception:
+        return u
+    if host == "github.com" or host.endswith(".githubusercontent.com"):
+        return f"{GH_MIRRORS[0]}/{u}"
+    return u
+
+
 def media_tag(kind: str, src: str) -> str:
+    src = _gh_mirror(src)
     if kind == "video":
         # 显式声明 type="video/mp4" 帮助浏览器识别; 另附「新窗口打开/下载」链接,
         # 即便个别旧附件 MIME 仍为 octet-stream, 用户点开也能观看或下载。
@@ -416,6 +436,21 @@ def collect_from_state() -> list:
     return groups
 
 
+def _nick_for_folder(top: str) -> str:
+    """本地模式: 顶层目录可能是 sec_uid(新版) 或旧昵称(旧版)。
+
+    若是 sec_uid, 从对应 state 文件取显示昵称; 否则(旧版昵称目录)原样返回。
+    """
+    p = STATE_DIR / f"{top}.json"
+    if p.exists():
+        try:
+            st = json.loads(p.read_text("utf-8"))
+            return st.get("nickname") or top
+        except Exception:
+            return top
+    return top
+
+
 def collect_from_local() -> list:
     """本地模式: 扫描 downloads/, 媒体复制进 site/downloads/, 按账号分组。"""
     if not DOWNLOAD_DIR.exists():
@@ -428,7 +463,8 @@ def collect_from_local() -> list:
     for caption_file in sorted(dest_root.rglob("文案.txt")):
         folder = caption_file.parent
         rel = folder.relative_to(dest_root).as_posix()
-        nick = rel.split("/")[0] if "/" in rel else "未分组"
+        top = rel.split("/")[0] if "/" in rel else "未分组"
+        nick = _nick_for_folder(top)
         items = []
         for ext in ("mp4", "webm", "mov", "jpg", "jpeg", "png", "gif", "webp"):
             for f in sorted(folder.glob(f"*.{ext}")):
@@ -551,7 +587,7 @@ def _highlights_html(groups: list) -> str:
             if it.get("type") == "image":
                 cover = it.get("url", "")
                 break
-        thumb = (f'<img loading="lazy" decoding="async" src="{esc(cover)}" alt="">'
+        thumb = (f'<img loading="lazy" decoding="async" src="{esc(_gh_mirror(cover))}" alt="">'
                  if cover else '<div class="bd-ph">▶</div>')
         desc = (e.get("desc") or "未命名作品")[:42]
         # data-txt 供搜索联动：作者 + 文案一起参与匹配
