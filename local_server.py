@@ -55,9 +55,43 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 # 保证同目录的 cloud_sync 等模块可被导入（部分环境下 sys.path[0] 不是脚本目录）
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import cloud_sync  # 本地→云端直传 / 推送索引（未配置 GITHUB_TOKEN 时安全降级为纯本地）
+import account_store  # 账号清单读写（网页「添加账号」用）
 
 ROOT = Path(__file__).resolve().parent
 CACHE_DIR = Path(os.environ.get("CACHE_DIR", r"D:\gitdy")).resolve()
+STATE_DIR = CACHE_DIR / "state"  # 各账号 state/<sec_uid>.json 存显示昵称
+
+
+def _resolve_nick(folder: str) -> str:
+    """文件夹名可能是 sec_uid(新版) 或旧昵称(旧版)。
+
+    若是 sec_uid, 从对应 state 文件取显示昵称; 否则(旧昵称目录)原样返回。
+    找不到 state 时退回文件夹名本身, 绝不抛错。
+    """
+    if not folder.startswith("MS4wL"):
+        return folder  # 旧版昵称目录, 直接作为显示名
+    sf = STATE_DIR / f"{folder}.json"
+    if sf.exists():
+        try:
+            st = json.loads(sf.read_text("utf-8", errors="ignore"))
+            nn = st.get("nickname")
+            if nn:
+                return nn
+        except Exception:
+            pass
+    return folder
+
+
+def _canon_name(raw: str) -> str:
+    """把任意来源的昵称规范成本地分组名, 保证同一人只归到一个分组。
+
+    - sec_uid -> 解析回真实昵称
+    - 尾部点/空格去掉(Windows 文件夹名会吞掉尾点, 云端 key 却保留点,
+      不统一的话 "Nuo." 和 "Nuo" 会被拆成两个分组)
+    """
+    return _resolve_nick(raw).rstrip(". ")
+
+
 PORT = int(os.environ.get("PORT", "8000"))
 HOST = os.environ.get("HOST", "0.0.0.0")
 INTERVAL = max(1, int(os.environ.get("MONITOR_INTERVAL_MIN", "30")))
@@ -78,6 +112,21 @@ def _load_local_env():
             continue
         k, v = ln.split("=", 1)
         os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+
+
+def _read_env_value(key):
+    """直接从磁盘 .env 读某个值（服务运行期间网页可能改动了账号表）。"""
+    ep = ROOT / ".env"
+    if not ep.exists():
+        return None
+    for ln in ep.read_text("utf-8", errors="ignore").splitlines():
+        ln = ln.strip()
+        if not ln or ln.startswith("#") or "=" not in ln:
+            continue
+        k, v = ln.split("=", 1)
+        if k.strip() == key:
+            return v.strip().strip('"').strip("'")
+    return None
 
 
 _load_local_env()
@@ -118,6 +167,67 @@ def plog(msg):
         pass
 
 # ---------------------------------------------------------------------------
+# 监控子进程 PID 记录
+# 服务被强杀（重启/关机）时，子进程并不会跟着退出，会变成孤儿继续下载，
+# 与下一轮抢同一批文件。这里把子进程 PID 记在磁盘，启动时清掉遗留的。
+# ---------------------------------------------------------------------------
+_PIDFILE = ROOT / ".monitor.pids"
+
+
+def _pid_alive(pid):
+    pid = int(pid)
+    if pid <= 0:
+        return False
+    if os.name != "nt":
+        try:
+            os.kill(pid, 0)
+            return True
+        except Exception:
+            return False
+    try:
+        import ctypes
+        h = ctypes.windll.kernel32.OpenProcess(0x1000, False, pid)  # QUERY_LIMITED_INFORMATION
+        if not h:
+            return False
+        ctypes.windll.kernel32.CloseHandle(h)
+        return True
+    except Exception:
+        return False
+
+
+def _kill_pid(pid):
+    try:
+        subprocess.run(["taskkill", "/F", "/PID", str(int(pid))],
+                       capture_output=True, timeout=10)
+    except Exception:
+        pass
+
+
+def _load_pids():
+    try:
+        return [int(x) for x in json.loads(_PIDFILE.read_text("utf-8"))]
+    except Exception:
+        return []
+
+
+def _save_pids(pids):
+    try:
+        _PIDFILE.write_text(json.dumps(sorted({int(p) for p in pids})), encoding="utf-8")
+    except Exception:
+        pass
+
+
+def reap_stale_monitors():
+    """清掉上次服务进程遗留的监控子进程（避免两个监控同时跑）。"""
+    stale = [p for p in _load_pids() if p != os.getpid() and _pid_alive(p)]
+    for p in stale:
+        _kill_pid(p)
+    if stale:
+        plog(f"清理上次遗留的监控进程: {stale}")
+    _save_pids([])
+
+
+# ---------------------------------------------------------------------------
 # 监控线程：周期性调用 monitor_run.py（本地缓存模式）
 # ---------------------------------------------------------------------------
 class Monitor:
@@ -145,11 +255,22 @@ class Monitor:
             env = dict(os.environ)
             env["STORAGE_BACKEND"] = "local"          # 不导入远端存储, 只缓存到本地
             env["DOWNLOAD_DIR"] = str(CACHE_DIR)       # 缓存根目录 = D:\gitdy
+            # 状态文件与日志也一起放进缓存根目录：C 盘只留代码, 不再被持续写入
+            env["STATE_DIR"] = str(CACHE_DIR / "state")
+            env["LOG_DIR"] = str(CACHE_DIR)
             env["KEEP_LOCAL"] = "1"                    # 绝不允许删本地缓存
             # 关键：清掉令牌，否则 monitor_run 会继承 .env 的 PAT -> 上传后删本地文件
             env["GITHUB_TOKEN"] = ""
             env["GITHUB_REPOSITORY"] = ""
             env["PYTHONUNBUFFERED"] = "1"
+            # 账号列表以磁盘上最新的 .env 为准：网页里添加/删除账号后
+            # 无需重启服务，下一轮就按新清单跑（否则会沿用启动时的旧值）
+            try:
+                _mu = _read_env_value("MONITOR_URLS")
+                if _mu is not None:
+                    env["MONITOR_URLS"] = _mu
+            except Exception:
+                pass
             self._log(f"===== {time.strftime('%Y-%m-%d %H:%M:%S')} 启动监控子进程 =====")
             proc = subprocess.Popen(
                 [PYTHON, str(MONITOR_SCRIPT)],
@@ -157,9 +278,11 @@ class Monitor:
                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                 text=True, encoding="utf-8", errors="ignore", bufsize=1,
             )
+            _save_pids(_load_pids() + [proc.pid])
             for line in proc.stdout:
                 self._log(line.rstrip("\n"))
             proc.wait()
+            _save_pids([p for p in _load_pids() if p != proc.pid])
             self.last_run = time.strftime("%Y-%m-%d %H:%M:%S")
             self.last_status = "空闲（等待下一轮）" if proc.returncode == 0 else f"上次异常(退出码 {proc.returncode})"
             self._log(f"===== 监控结束 退出码={proc.returncode} =====")
@@ -371,6 +494,7 @@ def build_index():
         if not acc.is_dir() or acc.name.startswith("."):
             continue  # 跳过 .cloudcache 等内部目录
         nick = acc.name
+        disp = _resolve_nick(nick)  # 显示昵称(新版为 sec_uid 时解析回真名)
         posts = []
         for post in sorted(acc.iterdir()):
             if not post.is_dir():
@@ -413,6 +537,7 @@ def build_index():
             posts.append({
                 "id": f"{nick}|{post.name}",
                 "account": nick,
+                "account_display": disp,
                 "kind": kind,
                 "desc": desc or post.name,
                 "pub": pub,
@@ -421,7 +546,8 @@ def build_index():
             })
         if posts:
             total += len(posts)
-            accounts.append({"name": nick, "count": len(posts), "posts": posts})
+            accounts.append({"name": nick, "count": len(posts),
+                             "display": disp, "posts": posts})
 
     # ---- 补全「只在云端」的作品：本地没缓存过，但云端画廊（Pages 索引）已有 ----
     local_total = total
@@ -437,7 +563,8 @@ def build_index():
     except Exception:
         cats = []
     for ca in cats:
-        nick = (ca.get("nick") or "").strip()
+        raw_nick = (ca.get("nick") or "").strip()
+        nick = _canon_name(raw_nick)  # 与本地文件夹同名归并, 同一人不拆分组
         if not nick:
             continue
         for w in ca.get("works", []):
@@ -461,12 +588,14 @@ def build_index():
             kind = w.get("kind") or ("video" if (has_v and not has_i)
                                      else ("live" if (has_v and has_i) else "image"))
             if nick not in acc_index:
-                acc_index[nick] = {"name": nick, "count": 0, "posts": []}
+                acc_index[nick] = {"name": nick, "count": 0,
+                                   "display": nick, "posts": []}
                 accounts.append(acc_index[nick])
             node = acc_index[nick]
             node["posts"].append({
                 "id": f"cloud|{nick}|{pub}|{len(node['posts'])}",
                 "account": nick,
+                "account_display": nick,
                 "kind": kind,
                 "desc": desc or "(无文案)",
                 "pub": pub,
@@ -571,6 +700,9 @@ APP_HTML = r"""<!DOCTYPE html>
     background:var(--panel2);color:var(--txt);outline:none;font-size:14px}
   .search:focus{border-color:var(--accent)}
   .accs{margin-top:14px;display:flex;flex-direction:column;gap:4px}
+  .addaccbtn{margin-top:10px;width:100%;justify-content:center;font-size:12.5px;
+    background:linear-gradient(135deg,rgba(109,94,252,.22),rgba(34,211,238,.12));
+    border:1px dashed rgba(109,94,252,.55);color:#cfd3ff}
   .acc{padding:9px 11px;border-radius:11px;cursor:pointer;display:flex;justify-content:space-between;
     align-items:center;color:var(--sub);border:1px solid transparent}
   .acc:hover{background:var(--panel2)}
@@ -595,6 +727,46 @@ APP_HTML = r"""<!DOCTYPE html>
   .src{font-size:12px;padding:4px 12px;border-radius:20px;cursor:pointer;color:var(--sub);
     border:1px solid var(--line);background:var(--panel2);user-select:none}
   .src.on{color:#fff;border-color:rgba(109,94,252,.6);background:linear-gradient(135deg,rgba(109,94,252,.35),rgba(34,211,238,.18))}
+  /* 近期更新 Top15 + 视频公告栏 */
+  .hl,.board{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:12px 14px;margin-bottom:14px}
+  .hl-head,.board-head{display:flex;align-items:baseline;gap:8px;font-size:13.5px;
+    font-weight:600;color:var(--txt);margin-bottom:10px}
+  .hl-head .sub,.board-head .sub{font-size:11px;font-weight:400;color:var(--sub)}
+  .hl-scroll,.board-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;
+    -webkit-overflow-scrolling:touch}
+  .hl-card{flex:0 0 auto;width:80px;text-align:center;cursor:pointer;border-radius:10px;
+    padding:6px 2px;position:relative;border:1px solid transparent}
+  .hl-card:hover{background:var(--panel2)}
+  .hl-card.on{background:linear-gradient(135deg,rgba(109,94,252,.26),rgba(34,211,238,.12));
+    border-color:rgba(109,94,252,.45)}
+  .hl-ava{width:46px;height:46px;border-radius:50%;margin:0 auto 6px;display:flex;
+    align-items:center;justify-content:center;color:#fff;font-size:17px;font-weight:700}
+  .hl-name{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .hl-time{font-size:10.5px;color:var(--sub);margin-top:2px}
+  .hl-rk{position:absolute;top:5px;left:7px;font-size:9.5px;font-weight:600;
+    color:#fff;border-radius:7px;padding:0 5px;line-height:14px;background:var(--accent)}
+  .hl-card[data-rk="1"] .hl-rk{background:#e0a03c}
+  .hl-card[data-rk="2"] .hl-rk{background:#98a2b3}
+  .hl-card[data-rk="3"] .hl-rk{background:#c2895c}
+  .hl-type{display:inline-block;margin-top:3px;font-size:9.5px;font-weight:600;padding:1px 6px;border-radius:7px;color:#fff;line-height:1.5}
+  .hl-type.video{background:rgba(34,211,238,.92);color:#06222a}
+  .hl-type.image{background:rgba(20,24,35,.82);color:#cfd6e6}
+  .hl-type.live{background:rgba(255,77,141,.92);color:#fff}
+  .bd-card{flex:0 0 auto;width:158px;cursor:pointer;border-radius:11px;overflow:hidden;
+    background:var(--panel2);border:1px solid var(--line);transition:transform .15s}
+  .bd-card:hover{transform:translateY(-2px)}
+  .bd-thumb{position:relative;aspect-ratio:16/10;background:#0a0c12;display:flex;
+    align-items:center;justify-content:center;overflow:hidden}
+  .bd-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .bd-ph{font-size:22px;color:#5b6479}
+  .bd-tag{position:absolute;left:6px;bottom:6px;font-size:10px;background:rgba(0,0,0,.65);
+    color:#fff;border-radius:6px;padding:1px 6px}
+  .bd-desc{font-size:12px;line-height:1.45;padding:7px 8px 0;display:-webkit-box;
+    -webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:34px}
+  .bd-meta{font-size:10.5px;color:var(--sub);padding:4px 8px 8px;display:flex;
+    justify-content:space-between;gap:6px}
+  .bd-meta span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;cursor:pointer;
     transition:transform .15s ease,box-shadow .15s ease;position:relative}
@@ -641,6 +813,31 @@ APP_HTML = r"""<!DOCTYPE html>
   .mnav{position:absolute;top:50%;transform:translateY(-50%);font-size:26px;color:#fff;cursor:pointer;
     background:rgba(0,0,0,.4);width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;user-select:none}
   .mnav.l{left:10px}.mnav.r{right:10px}
+  /* 账号管理弹窗 */
+  .accbox{width:min(700px,94vw);max-height:88vh}
+  .acchead{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+  .acchead b{font-size:15px}
+  .acchead .acccount{font-size:12px;color:var(--sub)}
+  .acchead .mclose{margin-left:auto;position:static;background:rgba(255,255,255,.08);width:28px;height:28px;font-size:18px}
+  .accbody{padding:14px 16px;overflow:auto;display:flex;flex-direction:column;gap:10px}
+  .accbody .tip{font-size:12px;color:var(--sub);line-height:1.7}
+  #accInput{width:100%;min-height:96px;resize:vertical;padding:10px 12px;border-radius:11px;
+    border:1px solid var(--line);background:#0b0e16;color:var(--txt);font-size:13px;outline:none;font-family:inherit}
+  #accInput:focus{border-color:var(--accent)}
+  .accrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .accmsg{font-size:12px;color:var(--sub)}
+  .accmsg.ok{color:#39d98a}
+  .accmsg.err{color:#ff8a80}
+  .acclist{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+  .accitem{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;
+    background:var(--panel2);border:1px solid transparent;font-size:13px;color:var(--txt)}
+  .accitem.off{opacity:.45}
+  .accitem .accname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    text-decoration:none;color:var(--txt)}
+  .accitem .accops{display:flex;gap:6px;flex:0 0 auto}
+  .accitem .mini{padding:3px 9px;font-size:11px;border-radius:8px;border:1px solid var(--line);
+    background:#141824;color:var(--sub);cursor:pointer}
+  .accitem .mini.del:hover{color:#ff8a80;border-color:rgba(255,138,128,.5)}
   @media(max-width:760px){
     .app{flex-direction:column}
     .side{width:100%;flex:none;height:auto;position:static;border-right:none;border-bottom:1px solid var(--line);padding:14px}
@@ -657,6 +854,7 @@ APP_HTML = r"""<!DOCTYPE html>
     <div class="brand"><div class="logo">抖</div><b>抖音作品库</b></div>
     <div class="status"><span class="dot" id="dot"></span><span id="statusTxt">加载中…</span></div>
     <input class="search" id="search" placeholder="搜索文案 / 账号…" />
+    <button class="btn addaccbtn" id="addAccBtn">＋ 添加 / 管理账号</button>
     <div class="accs" id="accs"></div>
   </aside>
   <main class="main">
@@ -678,6 +876,8 @@ APP_HTML = r"""<!DOCTYPE html>
         <button class="btn primary" id="syncBtn">↻ 立即同步</button>
       </div>
     </div>
+    <div class="hl" id="hl" style="display:none"></div>
+    <div class="board" id="board" style="display:none"></div>
     <div class="grid" id="grid"></div>
     <div class="empty" id="empty" style="display:none">还没有缓存作品。<br/>点击右上角「立即同步」开始下载，或等待后台自动监控。</div>
   </main>
@@ -692,11 +892,35 @@ APP_HTML = r"""<!DOCTYPE html>
   </div>
 </div>
 
+<div class="modal" id="accModal">
+  <div class="mbox accbox">
+    <div class="acchead">
+      <b>监控账号</b><span class="acccount" id="accCount"></span>
+      <div class="mclose" onclick="closeAcc()">×</div>
+    </div>
+    <div class="accbody">
+      <div class="tip">粘贴抖音主页链接，一行一个；也支持逗号分隔、分享短链（v.douyin.com）、纯 sec_uid。<br/>
+        点击「添加」后会写入 accounts.csv、同步到 GitHub，并立刻开始抓取。</div>
+      <textarea id="accInput" placeholder="https://www.douyin.com/user/MS4wLjABAAAA..."></textarea>
+      <div class="accrow">
+        <button class="btn primary" id="accSave">＋ 添加并同步到 GitHub</button>
+        <button class="btn" id="accSyncBtn">☁ 只同步现有账号表</button>
+        <span class="accmsg" id="accMsg"></span>
+      </div>
+      <div class="acclist" id="accList"></div>
+    </div>
+  </div>
+</div>
+
 <script>
 let DATA=null, FILTER={acc:"__all__", q:"", src:"all"};
 const $=s=>document.querySelector(s);
 function esc(s){return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
-function colorOf(n){let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))%360;return `hsl(${h} 70% 55%)`;}
+/* 头像底色收在主题紫蓝色域内(224~268), 不再用随机彩虹色——彩虹色在深色
+   主题上最跳, 与 #6d5efc / #22d3ee 的品牌色相互打架。侧栏也用同一函数。 */
+function colorOf(n){let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))%360;
+  const hue=224+(h%45);
+  return `linear-gradient(135deg,hsl(${hue} 62% 58%),hsl(${hue+14} 58% 44%))`;}
 
 async function load(){
   try{
@@ -704,6 +928,7 @@ async function load(){
   }catch(e){ DATA={accounts:[],total:0,updated:""}; }
   renderStatus();
   renderAccs();
+  renderHighlights();
   renderGrid();
   loadCloud();
 }
@@ -731,8 +956,9 @@ function renderAccs(){
   (DATA?DATA.accounts:[]).forEach(a=>{
     const d=document.createElement("div");
     d.className="acc"+(FILTER.acc===a.name?" on":"");
-    const ini=esc(a.name.slice(0,1));
-    d.innerHTML=`<div class="n"><span class="ava" style="background:${colorOf(a.name)}">${ini}</span>${esc(a.name)}</div><span class="cnt">${a.count}</span>`;
+    const shown=a.display||a.name;
+    const ini=esc(shown.slice(0,1));
+    d.innerHTML=`<div class="n"><span class="ava" style="background:${colorOf(a.name)}">${ini}</span>${esc(shown)}</div><span class="cnt">${a.count}</span>`;
     d.onclick=()=>{FILTER.acc=a.name;renderAccs();renderGrid();};
     box.appendChild(d);
   });
@@ -745,13 +971,91 @@ function flatPosts(){
   if(FILTER.src==="local") posts=posts.filter(p=>!p.cloud_only);
   if(FILTER.src==="cloud") posts=posts.filter(p=>p.cloud_only);
   if(FILTER.q){ const q=FILTER.q.toLowerCase();
-    posts=posts.filter(p=>(p.desc||"").toLowerCase().includes(q)||(p.account||"").toLowerCase().includes(q)); }
+    const dispMap={}; (DATA?DATA.accounts:[]).forEach(a=>{dispMap[a.name]=(a.display||a.name).toLowerCase();});
+    posts=posts.filter(p=>{
+      const acc=(p.account||"");
+      return (p.desc||"").toLowerCase().includes(q)||acc.toLowerCase().includes(q)||(dispMap[acc]||"").includes(q);
+    }); }
   return posts;
 }
 function primary(p){
   if(p.kind==="image") return p.media[0];
   return p.media.find(m=>m.kind==="video")||p.media[0];
 }
+/* ---------- 近期更新 Top15 + 视频公告栏 ---------- */
+function relTime(s){
+  if(!s) return "";
+  const t=new Date(String(s).replace(/-/g,"/"));
+  if(isNaN(t.getTime())) return s;
+  const d=(Date.now()-t.getTime())/1000;
+  if(d<0) return "刚刚";
+  if(d<60) return "刚刚";
+  if(d<3600) return Math.floor(d/60)+" 分钟前";
+  if(d<86400) return Math.floor(d/3600)+" 小时前";
+  if(d<2592000) return Math.floor(d/86400)+" 天前";
+  return s.slice(5,10);
+}
+function latestPub(posts){
+  let m="";
+  (posts||[]).forEach(p=>{ if(p.pub&&p.pub>m) m=p.pub; });
+  return m;
+}
+function renderHighlights(){
+  const accs=(DATA&&DATA.accounts)||[];
+  const ranked=accs.map(a=>{
+    const posts=a.posts||[]; let latest="",kind="";
+    posts.forEach(p=>{ if(p.pub&&p.pub>latest){latest=p.pub;kind=p.kind||"";} });
+    return {name:a.name,count:a.count??posts.length,latest,kind};
+  }).sort((x,y)=>(y.latest||"").localeCompare(x.latest||""));
+  const top=ranked.slice(0,15), hl=$("#hl");
+  /* 近期更新永远是跨账号 Top15，不被单账号筛选收掉：点进某人只过滤下方网格，
+     上方榜单保持完整，避免"榜单塌缩成一个人"。搜索时仍按昵称过滤。 */
+  const q=(FILTER.q||"").toLowerCase();
+  const shown=top.filter(a=>(!q||(a.name||"").toLowerCase().includes(q)));
+  if(!shown.length){ hl.style.display="none"; }
+  else{
+    hl.style.display="";
+    const subTxt=`前 ${shown.length} 位作者 · 点击查看该作者`;
+    hl.innerHTML=`<div class="hl-head">🔥 近期更新<span class="sub">${subTxt}</span></div>
+      <div class="hl-scroll">${shown.map((a,i)=>`
+        <div class="hl-card${FILTER.acc===a.name?" on":""}" data-acc="${esc(a.name)}"${i<3?` data-rk="${i+1}"`:""}>
+          ${i<3?`<span class="hl-rk">${i+1}</span>`:""}
+          <div class="hl-ava" style="background:${colorOf(a.name)}">${esc((a.display||a.name).slice(0,1))}</div>
+          <div class="hl-name">${esc(a.display||a.name)}</div>
+          <div class="hl-time">${esc(relTime(a.latest)||(a.count+" 条"))}</div>
+          ${a.kind?`<div class="hl-type ${a.kind}">${a.kind==="video"?"视频":a.kind==="live"?"实况":"图文"}</div>`:""}
+        </div>`).join("")}</div>`;
+    hl.querySelectorAll(".hl-card").forEach(c=>{
+      c.onclick=()=>{
+        const acc=c.dataset.acc;
+        FILTER.acc=(FILTER.acc===acc)?"__all__":acc;   // 再点一次回到全部
+        renderAccs(); renderGrid(); renderHighlights();
+        if(FILTER.acc==="__all__"){ window.scrollTo({top:0,behavior:"smooth"}); return; }
+        const t=$(".top"); if(t) t.scrollIntoView({behavior:"smooth",block:"start"});
+      };
+    });
+  }
+  const vids=flatPosts()
+    .filter(p=>p.kind==="video"||(p.media||[]).some(m=>m.kind==="video"))
+    .sort((x,y)=>(y.pub||"").localeCompare(x.pub||""))
+    .slice(0,12);
+  const bd=$("#board");
+  if(!vids.length){ bd.style.display="none"; return; }
+  bd.style.display="";
+  bd.innerHTML=`<div class="board-head">📢 视频公告栏<span class="sub">最近更新的 ${vids.length} 条视频 · 点击播放</span></div>
+    <div class="board-scroll">${vids.map(p=>{
+      const img=(p.media||[]).find(m=>m.kind==="image");
+      const thumb=p.cloud_only?`<div class="bd-ph">☁ ▶</div>`
+        :(img?`<img src="${img.url}" loading="lazy" decoding="async" alt=""/>`:`<div class="bd-ph">▶</div>`);
+      return `<div class="bd-card">
+        <div class="bd-thumb">${thumb}<span class="bd-tag">视频</span></div>
+        <div class="bd-desc">${esc((p.desc||"未命名作品").slice(0,42))}</div>
+        <div class="bd-meta"><span>${esc(p.account_display||p.account)}</span><span>${esc(relTime(p.pub))}</span></div>
+      </div>`;
+    }).join("")}</div>`;
+  bd.querySelectorAll(".bd-card").forEach((c,i)=>{ c.onclick=()=>openModal(vids[i]); });
+}
+
 function renderGrid(){
   const grid=$("#grid"); grid.innerHTML="";
   const posts=flatPosts();
@@ -771,9 +1075,12 @@ function renderGrid(){
     const cbadge = p.cloud_only?`<div class="badge cloud">☁ 云端</div>`:"";
     const more = p.media.length>1?`<div class="more">${p.media.length} 项</div>`:"";
     c.innerHTML=`<div class="thumb">${thumb}${badge}${cbadge}${more}</div>
-      <div class="cap"><div class="d">${esc(p.desc)}</div><div class="t">${esc(p.account)} · ${esc(p.pub||"")}</div></div>`;
+      <div class="cap"><div class="d">${esc(p.desc)}</div><div class="t">${esc(p.account_display||p.account)} · ${esc(p.pub||"")}</div></div>`;
     c.onclick=()=>openModal(p);
     grid.appendChild(c);
+  });
+  document.querySelectorAll("#hl .hl-card").forEach(c=>{
+    c.classList.toggle("on", c.dataset.acc===FILTER.acc);
   });
 }
 
@@ -808,7 +1115,7 @@ function renderModal(){
     });
   }
   $("#minfo").innerHTML=`<div class="desc">${esc(p.desc)}</div>
-    <div class="meta"><span>${esc(p.account)}</span><span>${esc(p.pub||"")}</span>
+    <div class="meta"><span>${esc(p.account_display||p.account)}</span><span>${esc(p.pub||"")}</span>
     ${p.link?`<a href="${esc(p.link)}" target="_blank">抖音原作品 ↗</a>`:""}
     <a href="${esc(p.cloud_only&&m.remote?m.remote:m.url)}" target="_blank" download>下载</a></div>`;
 }
@@ -861,6 +1168,82 @@ async function loadCloud(){
   }catch(e){}
 }
 
+/* ---------------- 账号管理 ---------------- */
+async function postJSON(url,body){
+  const r=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body||{})});
+  try{ return await r.json(); }catch(e){ return {}; }
+}
+function openAcc(){
+  $("#accModal").classList.add("on");
+  $("#accMsg").textContent=""; $("#accMsg").className="accmsg";
+  loadAccs();
+}
+function closeAcc(){ $("#accModal").classList.remove("on"); }
+$("#accModal").addEventListener("click",e=>{ if(e.target.id==="accModal") closeAcc(); });
+
+async function loadAccs(){
+  const box=$("#accList");
+  box.innerHTML=`<div class="tip">加载中…</div>`;
+  let d={};
+  try{ const r=await fetch("/api/accounts"); d=await r.json(); }catch(e){}
+  const accs=d.accounts||[];
+  $("#accCount").textContent=`共 ${d.total||accs.length} 个`;
+  box.innerHTML="";
+  if(!accs.length){ box.innerHTML=`<div class="tip">还没有账号，粘贴链接添加吧。</div>`; return; }
+  accs.forEach(a=>{
+    const row=document.createElement("div");
+    row.className="accitem"+(a.enabled?"":" off");
+    const name=a.nick||(a.sec.length>18?a.sec.slice(0,18)+"…":a.sec);
+    row.innerHTML=`<a class="accname" href="${esc(a.url)}" target="_blank" title="${esc(a.sec)}">${esc(name)}</a>
+      <span class="cnt">${a.count} 条</span>
+      <span class="accops">
+        <button class="mini" data-act="toggle">${a.enabled?"停用":"启用"}</button>
+        <button class="mini del" data-act="del">删除</button>
+      </span>`;
+    row.querySelector('[data-act="toggle"]').onclick=async()=>{
+      await postJSON("/api/accounts/toggle",{sec:a.sec,enabled:!a.enabled});
+      loadAccs(); load();
+    };
+    row.querySelector('[data-act="del"]').onclick=async()=>{
+      if(!confirm(`从监控列表移除「${name}」？\n（本地已下载的作品不会删除，只是不再跟踪）`)) return;
+      await postJSON("/api/accounts/remove",{sec:a.sec});
+      loadAccs(); load();
+    };
+    box.appendChild(row);
+  });
+}
+
+$("#addAccBtn").addEventListener("click",openAcc);
+$("#accSave").addEventListener("click",async()=>{
+  const t=$("#accInput").value.trim(), msg=$("#accMsg"), b=$("#accSave");
+  if(!t){ msg.className="accmsg err"; msg.textContent="请先粘贴账号链接"; return; }
+  b.disabled=true; const old=b.textContent; b.textContent="处理中…";
+  msg.className="accmsg"; msg.textContent="正在解析并同步到 GitHub…";
+  const j=await postJSON("/api/accounts/add",{text:t});
+  b.disabled=false; b.textContent=old;
+  const p=[];
+  if(j.added&&j.added.length) p.push(`新增 ${j.added.length} 个`);
+  if(j.dup&&j.dup.length) p.push(`已存在 ${j.dup.length} 个`);
+  if(j.invalid&&j.invalid.length) p.push(`无法识别 ${j.invalid.length} 个`);
+  if(j.push) p.push(j.push.ok?`GitHub 已同步 ✓${j.push.commit?" "+j.push.commit:""}`:`GitHub 同步失败：${j.push.reason||"未知"}`);
+  msg.className="accmsg "+(j.push&&j.push.ok===false?"err":"ok");
+  msg.textContent=p.join(" · ")||"没有变化";
+  if(j.added&&j.added.length){
+    $("#accInput").value="";
+    msg.textContent+= j.monitor_triggered?" · 已开始抓取":" · 已加入清单，本轮跑完后开始抓取";
+    setTimeout(()=>{ load(); },3000);
+  }
+  loadAccs();
+});
+$("#accSyncBtn").addEventListener("click",async()=>{
+  const msg=$("#accMsg"), b=$("#accSyncBtn");
+  b.disabled=true; msg.className="accmsg"; msg.textContent="同步中…";
+  const j=await postJSON("/api/accounts/sync",{});
+  b.disabled=false;
+  msg.className="accmsg "+(j.ok?"ok":"err");
+  msg.textContent=j.ok?`已推送 accounts.csv 到 GitHub ✓${j.commit?" "+j.commit:""}`:`同步失败：${j.reason||"未知"}`;
+});
+
 load();
 setInterval(loadStatus, 8000);
 setInterval(loadCloud, 12000);
@@ -896,6 +1279,17 @@ class Handler(BaseHTTPRequestHandler):
 
     def log_message(self, *a):  # 静默默认访问日志
         pass
+
+    def _read_json(self):
+        """读 POST body 里的 JSON（失败返回空 dict）。"""
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+            if n <= 0:
+                return {}
+            raw = self.rfile.read(n)
+            return json.loads(raw.decode("utf-8") or "{}")
+        except Exception:
+            return {}
 
     def _json(self, obj, code=200):
         body = json.dumps(obj, ensure_ascii=False).encode("utf-8")
@@ -937,6 +1331,8 @@ class Handler(BaseHTTPRequestHandler):
             return self._json({"log": monitor.log[-200:]})
         if p == "/api/cloud/status":
             return self._json(_cloud_status())
+        if p == "/api/accounts":
+            return self._json(account_store.list_accounts())
         if p == "/api/cloud/sync":
             return self._json(_trigger_cloud())
         if p == "/api/cloud/rebuild":
@@ -963,6 +1359,32 @@ class Handler(BaseHTTPRequestHandler):
             return self._json(_trigger_cloud())
         if u.path == "/api/cloud/rebuild":
             return self._json(cloud_sync.trigger_pages_rebuild())
+        if u.path == "/api/accounts/add":
+            body = self._read_json()
+            text = (body.get("text") or "").strip()
+            if not text:
+                return self._json({"ok": False, "reason": "没有收到账号链接"}, 400)
+            res = account_store.add_accounts(text)
+            # 新增成功后立刻让本地监控开跑，新账号不用等下一轮定时
+            if res.get("added"):
+                try:
+                    res["monitor_triggered"] = monitor.trigger()
+                except Exception:
+                    res["monitor_triggered"] = False
+            return self._json(res)
+        if u.path == "/api/accounts/remove":
+            sec = (self._read_json().get("sec") or "").strip()
+            if not sec:
+                return self._json({"ok": False, "reason": "缺少 sec"}, 400)
+            return self._json(account_store.remove_account(sec))
+        if u.path == "/api/accounts/toggle":
+            body = self._read_json()
+            sec = (body.get("sec") or "").strip()
+            if not sec:
+                return self._json({"ok": False, "reason": "缺少 sec"}, 400)
+            return self._json(account_store.set_enabled(sec, bool(body.get("enabled"))))
+        if u.path == "/api/accounts/sync":
+            return self._json(account_store.sync_to_github())
         self.send_error(404, "Not Found")
 
     def serve_cloud(self, u):
@@ -1031,6 +1453,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main():
+    reap_stale_monitors()  # 先清掉上次遗留的监控子进程，避免两个同时跑
     srv = ThreadingHTTPServer((HOST, PORT), Handler)
     lan = _lan_ip()
     plog("抖音本地服务器已启动")
