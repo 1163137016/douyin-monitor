@@ -434,6 +434,42 @@ def _ext_of_url(u):
     return ext if ext in (IMG_EXT + VID_EXT) else ""
 
 
+# GitHub Releases 直链(objects.githubusercontent.com)在国内网络普遍不可达,
+# 云端媒体下载自动改走加速镜像; 可用 GH_MIRRORS 环境变量覆盖(逗号分隔)。
+GH_MIRRORS = [m.strip().rstrip("/") for m in os.environ.get(
+    "GH_MIRRORS",
+    "https://ghfast.top,https://ghproxy.net,https://gh-proxy.com",
+).split(",") if m.strip()]
+
+
+def _is_github_media(u: str) -> bool:
+    try:
+        host = urllib.parse.urlparse(u).hostname or ""
+    except Exception:
+        return False
+    return host == "github.com" or host.endswith(".githubusercontent.com")
+
+
+def _urlopen_any(u: str, timeout: int):
+    """github 媒体镜像优先、直连兜底; 返回第一个成功响应(HTML 错误页跳过)。"""
+    cands = ([f"{m}/{u}" for m in GH_MIRRORS] + [u]) if _is_github_media(u) else [u]
+    last = None
+    for cand in cands:
+        try:
+            req = urllib.request.Request(cand, headers={"User-Agent": "Mozilla/5.0"})
+            r = urllib.request.urlopen(req, timeout=timeout)
+            ctype = (r.headers.get("Content-Type") or "").lower()
+            if "text/html" in ctype and cand != u:
+                r.close()
+                last = RuntimeError(f"镜像返回错误页: {cand[:60]}")
+                continue
+            return r
+        except Exception as e:
+            last = e
+            continue
+    raise last or RuntimeError("no source")
+
+
 def fetch_cloud_to_cache(u, timeout=180):
     """把云端媒体下载到 CLOUD_CACHE_DIR，返回本地路径；失败返回 None。
 
@@ -452,8 +488,7 @@ def fetch_cloud_to_cache(u, timeout=180):
         try:
             dst.parent.mkdir(parents=True, exist_ok=True)
             tmp = dst.with_name(dst.name + ".part")
-            req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
-            with urllib.request.urlopen(req, timeout=timeout) as r:
+            with _urlopen_any(u, timeout=timeout) as r:
                 clen = int(r.headers.get("Content-Length") or 0)
                 if clen and clen > CLOUD_PROXY_MAX:
                     plog(f"[云端代理] 文件过大({clen // 1048576}MB)，改直连: {u[-40:]}")
