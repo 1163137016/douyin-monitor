@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04 21:00:36",
+  "generated": "2026-11-04 21:53:06",
   "total": 2283,
   "source": "github-releases",
   "accounts": [
@@ -6003,6 +6003,10 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-23/default.__20260731_141946_Angel.my.Angel.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-23/default.__20260731_141946_Angel.my.Angel.__01-2.jpg"
             }
           ]
         },
@@ -66801,11 +66805,15 @@
           "pub": "2026-05-01 15:55:21",
           "desc": "你对我的了解 无声的告别 难过是有些。#原相机前置live",
           "caption": "发布时间: 2026-05-01 15:55:21\n作品类型: 视频\n\n文案:\n你对我的了解 无声的告别 难过是有些。#原相机前置live\n\n点赞 104 | 评论 4 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7634952568766194929",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-23/default.__20260501_155521_.live__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-23/default.__20260501_155521_.live__.-2.mp4"
             }
           ]
         },
