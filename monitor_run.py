@@ -464,9 +464,58 @@ def load_accounts() -> list:
 # ---------------------------------------------------------------------------
 # 作品归档: 每个作品一个文件夹(发布时间+文案命名), 文案存为 文案.txt
 # ---------------------------------------------------------------------------
+def _sec_folder(sec: str) -> str:
+    """sec_uid 作为目录名(仅用于识别/迁移历史遗留目录)。"""
+    return re.sub(r'[^A-Za-z0-9_-]', '_', sec)[:80]
+
+
+def _merge_dir(src: Path, dst: Path) -> None:
+    """把 src 里的内容并入 dst(同名保留 dst), 然后删除空的 src。"""
+    for item in src.iterdir():
+        target = dst / item.name
+        if not target.exists():
+            item.rename(target)
+    try:
+        src.rmdir()
+    except OSError:
+        pass
+
+
+def sync_account_folder(sec: str, nick: str, prev_nick: str = "") -> Path:
+    """把账号归档目录统一为当前昵称, 改名时旧作品随目录整体带走(不新开分组)。
+
+    - 昵称变化: 旧昵称目录整体改名为新昵称目录(历史作品随行)
+    - 历史遗留的 sec_uid 目录: 一并改名/合并到当前昵称目录
+    返回最终目录 Path。
+    """
+    nick = _sanitize(nick) or "post"
+    target = DOWNLOAD_DIR / nick
+    nick_c = nick.rstrip(". ")  # Windows 文件夹会吞掉尾点, 按规范名比较避免自我合并
+    legacy_names = []
+    for n in (_sec_folder(sec), _sanitize(prev_nick) if prev_nick else ""):
+        n = (n or "").strip()
+        if n and n.rstrip(". ") != nick_c and n not in legacy_names:
+            legacy_names.append(n)
+    for n in legacy_names:
+        src = DOWNLOAD_DIR / n
+        if not src.is_dir():
+            continue
+        try:
+            if not target.exists():
+                src.rename(target)
+                print(f"    [目录跟随改名] {src.name} -> {target.name}")
+            else:
+                _merge_dir(src, target)
+                print(f"    [目录合并] {src.name} -> {target.name}")
+        except OSError as e:
+            print(f"    [目录迁移失败] {src.name}: {e}")
+    return target
+
+
 def work_folder(aweme: dict, sec: str) -> tuple:
     """返回 (作品文件夹 Path, 昵称, 原始文案, 发布时间文本)。
     文件夹命名: downloads/<账号昵称>/<发布时间>_<文案前30字>/
+    （账号改名时旧目录由 sync_account_folder 整体改名跟随, 历史不拆分）
     """
     nick = _sanitize((aweme.get("author") or {}).get("nickname", sec[:8]))
     raw_desc = (aweme.get("desc") or "").strip()
@@ -573,14 +622,26 @@ def _media_filename(i: int, media: list) -> str:
     return f"视频.{ext}" if kind_i == "video" else f"01.{ext}"
 
 
-def predicted_keys(aweme: dict, sec: str, media: list) -> list:
+def _work_rels(aweme: dict, sec: str) -> list:
+    """该作品在远端存储中可能用过的归档前缀: 昵称目录优先, 兼容历史 sec_uid 目录。"""
+    folder, _nick, _raw, _pub = work_folder(aweme, sec)
+    rel = folder.relative_to(DOWNLOAD_DIR).as_posix()
+    out = [rel]
+    legacy = f"{_sec_folder(sec)}/{folder.name}"
+    if legacy != rel:
+        out.append(legacy)
+    return out
+
+
+def predicted_keys(aweme: dict, sec: str, media: list, rel: str = "") -> list:
     """不下载的前提下，预测该作品上传后会用到的 key 列表。
 
     与 download_work 的命名规则保持一致（同一 work_folder + 同名文件），
-    因此预测命中就意味着该作品确实已归档过。
+    因此预测命中就意味着该作品确实已归档过。rel 可指定历史归档前缀。
     """
-    folder, _nick, _raw, _pub = work_folder(aweme, sec)
-    rel = folder.relative_to(DOWNLOAD_DIR).as_posix()
+    if not rel:
+        folder, _nick, _raw, _pub = work_folder(aweme, sec)
+        rel = folder.relative_to(DOWNLOAD_DIR).as_posix()
     keys = []
     for i, _ in enumerate(media):
         keys.append(f"{rel}/{_media_filename(i, media)}")
@@ -595,18 +656,23 @@ def try_reuse_archived(aweme: dict, sec: str, media: list) -> list:
     peek = getattr(store, "peek", None)
     if not peek:
         return []
-    urls = []
-    for k in predicted_keys(aweme, sec, media):
-        u = peek(k)
-        if not u:
-            return []
-        urls.append(u)
-    out = []
-    for u in urls:
-        low = u.split("?")[0].lower()
-        kind = "video" if low.endswith((".mp4", ".webm", ".mov")) else "image"
-        out.append((kind, u))
-    return out
+    for rel in _work_rels(aweme, sec):   # 先昵称前缀, 再历史 sec_uid 前缀
+        urls, ok = [], True
+        for k in predicted_keys(aweme, sec, media, rel):
+            u = peek(k)
+            if not u:
+                ok = False
+                break
+            urls.append(u)
+        if not ok or not urls:
+            continue
+        out = []
+        for u in urls:
+            low = u.split("?")[0].lower()
+            kind = "video" if low.endswith((".mp4", ".webm", ".mov")) else "image"
+            out.append((kind, u))
+        return out
+    return []
 
 
 # ---------------------------------------------------------------------------
@@ -704,6 +770,8 @@ def main() -> int:
                 print(f"    发现 {dropped} 条未归档记录, 本轮重新处理")
             known = {k for k in known if k in works_now}
 
+        live_nick = ""
+
         def _flush():
             """每处理一条就落盘一次。
 
@@ -712,12 +780,20 @@ def main() -> int:
             下轮又从头开始。这里增量保存, 保证进度不回退。
             """
             st["known"] = sorted(known)
-            st["nickname"] = nick_csv or st.get("nickname", "")
+            st["nickname"] = live_nick or nick_csv or st.get("nickname", "")
             st["last_run"] = time.strftime("%Y-%m-%d %H:%M:%S")
             save_account_state(sec, st)
 
         awemes = fetch_post_list(session, cookie, sec)
+        if awemes:
+            # 用最新一条作品的作者昵称作为本账号显示别名, 改名后自动跟随
+            live_nick = _sanitize(
+                (awemes[0].get("author") or {}).get("nickname", sec[:8]))
         print(f"    拉到作品 {len(awemes)} 条")
+        if live_nick:
+            # 目录跟随昵称: 改名时旧目录整体改名(旧作品随行, 不新开分组);
+            # 顺带把历史遗留的 sec_uid 目录迁移回昵称目录。
+            sync_account_folder(sec, live_nick, st.get("nickname", ""))
         # 按发布时间倒序, 保证先处理最新
         awemes.sort(key=lambda a: a.get("create_time", 0), reverse=True)
         for a in awemes:
@@ -738,10 +814,13 @@ def main() -> int:
                 if store_on and MISSING_FIX_MAX > 0 and bf_used[0] < MISSING_FIX_MAX:
                     rec = (st.get("works") or {}).get(aid)
                     if rec and media and not rec.get("bf"):
-                        pk = predicted_keys(a, sec, media)
                         peek = getattr(store, "peek", None)
-                        missing = [i for i, k in enumerate(pk)
-                                   if not (peek(k) if peek else None)]
+                        # 媒体在昵称前缀或历史 sec_uid 前缀下任一命中即视为已归档
+                        pk_by_rel = [predicted_keys(a, sec, media, rel)
+                                     for rel in _work_rels(a, sec)]
+                        missing = [i for i in range(len(media))
+                                   if not any(peek and peek(pk[i])
+                                              for pk in pk_by_rel)]
                         if missing:
                             bf_used[0] += 1
                             print(f"    [补抓] {aid} 云端缺 {len(missing)} 个媒体"
@@ -842,7 +921,7 @@ def main() -> int:
             f"- {nick}：{desc}（{'视频' if kind == 'video' else '图文'}）"
             for nick, desc, kind, n, _u, _c in all_new
         )
-        push("抖音监控: 发现新作品", f"共 {len(all_new)} 条新作品，点开云端作品库可在线播放:\n\n{lines}")
+        push("有上新作品", f"共 {len(all_new)} 条新作品已更新，点开作品库可在线观看:\n\n{lines}")
     else:
         print("==> 无新作品")
 
