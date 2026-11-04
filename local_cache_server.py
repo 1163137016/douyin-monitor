@@ -56,17 +56,54 @@ def url_hash(u: str) -> str:
     return base64.urlsafe_b64encode(u.encode("utf-8")).decode("ascii")[:140]
 
 
+# GitHub Releases 直链(objects.githubusercontent.com)在国内网络普遍不可达,
+# 媒体下载自动改走 GitHub 加速镜像; 可用 GH_MIRRORS 环境变量覆盖(逗号分隔)。
+GH_MIRRORS = [m.strip().rstrip("/") for m in os.environ.get(
+    "GH_MIRRORS",
+    "https://ghfast.top,https://ghproxy.net,https://gh-proxy.com",
+).split(",") if m.strip()]
+
+
+def _is_github_media(u: str) -> bool:
+    try:
+        host = urllib.parse.urlparse(u).hostname or ""
+    except Exception:
+        return False
+    return host == "github.com" or host.endswith(".githubusercontent.com")
+
+
+def _src_candidates(u: str) -> list:
+    """github 媒体直链 -> 镜像优先、直连兜底; 其他 URL 原样直连。"""
+    if not _is_github_media(u):
+        return [u]
+    return [f"{m}/{u}" for m in GH_MIRRORS] + [u]
+
+
+def cloud_get(url: str, timeout: int = 240):
+    """依次尝试镜像/直连, 返回第一个成功响应; 镜像返回 HTML 错误页则跳过。"""
+    last_err = None
+    for cand in _src_candidates(url):
+        try:
+            req = urllib.request.Request(cand, headers={"User-Agent": "dm-local-cache/1.1"})
+            r = urllib.request.urlopen(req, timeout=timeout)
+            ctype = (r.headers.get("Content-Type") or "").lower()
+            if "text/html" in ctype and cand != url:
+                r.close()
+                last_err = RuntimeError(f"镜像返回错误页: {cand[:60]}")
+                continue
+            return r
+        except Exception as e:
+            last_err = e
+            continue
+    raise RuntimeError(f"所有下载源均失败: {last_err}")
+
+
 def cache_path_for(u: str) -> Path:
     ext = ""
     m = re.search(r"\.([A-Za-z0-9]+)(\?|$)", urllib.parse.urlparse(u).path)
     if m:
         ext = m.group(1).lower()
     return CACHE_DIR / (url_hash(u) + ("." + ext if ext else ""))
-
-
-def cloud_get(url: str, timeout: int = 240):
-    req = urllib.request.Request(url, headers={"User-Agent": "dm-local-cache/1.0"})
-    return urllib.request.urlopen(req, timeout=timeout)
 
 
 # ----------------------------- 目录(作品清单) -----------------------------
