@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-05 22:46:22",
-  "total": 2310,
+  "generated": "2026-11-05 23:20:00",
+  "total": 2311,
   "source": "github-releases",
   "accounts": [
     {
@@ -18118,6 +18118,31 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/default.happy.__20240628_123714__07.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-11-05 22:51:31",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-11-05 22:51:31\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 3 | 评论 1 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7704700131191054250",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261105_225131__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261105_225131__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261105_225131__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261105_225131__04.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7704700131191054250"
         },
         {
           "pub": "2026-11-02 20:19:24",
@@ -79470,5 +79495,5 @@
       ]
     }
   ],
-  "local_added": 546
+  "local_added": 547
 }
