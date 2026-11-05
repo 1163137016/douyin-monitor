@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-06 01:16:18",
-  "total": 2313,
+  "generated": "2026-11-06 01:49:25",
+  "total": 2314,
   "source": "github-releases",
   "accounts": [
     {
@@ -4470,6 +4470,111 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/default.happy.__20240628_123714__07.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-11-06 00:03:47",
+          "desc": "怎么概括我的最近",
+          "caption": "发布时间: 2026-11-06 00:03:47\n作品类型: 视频\n\n文案:\n怎么概括我的最近\n\n点赞 1 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7704718749903279595",
+          "kind": "live",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__06.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__07.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__08.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__09.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__10.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__11.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__12.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__13.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__14.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__15.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__16.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__17.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__18.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__19.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__20.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__21.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__22.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__23.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261106_000347_.__24.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7704718749903279595"
         },
         {
           "pub": "2026-11-05 22:51:31",
@@ -79543,5 +79648,5 @@
       ]
     }
   ],
-  "local_added": 547
+  "local_added": 548
 }
