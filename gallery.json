@@ -1,12 +1,36 @@
 {
-  "generated": "2026-11-05 23:53:18",
-  "total": 2312,
+  "generated": "2026-11-06 00:35:39",
+  "total": 2313,
   "source": "github-releases",
   "accounts": [
     {
       "id": "MS4wLjABAAAADaDvhenHwGabPZoulTNE3nJNr6CA7wJ8tbKZn_x07H2EB8oL2Thr0L0gzoPUItEX",
       "nick": "happy小狗",
       "works": [
+        {
+          "pub": "2026-11-05 15:33:46",
+          "desc": "我们眼镜妹是这样反差的",
+          "caption": "发布时间: 2026-11-05 15:33:46\n作品类型: 视频\n\n文案:\n我们眼镜妹是这样反差的\n\n点赞 18 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7704711019163104895",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261105_153346_.__01-3.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261105_153346_.__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261105_153346_.__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261105_153346_.__04.mp4"
+            }
+          ]
+        },
         {
           "pub": "2026-11-05 14:51:31",
           "desc": "无标题",
