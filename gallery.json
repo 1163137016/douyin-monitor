@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-05 11:31:50",
-  "total": 2306,
+  "generated": "2026-11-05 12:05:01",
+  "total": 2308,
   "source": "github-releases",
   "accounts": [
     {
@@ -67485,6 +67485,32 @@
           ]
         },
         {
+          "pub": "2026-04-22 18:00:00",
+          "desc": "ONE PIECE実在するのです。每个人都会找到属于自己的“one piece”#海贼王九宫格 #海贼王酒局#海贼王",
+          "caption": "发布时间: 2026-04-22 18:00:00\n作品类型: 图文\n\n文案:\nONE PIECE実在するのです。每个人都会找到属于自己的“one piece”#海贼王九宫格 #海贼王酒局#海贼王\n\n点赞 158 | 评论 21 | 收藏 12 | 分享 28\n作品链接: https://www.douyin.com/video/7631471170889572017",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-23/default.__20260422_180000_ONE.PIECE.__01.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7631471170889572017"
+        },
+        {
+          "pub": "2025-11-01 01:19:22",
+          "desc": "好权威的dy特效🫶🏻",
+          "caption": "发布时间: 2025-11-01 01:19:22\n作品类型: 视频\n\n文案:\n好权威的dy特效🫶🏻\n信我的 这特效谁拍谁好看#特效 #抖音特效 #fyp#万圣节 #猛女必备\n\n点赞 29 | 评论 3 | 收藏 3 | 分享 1\n作品链接: https://www.douyin.com/video/7567436610766892921",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-23/default.__20251101_011922_.dy._.__.-2.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7567436610766892921"
+        },
+        {
           "pub": "2023-07-20 15:42:04",
           "desc": "夏天总要去看一次海。#夏天的味道 #一起看海",
           "caption": "发布时间: 2023-07-20 15:42:04\n作品类型: 图文\n\n文案:\n夏天总要去看一次海。#夏天的味道 #一起看海 \n在享受风景时，这片风景的美好就是属于你的\n\n点赞 31 | 评论 4 | 收藏 1 | 分享 0\n作品链接: https://www.douyin.com/video/7257802852842720546",
@@ -79358,5 +79384,5 @@
       ]
     }
   ],
-  "local_added": 542
+  "local_added": 544
 }
