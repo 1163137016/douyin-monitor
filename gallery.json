@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-06 20:23:46",
-  "total": 2320,
+  "generated": "2026-11-06 21:28:32",
+  "total": 2321,
   "source": "github-releases",
   "accounts": [
     {
@@ -12115,6 +12115,19 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20220916_151618_.__.mp4"
             }
           ]
+        },
+        {
+          "pub": "2026-11-06 20:53:34",
+          "desc": "又怎么了我的大小姐#蓝白傻猫",
+          "caption": "发布时间: 2026-11-06 20:53:34\n作品类型: 视频\n\n文案:\n又怎么了我的大小姐#蓝白傻猫\n\n点赞 3 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7705040820717736123",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20261106_205334_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7705040820717736123"
         },
         {
           "pub": "2026-11-05 21:54:01",
@@ -79786,5 +79799,5 @@
       ]
     }
   ],
-  "local_added": 550
+  "local_added": 551
 }
