@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-07 01:13:47",
-  "total": 2321,
+  "generated": "2026-11-07 01:47:13",
+  "total": 2322,
   "source": "github-releases",
   "accounts": [
     {
@@ -4292,6 +4292,19 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-15/Zeus__20201218_130959_12.18.__.mp4"
             }
           ]
+        },
+        {
+          "pub": "2026-11-07 01:14:35",
+          "desc": "#致敬我们的少女时代 十年好快",
+          "caption": "发布时间: 2026-11-07 01:14:35\n作品类型: 视频\n\n文案:\n#致敬我们的少女时代 十年好快\n\n点赞 4 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7705108078086444022",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Zeus__20261107_011435_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7705108078086444022"
         },
         {
           "pub": "2026-11-06 12:22:54",
@@ -79799,5 +79812,5 @@
       ]
     }
   ],
-  "local_added": 551
+  "local_added": 552
 }
