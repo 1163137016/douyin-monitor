@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-06 18:15:27",
-  "total": 2317,
+  "generated": "2026-11-06 18:48:16",
+  "total": 2319,
   "source": "github-releases",
   "accounts": [
     {
@@ -21385,6 +21385,23 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-19/default.__20220215_014156_.06__04.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-11-06 18:21:07",
+          "desc": "算了吧算了吧不想装伟大 #低像素ootd",
+          "caption": "发布时间: 2026-11-06 18:21:07\n作品类型: 视频\n\n文案:\n算了吧算了吧不想装伟大 #低像素ootd\n\n点赞 24 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7705001537513411706",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20261106_182107_.ootd__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20261106_182107_.ootd__02.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7705001537513411706"
         },
         {
           "pub": "2026-11-02 18:26:20",
@@ -48692,7 +48709,7 @@
           "pub": "2026-07-23 04:02:59",
           "desc": "这世界大的让你很难不旅游#黄果树瀑布",
           "caption": "发布时间: 2026-07-23 04:02:59\n作品类型: 图文\n\n文案:\n这世界大的让你很难不旅游#黄果树瀑布\n\n点赞 155 | 评论 7 | 收藏 8 | 分享 27\n作品链接: https://www.douyin.com/video/7665569059739610816",
-          "kind": "image",
+          "kind": "live",
           "items": [
             {
               "type": "image",
@@ -48729,6 +48746,22 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-2/uu__20260723_040259_.__09.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-10/uu__20260723_040259_.__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-10/uu__20260723_040259_.__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-10/uu__20260723_040259_.__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-11/uu__20260723_040259_.__07.mp4"
             }
           ]
         },
@@ -75020,6 +75053,19 @@
       "nick": "Nuo",
       "works": [
         {
+          "pub": "2026-11-06 17:43:17",
+          "desc": "来迟啦#好朋友就是拿来玩耍的 #搞笑甜妹组合 #在一起搞怪 #和朋友拍照不必太正经 @DOU+小助手",
+          "caption": "发布时间: 2026-11-06 17:43:17\n作品类型: 视频\n\n文案:\n来迟啦#好朋友就是拿来玩耍的 #搞笑甜妹组合 #在一起搞怪 #和朋友拍照不必太正经 @DOU+小助手\n\n点赞 5 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7704991784258464713",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Nuo__20261106_174317_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7704991784258464713"
+        },
+        {
           "pub": "2026-10-14 19:40:09",
           "desc": "食未吖 #美食没有天花板 #热气腾腾的鸡煲 #周末户外烧烤 #美食 @DOU+小助手",
           "caption": "发布时间: 2026-10-14 19:40:09\n作品类型: 视频\n\n文案:\n食未吖 #美食没有天花板 #热气腾腾的鸡煲 #周末户外烧烤 #美食 @DOU+小助手\n\n点赞 18 | 评论 0 | 收藏 1 | 分享 1\n作品链接: https://www.douyin.com/video/7696486938334015993",
@@ -79728,5 +79774,5 @@
       ]
     }
   ],
-  "local_added": 548
+  "local_added": 550
 }
