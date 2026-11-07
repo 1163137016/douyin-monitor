@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08 04:55:46",
+  "generated": "2026-11-08 05:27:08",
   "total": 2341,
   "source": "github-releases",
   "accounts": [
@@ -14308,6 +14308,22 @@
           ]
         },
         {
+          "pub": "2025-09-15 17:03:12",
+          "desc": "左滑一键开心起来",
+          "caption": "发布时间: 2025-09-15 17:03:12\n作品类型: 图文\n\n文案:\n左滑一键开心起来\n\n点赞 462 | 评论 16 | 收藏 30 | 分享 8\n作品链接: https://www.douyin.com/video/7550362599595937043",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20250915_170312_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20250915_170312_.__02.jpg"
+            }
+          ]
+        },
+        {
           "pub": "2025-08-30 14:54:37",
           "desc": "无标题",
           "caption": "发布时间: 2025-08-30 14:54:37\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 170 | 评论 3 | 收藏 10 | 分享 6\n作品链接: https://www.douyin.com/video/7544392102714920231",
@@ -16060,23 +16076,6 @@
             }
           ],
           "link": "https://www.douyin.com/video/7565101193354661161"
-        },
-        {
-          "pub": "2025-09-16 01:03:12",
-          "desc": "左滑一键开心起来",
-          "caption": "发布时间: 2025-09-16 01:03:12\n作品类型: 图文\n\n文案:\n左滑一键开心起来\n\n点赞 462 | 评论 16 | 收藏 30 | 分享 8\n作品链接: https://www.douyin.com/video/7550362599595937043",
-          "kind": "image",
-          "items": [
-            {
-              "type": "image",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20250916_010312_.__01.jpg"
-            },
-            {
-              "type": "image",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20250916_010312_.__02.jpg"
-            }
-          ],
-          "link": "https://www.douyin.com/video/7550362599595937043"
         },
         {
           "pub": "2025-08-30 22:54:37",
@@ -80382,5 +80381,5 @@
       ]
     }
   ],
-  "local_added": 554
+  "local_added": 553
 }
