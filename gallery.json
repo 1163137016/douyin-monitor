@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07 19:40:19",
+  "generated": "2026-11-07 20:13:20",
   "total": 2331,
   "source": "github-releases",
   "accounts": [
@@ -11,11 +11,15 @@
           "pub": "2026-11-07 09:21:03",
           "desc": "oh幸福  妈妈说的爱我搞不清楚 #旧图分享 #反话大王",
           "caption": "发布时间: 2026-11-07 09:21:03\n作品类型: 视频\n\n文案:\noh幸福  妈妈说的爱我搞不清楚 #旧图分享 #反话大王\n\n点赞 10 | 评论 7 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7705357142085541306",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Szeyee__20261107_092103_oh.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Szeyee__20261107_092103_oh.__.-2.mp4"
             }
           ]
         },
