@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-07 10:14:28",
-  "total": 2325,
+  "generated": "2026-11-07 10:46:34",
+  "total": 2326,
   "source": "github-releases",
   "accounts": [
     {
@@ -71448,6 +71448,47 @@
           ]
         },
         {
+          "pub": "2026-11-07 09:43:34",
+          "desc": "𝑹𝒐𝒔𝒂 𝑹𝒐𝒔𝒂 ⛲️ #inmylife #staycation",
+          "caption": "发布时间: 2026-11-07 09:43:34\n作品类型: 图文\n\n文案:\n𝑹𝒐𝒔𝒂 𝑹𝒐𝒔𝒂 ⛲️ #inmylife #staycation\n\n点赞 7 | 评论 2 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7705239250266662138",
+          "kind": "live",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/yyccqe-__20261107_094334_.inmylife.stayca__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/yyccqe-__20261107_094334_.inmylife.stayca__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/yyccqe-__20261107_094334_.inmylife.stayca__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/yyccqe-__20261107_094334_.inmylife.stayca__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/yyccqe-__20261107_094334_.inmylife.stayca__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/yyccqe-__20261107_094334_.inmylife.stayca__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/yyccqe-__20261107_094334_.inmylife.stayca__07.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/yyccqe-__20261107_094334_.inmylife.stayca__08.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7705239250266662138"
+        },
+        {
           "pub": "2026-02-22 14:52:23",
           "desc": "𝑖𝑛 𝐴𝑟𝑎𝑛𝑦𝑎  ོ 🤎🌰🍂#plog#ootd分享 #04#chillchill",
           "caption": "发布时间: 2026-02-22 14:52:23\n作品类型: 图文\n\n文案:\n𝑖𝑛 𝐴𝑟𝑎𝑛𝑦𝑎  ོ 🤎🌰🍂#plog#ootd分享 #04#chillchill\n\n点赞 63 | 评论 9 | 收藏 0 | 分享 4\n作品链接: https://www.douyin.com/video/7609578848573640945",
@@ -79995,5 +80036,5 @@
       ]
     }
   ],
-  "local_added": 551
+  "local_added": 552
 }
