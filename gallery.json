@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-08 00:41:23",
-  "total": 2332,
+  "generated": "2026-11-08 01:44:49",
+  "total": 2333,
   "source": "github-releases",
   "accounts": [
     {
@@ -15540,6 +15540,27 @@
             }
           ],
           "link": "https://www.douyin.com/video/7631905328452226724"
+        },
+        {
+          "pub": "2026-04-05 19:38:22",
+          "desc": "#姐姐",
+          "caption": "发布时间: 2026-04-05 19:38:22\n作品类型: 视频\n\n文案:\n#姐姐\n\n点赞 161 | 评论 6 | 收藏 20 | 分享 7\n作品链接: https://www.douyin.com/video/7625238131213669860",
+          "kind": "live",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20260405_193822_.__01.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20260405_193822_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20260405_193822_.__03.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7625238131213669860"
         },
         {
           "pub": "2026-03-13 13:10:51",
@@ -80158,5 +80179,5 @@
       ]
     }
   ],
-  "local_added": 550
+  "local_added": 551
 }
