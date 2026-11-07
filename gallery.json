@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07 15:06:29",
+  "generated": "2026-11-07 16:11:26",
   "total": 2328,
   "source": "github-releases",
   "accounts": [
@@ -22912,6 +22912,14 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20250410_182107_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20250410_182107_.__01-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20250410_182107_.__02-2.jpg"
             }
           ]
         },
