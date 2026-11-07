@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-07 23:31:15",
-  "total": 2331,
+  "generated": "2026-11-08 00:06:17",
+  "total": 2332,
   "source": "github-releases",
   "accounts": [
     {
@@ -12496,6 +12496,42 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/default.happy.__20260423_105031__09.jpg"
+            }
+          ]
+        },
+        {
+          "pub": "2026-04-08 14:08:37",
+          "desc": "拍生气了就这样",
+          "caption": "发布时间: 2026-04-08 14:08:37\n作品类型: 图文\n\n文案:\n拍生气了就这样\n\n点赞 46 | 评论 3 | 收藏 1 | 分享 1\n作品链接: https://www.douyin.com/video/7626390105511599551",
+          "kind": "live",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20260408_140837_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20260408_140837_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20260408_140837_.__03.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20260408_140837_.__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20260408_140837_.__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20260408_140837_.__06.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20260408_140837_.__07.jpg"
             }
           ]
         },
