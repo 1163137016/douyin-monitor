@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-08 11:14:09",
-  "total": 2341,
+  "generated": "2026-11-08 12:48:36",
+  "total": 2342,
   "source": "github-releases",
   "accounts": [
     {
@@ -10167,7 +10167,7 @@
           "pub": "2026-11-05 16:03:47",
           "desc": "怎么概括我的最近",
           "caption": "发布时间: 2026-11-05 16:03:47\n作品类型: 视频\n\n文案:\n怎么概括我的最近\n\n点赞 7 | 评论 1 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7704718749903279595",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
@@ -14272,6 +14272,30 @@
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-14/happy.__20251120_105026_.__01.mp4"
+            }
+          ]
+        },
+        {
+          "pub": "2025-10-25 10:16:24",
+          "desc": "无标题",
+          "caption": "发布时间: 2025-10-25 10:16:24\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 150 | 评论 3 | 收藏 14 | 分享 4\n作品链接: https://www.douyin.com/video/7565101193354661161",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20251025_101624__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20251025_101624__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20251025_101624__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20251025_101624__04.jpg"
             }
           ]
         },
