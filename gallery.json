@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-08 17:01:55",
-  "total": 2342,
+  "generated": "2026-11-08 18:05:31",
+  "total": 2343,
   "source": "github-releases",
   "accounts": [
     {
@@ -9772,6 +9772,19 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-19/default.__20220215_014156_.06__04.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-11-08 17:03:31",
+          "desc": "今天是卷毛来的๑´༥`๑ #卷毛 #睡衣教主 #美式卷毛 #金毛",
+          "caption": "发布时间: 2026-11-08 17:03:31\n作品类型: 视频\n\n文案:\n今天是卷毛来的๑´༥`๑ #卷毛 #睡衣教主 #美式卷毛 #金毛\n\n点赞 21 | 评论 2 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7705723706655548666",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20261108_170331_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7705723706655548666"
         },
         {
           "pub": "2026-11-02 18:26:20",
@@ -80405,5 +80418,5 @@
       ]
     }
   ],
-  "local_added": 553
+  "local_added": 554
 }
