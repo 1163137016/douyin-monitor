@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-09 02:15:06",
-  "total": 2352,
+  "generated": "2026-11-09 02:46:26",
+  "total": 2353,
   "source": "github-releases",
   "accounts": [
     {
@@ -4810,6 +4810,19 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/default.happy.__20240628_123714__07.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-11-09 01:19:51",
+          "desc": "比冬天先来的是太妃榛果拿铁。每年喝到太妃榛果拿铁的时候，就意味着这一年又要接近尾声了，我想今年应该会比往年都要幸福一点点",
+          "caption": "发布时间: 2026-11-09 01:19:51\n作品类型: 视频\n\n文案:\n比冬天先来的是太妃榛果拿铁。每年喝到太妃榛果拿铁的时候，就意味着这一年又要接近尾声了，我想今年应该会比往年都要幸福一点点\n\n点赞 2 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7705851607916880042",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_011951_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7705851607916880042"
         },
         {
           "pub": "2026-11-08 22:40:19",
@@ -80760,5 +80773,5 @@
       ]
     }
   ],
-  "local_added": 556
+  "local_added": 557
 }
