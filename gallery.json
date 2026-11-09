@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09 17:41:59",
+  "generated": "2026-11-09 18:16:47",
   "total": 2358,
   "source": "github-releases",
   "accounts": [
@@ -24,6 +24,22 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_063523_.ENDLESSLOVE__03.jpg"
+            }
+          ]
+        },
+        {
+          "pub": "2026-11-09 05:06:45",
+          "desc": "内心丰盈者 独善其身",
+          "caption": "发布时间: 2026-11-09 05:06:45\n作品类型: 图文\n\n文案:\n内心丰盈者 独善其身\n\n点赞 149 | 评论 0 | 收藏 7 | 分享 4\n作品链接: https://www.douyin.com/video/7706033775105409636",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_050645_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_050645_.__02.jpg"
             }
           ]
         },
@@ -4866,23 +4882,6 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/default.happy.__20240628_123714__07.jpg"
             }
           ]
-        },
-        {
-          "pub": "2026-11-09 13:06:45",
-          "desc": "内心丰盈者 独善其身",
-          "caption": "发布时间: 2026-11-09 13:06:45\n作品类型: 图文\n\n文案:\n内心丰盈者 独善其身\n\n点赞 0 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7706033775105409636",
-          "kind": "image",
-          "items": [
-            {
-              "type": "image",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_130645_.__01.jpg"
-            },
-            {
-              "type": "image",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_130645_.__02.jpg"
-            }
-          ],
-          "link": "https://www.douyin.com/video/7706033775105409636"
         },
         {
           "pub": "2026-11-09 01:19:51",
@@ -80898,5 +80897,5 @@
       ]
     }
   ],
-  "local_added": 558
+  "local_added": 557
 }
