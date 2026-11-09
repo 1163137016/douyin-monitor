@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-09 18:16:47",
-  "total": 2358,
+  "generated": "2026-11-09 18:49:55",
+  "total": 2360,
   "source": "github-releases",
   "accounts": [
     {
@@ -4882,6 +4882,55 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/default.happy.__20240628_123714__07.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-11-09 17:23:19",
+          "desc": "风里慢慢有了冬天的味道",
+          "caption": "发布时间: 2026-11-09 17:23:19\n作品类型: 视频\n\n文案:\n风里慢慢有了冬天的味道\n\n点赞 0 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7706099896121971051",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_172319_.__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_172319_.__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_172319_.__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_172319_.__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_172319_.__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_172319_.__06.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_172319_.__07.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_172319_.__08.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_172319_.__09.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261109_172319_.__10.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7706099896121971051"
         },
         {
           "pub": "2026-11-09 01:19:51",
@@ -17918,6 +17967,19 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20240208_015834_._.__.mp4"
             }
           ]
+        },
+        {
+          "pub": "2026-11-09 18:41:08",
+          "desc": "好听爱听听一辈子#演唱会 #追星日常分享 #青春售后演唱会 #演唱会现场记录 #演唱会实力派",
+          "caption": "发布时间: 2026-11-09 18:41:08\n作品类型: 视频\n\n文案:\n好听爱听听一辈子#演唱会 #追星日常分享 #青春售后演唱会 #演唱会现场记录 #演唱会实力派\n\n点赞 0 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7706119946497599561",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20261109_184108_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7706119946497599561"
         },
         {
           "pub": "2026-11-05 22:21:49",
@@ -80897,5 +80959,5 @@
       ]
     }
   ],
-  "local_added": 557
+  "local_added": 559
 }
