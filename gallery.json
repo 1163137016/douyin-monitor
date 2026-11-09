@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09 11:08:20",
+  "generated": "2026-11-09 11:39:51",
   "total": 2353,
   "source": "github-releases",
   "accounts": [
@@ -14474,11 +14474,15 @@
           "pub": "2020-03-15 12:07:11",
           "desc": "大咸包外甥仔 每次我抱就不哭😁",
           "caption": "发布时间: 2020-03-15 12:07:11\n作品类型: 视频\n\n文案:\n大咸包外甥仔 每次我抱就不哭😁\n\n点赞 28038 | 评论 1560 | 收藏 545 | 分享 735\n作品链接: https://www.douyin.com/video/6804405145338776846",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Zeus__20200315_120711_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Zeus__20200315_120711_.__.-2.mp4"
             }
           ]
         },
