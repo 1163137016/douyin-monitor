@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-11 12:09:54",
-  "total": 2369,
+  "generated": "2026-11-11 12:43:19",
+  "total": 2371,
   "source": "github-releases",
   "accounts": [
     {
@@ -26954,6 +26954,47 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Zeus__20200315_120711_.__.-2.mp4"
             }
           ]
+        },
+        {
+          "pub": "2026-11-11 11:33:42",
+          "desc": "说不够看的 来个加长版了#港风",
+          "caption": "发布时间: 2026-11-11 11:33:42\n作品类型: 视频\n\n文案:\n说不够看的 来个加长版了#港风\n\n点赞 29 | 评论 5 | 收藏 5 | 分享 3\n作品链接: https://www.douyin.com/video/7706751969843890003",
+          "kind": "live",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Zeus__20261111_113342_.__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Zeus__20261111_113342_.__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Zeus__20261111_113342_.__03.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Zeus__20261111_113342_.__04.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Zeus__20261111_113342_.__05.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Zeus__20261111_113342_.__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Zeus__20261111_113342_.__07.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Zeus__20261111_113342_.__08.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7706751969843890003"
         },
         {
           "pub": "2026-11-06 12:22:54",
@@ -76467,6 +76508,19 @@
       "nick": "Nuo",
       "works": [
         {
+          "pub": "2026-11-11 11:20:45",
+          "desc": "冷吗 我开热点给你 #伤心也要戴墨镜跳卡点舞 #红发太酷啦 #红发ootd #红发留念 #红发look @DOU+小助手",
+          "caption": "发布时间: 2026-11-11 11:20:45\n作品类型: 视频\n\n文案:\n冷吗 我开热点给你 #伤心也要戴墨镜跳卡点舞 #红发太酷啦 #红发ootd #红发留念 #红发look @DOU+小助手\n\n点赞 3 | 评论 1 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7706748636601039845",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Nuo__20261111_112045_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7706748636601039845"
+        },
+        {
           "pub": "2026-11-10 17:33:59",
           "desc": "你总是在谴责昨天 担忧明天 那今天呢 有好好吃饭吗？#出片穿搭 #海滩beach #少女感夏日ootd @DOU+小助手 @抖音小助手",
           "caption": "发布时间: 2026-11-10 17:33:59\n作品类型: 视频\n\n文案:\n你总是在谴责昨天 担忧明天 那今天呢 有好好吃饭吗？#出片穿搭 #海滩beach #少女感夏日ootd @DOU+小助手 @抖音小助手\n\n点赞 2 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7706473732096830713",
@@ -81263,5 +81317,5 @@
       ]
     }
   ],
-  "local_added": 559
+  "local_added": 561
 }
