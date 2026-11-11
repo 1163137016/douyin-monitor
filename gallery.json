@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-12 00:32:36",
-  "total": 2372,
+  "generated": "2026-11-12 01:36:32",
+  "total": 2374,
   "source": "github-releases",
   "accounts": [
     {
@@ -3811,6 +3811,19 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-13/default.__20220916_151618_.__.mp4"
             }
           ]
+        },
+        {
+          "pub": "2026-11-11 21:42:02",
+          "desc": "我们回到第一次对彼此有好感的夜晚吧#喜欢一个人是什么感觉",
+          "caption": "发布时间: 2026-11-11 21:42:02\n作品类型: 视频\n\n文案:\n我们回到第一次对彼此有好感的夜晚吧#喜欢一个人是什么感觉\n\n点赞 3 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7706908739761434107",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20261111_214202_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7706908739761434107"
         },
         {
           "pub": "2026-11-05 21:54:01",
@@ -33764,6 +33777,27 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20250410_182107_.__02-2.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-11-12 00:18:39",
+          "desc": "这个冬天希望我的Domi一直陪着我#冬季甜蜜限定",
+          "caption": "发布时间: 2026-11-12 00:18:39\n作品类型: 图文\n\n文案:\n这个冬天希望我的Domi一直陪着我#冬季甜蜜限定\n\n点赞 3 | 评论 1 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7706949090374311016",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20261112_001839_.Domi.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20261112_001839_.Domi.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/default.__20261112_001839_.Domi.__03.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7706949090374311016"
         },
         {
           "pub": "2026-10-29 13:05:03",
@@ -81345,5 +81379,5 @@
       ]
     }
   ],
-  "local_added": 561
+  "local_added": 563
 }
