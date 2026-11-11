@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-11 13:14:58",
-  "total": 2371,
+  "generated": "2026-11-11 13:47:59",
+  "total": 2372,
   "source": "github-releases",
   "accounts": [
     {
@@ -9167,6 +9167,35 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/default.happy.__20240628_123714__07.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-11-11 13:20:19",
+          "desc": "无结亦无解",
+          "caption": "发布时间: 2026-11-11 13:20:19\n作品类型: 图文\n\n文案:\n无结亦无解\n\n点赞 5 | 评论 0 | 收藏 1 | 分享 0\n作品链接: https://www.douyin.com/video/7706779443834688745",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261111_132019_.__01-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261111_132019_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261111_132019_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261111_132019_.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/happy.__20261111_132019_.__05.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7706779443834688745"
         },
         {
           "pub": "2026-11-10 17:29:38",
@@ -81317,5 +81346,5 @@
       ]
     }
   ],
-  "local_added": 561
+  "local_added": 562
 }
