@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-12 23:57:57",
-  "total": 2382,
+  "generated": "2026-11-13 00:30:58",
+  "total": 2383,
   "source": "github-releases",
   "accounts": [
     {
@@ -76588,6 +76588,19 @@
           "link": "https://www.douyin.com/video/7592301273253994575"
         },
         {
+          "pub": "2025-12-04 22:00:58",
+          "desc": "人生缓缓  自有答案。#平静的力量",
+          "caption": "发布时间: 2025-12-04 22:00:58\n作品类型: 图文\n\n文案:\n人生缓缓  自有答案。#平静的力量\n\n点赞 38 | 评论 9 | 收藏 1 | 分享 0\n作品链接: https://www.douyin.com/video/7580002470421533160",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-24/Cindy__20251204_220058_.__01.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7580002470421533160"
+        },
+        {
           "pub": "2025-11-03 20:06:52",
           "desc": "万物各有时令 爱也到了秋天。#摄影 #每日分享 #公园 #秋天 #人像",
           "caption": "发布时间: 2025-11-03 20:06:52\n作品类型: 图文\n\n文案:\n万物各有时令 爱也到了秋天。#摄影 #每日分享 #公园 #秋天 #人像\n\n点赞 34 | 评论 4 | 收藏 0 | 分享 3\n作品链接: https://www.douyin.com/video/7568469424609934772",
@@ -81557,5 +81570,5 @@
       ]
     }
   ],
-  "local_added": 569
+  "local_added": 570
 }
