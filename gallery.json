@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-15 03:34:29",
-  "total": 2364,
+  "generated": "2026-11-15 04:07:36",
+  "total": 2366,
   "source": "github-releases",
   "accounts": [
     {
@@ -7334,6 +7334,19 @@
           ]
         },
         {
+          "pub": "2026-11-15 01:47:09",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-11-15 01:47:09\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 15 | 评论 3 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7708085158381274468",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Zeus__20261115_014709__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7708085158381274468"
+        },
+        {
           "pub": "2026-11-06 12:22:54",
           "desc": "(无文案)",
           "caption": "发布时间: 2026-11-06 12:22:54\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 25 | 评论 2 | 收藏 2 | 分享 1\n作品链接: https://www.douyin.com/video/7704909225307673834",
@@ -13100,6 +13113,47 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/default.happy.__20240628_123714__07.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-03-13 13:10:51",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-03-13 13:10:51\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 4205 | 评论 122 | 收藏 566 | 分享 1388\n作品链接: https://www.douyin.com/video/7616603305813005503",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260313_131051__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260313_131051__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260313_131051__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260313_131051__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260313_131051__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260313_131051__06.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260313_131051__07.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260313_131051__08.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7616603305813005503"
         },
         {
           "pub": "2026-03-06 20:04:36",
@@ -80793,5 +80847,5 @@
       ]
     }
   ],
-  "local_added": 537
+  "local_added": 539
 }
