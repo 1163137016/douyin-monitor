@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-15 01:50:44",
+  "generated": "2026-11-15 03:34:29",
   "total": 2364,
   "source": "github-releases",
   "accounts": [
@@ -5461,11 +5461,15 @@
           "pub": "2026-11-13 14:17:54",
           "desc": "55元单人套餐！一杯精酿 两碟小食",
           "caption": "发布时间: 2026-11-13 14:17:54\n作品类型: 视频\n\n文案:\n55元单人套餐！一杯精酿 两碟小食\n\n点赞 167 | 评论 11 | 收藏 23 | 分享 7\n作品链接: https://www.douyin.com/video/7707658767521482090",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Zeus__20261113_141754_55.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Zeus__20261113_141754_55.__.-2.mp4"
             }
           ]
         },
