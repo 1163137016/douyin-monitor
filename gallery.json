@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-16 06:35:40",
-  "total": 2393,
+  "generated": "2026-11-16 07:09:04",
+  "total": 2398,
   "source": "github-releases",
   "accounts": [
     {
@@ -10263,6 +10263,155 @@
           ]
         },
         {
+          "pub": "2026-10-12 01:54:25",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-10-12 01:54:25\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 251 | 评论 1 | 收藏 17 | 分享 2\n作品链接: https://www.douyin.com/video/7695470098207386870",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261012_015425__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261012_015425__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261012_015425__03.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7695470098207386870"
+        },
+        {
+          "pub": "2026-10-10 21:42:47",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-10-10 21:42:47\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 35 | 评论 1 | 收藏 5 | 分享 0\n作品链接: https://www.douyin.com/video/7695034203255661028",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261010_214247__01.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7695034203255661028"
+        },
+        {
+          "pub": "2026-10-10 20:13:11",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-10-10 20:13:11\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 48 | 评论 2 | 收藏 10 | 分享 1\n作品链接: https://www.douyin.com/video/7695011114300334571",
+          "kind": "live",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261010_201311__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261010_201311__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261010_201311__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261010_201311__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261010_201311__05.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261010_201311__06.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261010_201311__07.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261010_201311__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261010_201311__09.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7695011114300334571"
+        },
+        {
+          "pub": "2026-10-08 22:14:40",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-10-08 22:14:40\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 79 | 评论 5 | 收藏 6 | 分享 1\n作品链接: https://www.douyin.com/video/7694300245635159935",
+          "kind": "live",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261008_221440__01.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261008_221440__02.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261008_221440__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261008_221440__04.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261008_221440__05.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261008_221440__06.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261008_221440__07.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261008_221440__08.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261008_221440__09.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7694300245635159935"
+        },
+        {
+          "pub": "2026-10-06 00:00:38",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-10-06 00:00:38\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 477 | 评论 8 | 收藏 33 | 分享 20\n作品链接: https://www.douyin.com/video/7693214296873025257",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261006_000038__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261006_000038__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261006_000038__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261006_000038__04.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7693214296873025257"
+        },
+        {
           "pub": "2026-10-04 13:34:27",
           "desc": "要是真的有人陪我去看这个世界 那真的是太美好了 我要赚很多钱 慢慢不再服美役 健康的饮食 好的睡眠  强壮的体魄 不断学习 不断前进 走进大自然 在艰难的环境里锻炼自己的意志",
           "caption": "发布时间: 2026-10-04 13:34:27\n作品类型: 视频\n\n文案:\n要是真的有人陪我去看这个世界 那真的是太美好了 我要赚很多钱 慢慢不再服美役 健康的饮食 好的睡眠  强壮的体魄 不断学习 不断前进 走进大自然 在艰难的环境里锻炼自己的意志\n\n点赞 560 | 评论 5 | 收藏 49 | 分享 27\n作品链接: https://www.douyin.com/video/7692681844084671082",
@@ -10347,6 +10496,26 @@
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261004_133427_.__20.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261004_133427_.__21.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261004_133427_.__22.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261004_133427_.__23.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261004_133427_.__24.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261004_133427_.__25.mp4"
             }
           ],
           "link": "https://www.douyin.com/video/7692681844084671082"
@@ -81733,5 +81902,5 @@
       ]
     }
   ],
-  "local_added": 557
+  "local_added": 562
 }
