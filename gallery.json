@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-15 14:59:16",
-  "total": 2368,
+  "generated": "2026-11-15 15:35:03",
+  "total": 2369,
   "source": "github-releases",
   "accounts": [
     {
@@ -17884,6 +17884,43 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-22/Rrrr__20230320_035243_.ootd.looking.uuuuu__08.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-11-15 12:15:07",
+          "desc": "打抛饭好次好次🍽️#plog",
+          "caption": "发布时间: 2026-11-15 12:15:07\n作品类型: 图文\n\n文案:\n打抛饭好次好次🍽️#plog\n\n点赞 12 | 评论 2 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7708246986307666939",
+          "kind": "live",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Rrrr__20261115_121507_.plog__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Rrrr__20261115_121507_.plog__02.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Rrrr__20261115_121507_.plog__03.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Rrrr__20261115_121507_.plog__04.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Rrrr__20261115_121507_.plog__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Rrrr__20261115_121507_.plog__06.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Rrrr__20261115_121507_.plog__07.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7708246986307666939"
         },
         {
           "pub": "2026-10-23 13:06:30",
@@ -80886,5 +80923,5 @@
       ]
     }
   ],
-  "local_added": 538
+  "local_added": 539
 }
