@@ -1,12 +1,44 @@
 {
-  "generated": "2026-11-15 18:23:25",
-  "total": 2380,
+  "generated": "2026-11-15 19:15:20",
+  "total": 2381,
   "source": "github-releases",
   "accounts": [
     {
       "id": "MS4wLjABAAAADaDvhenHwGabPZoulTNE3nJNr6CA7wJ8tbKZn_x07H2EB8oL2Thr0L0gzoPUItEX",
       "nick": "小小鱼块",
       "works": [
+        {
+          "pub": "2026-11-15 10:15:54",
+          "desc": "无标题",
+          "caption": "发布时间: 2026-11-15 10:15:54\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 4 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7708339956237747684",
+          "kind": "live",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261115_101554__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261115_101554__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261115_101554__03.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261115_101554__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261115_101554__05.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261115_101554__06.jpg"
+            }
+          ]
+        },
         {
           "pub": "2026-11-15 03:55:05",
           "desc": "萌萌的和你去玩",
@@ -30763,6 +30795,18 @@
           ]
         },
         {
+          "pub": "2025-12-29 14:45:51",
+          "desc": "去北极忘记你 可不可以",
+          "caption": "发布时间: 2025-12-29 14:45:51\n作品类型: 图文\n\n文案:\n去北极忘记你 可不可以\n\n点赞 48 | 评论 5 | 收藏 0 | 分享 2\n作品链接: https://www.douyin.com/video/7589291164013961443",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/uu__20251229_144551_.__01.jpg"
+            }
+          ]
+        },
+        {
           "pub": "2025-12-27 13:14:50",
           "desc": ".",
           "caption": "发布时间: 2025-12-27 13:14:50\n作品类型: 图文\n\n文案:\n.\n\n点赞 608 | 评论 15 | 收藏 31 | 分享 26\n作品链接: https://www.douyin.com/video/7588525550471576424",
@@ -30815,19 +30859,6 @@
             }
           ],
           "link": "https://www.douyin.com/video/7601889216394107764"
-        },
-        {
-          "pub": "2025-12-29 22:45:51",
-          "desc": "去北极忘记你 可不可以",
-          "caption": "发布时间: 2025-12-29 22:45:51\n作品类型: 图文\n\n文案:\n去北极忘记你 可不可以\n\n点赞 48 | 评论 5 | 收藏 0 | 分享 2\n作品链接: https://www.douyin.com/video/7589291164013961443",
-          "kind": "image",
-          "items": [
-            {
-              "type": "image",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/uu__20251229_224551_.__01.jpg"
-            }
-          ],
-          "link": "https://www.douyin.com/video/7589291164013961443"
         }
       ]
     },
@@ -81190,5 +81221,5 @@
       ]
     }
   ],
-  "local_added": 550
+  "local_added": 549
 }
