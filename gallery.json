@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-15 20:07:18",
-  "total": 2381,
+  "generated": "2026-11-15 20:44:26",
+  "total": 2385,
   "source": "github-releases",
   "accounts": [
     {
@@ -5092,6 +5092,60 @@
           ]
         },
         {
+          "pub": "2026-08-04 18:24:11",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-08-04 18:24:11\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 71 | 评论 6 | 收藏 3 | 分享 3\n作品链接: https://www.douyin.com/video/7670120317482603967",
+          "kind": "live",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260804_182411__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260804_182411__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260804_182411__03.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260804_182411__04.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7670120317482603967"
+        },
+        {
+          "pub": "2026-07-30 23:05:11",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-07-30 23:05:11\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 262 | 评论 5 | 收藏 14 | 分享 5\n作品链接: https://www.douyin.com/video/7668337305271691178",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260730_230511__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260730_230511__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260730_230511__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260730_230511__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260730_230511__05.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7668337305271691178"
+        },
+        {
           "pub": "2026-07-12 21:35:35",
           "desc": "(无文案)",
           "caption": "发布时间: 2026-07-12 21:35:35\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 251 | 评论 3 | 收藏 16 | 分享 14\n作品链接: https://www.douyin.com/video/7661634682975306987",
@@ -5124,6 +5178,18 @@
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260712_213535__07.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260712_213535__08.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260712_213535__09.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20260712_213535__10.mp4"
             }
           ],
           "link": "https://www.douyin.com/video/7661634682975306987"
@@ -76399,6 +76465,31 @@
       "nick": "Nuo",
       "works": [
         {
+          "pub": "2026-11-15 20:30:45",
+          "desc": "好上头的硬曲#曲子很硬 #酷女孩穿搭分享 #甜酷 @DOU+小助手",
+          "caption": "发布时间: 2026-11-15 20:30:45\n作品类型: 视频\n\n文案:\n好上头的硬曲#曲子很硬 #酷女孩穿搭分享 #甜酷 @DOU+小助手\n\n点赞 1 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7708374707015666289",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Nuo__20261115_203045_.DOU.__01-2.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Nuo__20261115_203045_.DOU.__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Nuo__20261115_203045_.DOU.__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/Nuo__20261115_203045_.DOU.__04.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7708374707015666289"
+        },
+        {
           "pub": "2026-11-13 11:48:14",
           "desc": "#甜酷battle #甜酷教主 #look酷 #辣妹穿搭记录 #甜酷爱豆 @DOU+小助手",
           "caption": "发布时间: 2026-11-13 11:48:14\n作品类型: 视频\n\n文案:\n#甜酷battle #甜酷教主 #look酷 #辣妹穿搭记录 #甜酷爱豆 @DOU+小助手\n\n点赞 1 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7707497886606577146",
@@ -78883,6 +78974,99 @@
       "nick": "sev7",
       "works": [
         {
+          "pub": "2026-11-15 19:52:08",
+          "desc": "粤J生活千金不换#粤 #粤j",
+          "caption": "发布时间: 2026-11-15 19:52:08\n作品类型: 图文\n\n文案:\n粤J生活千金不换#粤 #粤j\n\n点赞 15 | 评论 12 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7708364758798604409",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__06.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__07.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__08.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__09.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__10.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__11.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__12.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__13.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__14.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__15.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__16.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__17.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__18.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__19.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__20.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/sev7__20261115_195208_.J.j__21.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7708364758798604409"
+        },
+        {
           "pub": "2025-03-27 14:45:44",
           "desc": "更新一下#日落🌇 #日落沉溺于橘色的海 #椿 #lon #nbgt",
           "caption": "发布时间: 2025-03-27 14:45:44\n作品类型: 视频\n\n文案:\n更新一下#日落🌇 #日落沉溺于橘色的海 #椿 #lon #nbgt\n\n点赞 159 | 评论 6 | 收藏 6 | 分享 10\n作品链接: https://www.douyin.com/video/7486376821693402409",
@@ -81221,5 +81405,5 @@
       ]
     }
   ],
-  "local_added": 549
+  "local_added": 553
 }
