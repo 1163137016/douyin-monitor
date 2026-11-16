@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-16 08:00:39",
-  "total": 2398,
+  "generated": "2026-11-16 08:33:53",
+  "total": 2399,
   "source": "github-releases",
   "accounts": [
     {
@@ -10263,6 +10263,31 @@
           ]
         },
         {
+          "pub": "2026-10-22 22:51:29",
+          "desc": "没想到最怀念的居然是第一份工作 遇到了一个非常好的领导 非常细心的教会我很多东西 会帮我争取权益 会带我旷工喝咖啡 会保护我 会带我探店 会带我做头疗 离职时亲手做的花篮……很多很多 她简直是我遇到过最美好的领导",
+          "caption": "发布时间: 2026-10-22 22:51:29\n作品类型: 图文\n\n文案:\n没想到最怀念的居然是第一份工作 遇到了一个非常好的领导 非常细心的教会我很多东西 会帮我争取权益 会带我旷工喝咖啡 会保护我 会带我探店 会带我做头疗 离职时亲手做的花篮……很多很多 她简直是我遇到过最美好的领导\n\n点赞 968 | 评论 5 | 收藏 218 | 分享 32\n作品链接: https://www.douyin.com/video/7699504921363805284",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261022_225129_.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261022_225129_.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261022_225129_.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261022_225129_.__04.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7699504921363805284"
+        },
+        {
           "pub": "2026-10-12 01:54:25",
           "desc": "(无文案)",
           "caption": "发布时间: 2026-10-12 01:54:25\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 251 | 评论 1 | 收藏 17 | 分享 2\n作品链接: https://www.douyin.com/video/7695470098207386870",
@@ -10279,6 +10304,18 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261012_015425__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261012_015425__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261012_015425__05.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261012_015425__06.jpg"
             }
           ],
           "link": "https://www.douyin.com/video/7695470098207386870"
@@ -81902,5 +81939,5 @@
       ]
     }
   ],
-  "local_added": 562
+  "local_added": 563
 }
