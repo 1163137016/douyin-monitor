@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-20 12:23:22",
-  "total": 2442,
+  "generated": "2026-11-20 13:32:02",
+  "total": 2443,
   "source": "github-releases",
   "accounts": [
     {
@@ -1884,6 +1884,34 @@
       "nick": "小甜豆",
       "works": [
         {
+          "pub": "2026-11-18 23:44:21",
+          "desc": "好朋友之间就是一个长发 一个短发#好朋友",
+          "caption": "发布时间: 2026-11-18 23:44:21\n作品类型: 视频\n\n文案:\n好朋友之间就是一个长发 一个短发#好朋友\n\n点赞 20 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7709661550579882617",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261118_234421_.__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261118_234421_.__02.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261118_234421_.__03.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261118_234421_.__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261118_234421_.__05.mp4"
+            }
+          ]
+        },
+        {
           "pub": "2026-11-18 14:37:11",
           "desc": "在吗#茉莉花手势舞",
           "caption": "发布时间: 2026-11-18 14:37:11\n作品类型: 视频\n\n文案:\n在吗#茉莉花手势舞\n\n点赞 18 | 评论 0 | 收藏 1 | 分享 0\n作品链接: https://www.douyin.com/video/7709520544253587451",
@@ -3126,35 +3154,6 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-16/default.__20220315_080326_.__.mp4"
             }
           ]
-        },
-        {
-          "pub": "2026-11-19 07:44:21",
-          "desc": "好朋友之间就是一个长发 一个短发#好朋友",
-          "caption": "发布时间: 2026-11-19 07:44:21\n作品类型: 视频\n\n文案:\n好朋友之间就是一个长发 一个短发#好朋友\n\n点赞 6 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7709661550579882617",
-          "kind": "live",
-          "items": [
-            {
-              "type": "video",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261119_074421_.__01.mp4"
-            },
-            {
-              "type": "video",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261119_074421_.__02.mp4"
-            },
-            {
-              "type": "image",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-25/default.__20261119_074421_.__03.jpg"
-            },
-            {
-              "type": "video",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261119_074421_.__04.mp4"
-            },
-            {
-              "type": "video",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261119_074421_.__05.mp4"
-            }
-          ],
-          "link": "https://www.douyin.com/video/7709661550579882617"
         },
         {
           "pub": "2024-11-16 22:26:42",
@@ -46087,6 +46086,50 @@
           ]
         },
         {
+          "pub": "2025-08-21 08:53:46",
+          "desc": "你像流星的坠落 绚丽的点亮了整个星空_#邓紫棋",
+          "caption": "发布时间: 2025-08-21 08:53:46\n作品类型: 视频\n\n文案:\n你像流星的坠落 绚丽的点亮了整个星空\n#邓紫棋\n\n点赞 53 | 评论 6 | 收藏 1 | 分享 0\n作品链接: https://www.douyin.com/video/7540959370000157988",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/uu__20250821_085346_._.__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/uu__20250821_085346_._.__02.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/uu__20250821_085346_._.__03.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/uu__20250821_085346_._.__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/uu__20250821_085346_._.__06.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/uu__20250821_085346_._.__07.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/uu__20250821_085346_._.__08.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/uu__20250821_085346_._.__09.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/uu__20250821_085346_._.__10.jpg"
+            }
+          ]
+        },
+        {
           "pub": "2025-03-08 09:45:28",
           "desc": "1",
           "caption": "发布时间: 2025-03-08 09:45:28\n作品类型: 图文\n\n文案:\n1\n\n点赞 52 | 评论 4 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7479372484244933914",
@@ -83400,5 +83443,5 @@
       ]
     }
   ],
-  "local_added": 588
+  "local_added": 587
 }
