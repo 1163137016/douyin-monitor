@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-21 21:17:08",
-  "total": 2460,
+  "generated": "2026-11-21 23:00:39",
+  "total": 2462,
   "source": "github-releases",
   "accounts": [
     {
@@ -2694,6 +2694,34 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261121_074607_._.__02.jpg"
+            }
+          ]
+        },
+        {
+          "pub": "2026-11-19 06:32:11",
+          "desc": "无标题",
+          "caption": "发布时间: 2026-11-19 06:32:11\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 78 | 评论 6 | 收藏 1 | 分享 3\n作品链接: https://www.douyin.com/video/7709766648269567423",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261119_063211__01-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261119_063211__02-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261119_063211__03-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261119_063211__04-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261119_063211__05-2.jpg"
             }
           ]
         },
@@ -7778,6 +7806,18 @@
             {
               "type": "image",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/default.happy.__20240628_123714__07.jpg"
+            }
+          ]
+        },
+        {
+          "pub": "2024-04-08 16:39:36",
+          "desc": "我笨拙的打开爱情的大门发现每个人都已有过一个深爱的人",
+          "caption": "发布时间: 2024-04-08 16:39:36\n作品类型: 视频\n\n文案:\n我笨拙的打开爱情的大门发现每个人都已有过一个深爱的人\n\n点赞 99 | 评论 4 | 收藏 2 | 分享 2\n作品链接: https://www.douyin.com/video/7355536647070551311",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20240408_163936_.__.mp4"
             }
           ]
         },
