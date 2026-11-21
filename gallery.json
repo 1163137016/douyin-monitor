@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-21 09:55:16",
-  "total": 2450,
+  "generated": "2026-11-21 10:28:14",
+  "total": 2456,
   "source": "github-releases",
   "accounts": [
     {
@@ -11602,6 +11602,68 @@
             }
           ],
           "link": "https://www.douyin.com/video/7701951403157308386"
+        },
+        {
+          "pub": "2025-03-15 23:27:19",
+          "desc": "这个乱糟糟的世界祈祷我们可以避开所有苦难 #巡演 #蝴蝶效应#tizzyt",
+          "caption": "发布时间: 2025-03-15 23:27:19\n作品类型: 视频\n\n文案:\n这个乱糟糟的世界祈祷我们可以避开所有苦难 #巡演 #蝴蝶效应#tizzyt\n\n点赞 37 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7482058134429781285",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20250315_232719_.__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20250315_232719_.__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20250315_232719_.__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20250315_232719_.__04.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20250315_232719_.__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20250315_232719_.__06.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20250315_232719_.__07.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20250315_232719_.__08.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20250315_232719_.__09.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7482058134429781285"
+        },
+        {
+          "pub": "2024-11-21 17:45:09",
+          "desc": "新一课",
+          "caption": "发布时间: 2024-11-21 17:45:09\n作品类型: 视频\n\n文案:\n新一课\n\n点赞 69 | 评论 6 | 收藏 1 | 分享 3\n作品链接: https://www.douyin.com/video/7439666261900020992",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20241121_174509_.__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20241121_174509_.__02.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7439666261900020992"
         }
       ]
     },
@@ -25806,6 +25868,48 @@
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-21/default.happy.__20240628_123714__07.jpg"
             }
           ]
+        },
+        {
+          "pub": "2026-11-21 10:11:07",
+          "desc": "如果我是太阳 我希望你永远是我的23度26分",
+          "caption": "发布时间: 2026-11-21 10:11:07\n作品类型: 视频\n\n文案:\n如果我是太阳 我希望你永远是我的23度26分\n\n点赞 2 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7710441532293914771",
+          "kind": "live",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261121_101107_.23.26.__01.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261121_101107_.23.26.__02.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261121_101107_.23.26.__03.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7710441532293914771"
+        },
+        {
+          "pub": "2026-11-20 17:11:57",
+          "desc": "(无文案)",
+          "caption": "发布时间: 2026-11-20 17:11:57\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 1 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7710178903688468223",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261120_171157__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261120_171157__02.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261120_171157__03.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7710178903688468223"
         },
         {
           "pub": "2026-11-19 14:32:11",
@@ -78573,6 +78677,19 @@
       "nick": "Nuo",
       "works": [
         {
+          "pub": "2026-11-20 23:35:02",
+          "desc": "最近很好 没再问那些蠢问题 #限定氛围感 #派对甜妹 #韩系氛围 #笑起来有多甜 #酒吧微醺感 @DOU+小助手",
+          "caption": "发布时间: 2026-11-20 23:35:02\n作品类型: 视频\n\n文案:\n最近很好 没再问那些蠢问题 #限定氛围感 #派对甜妹 #韩系氛围 #笑起来有多甜 #酒吧微醺感 @DOU+小助手\n\n点赞 6 | 评论 1 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7710277624232265585",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Nuo__20261120_233502_.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7710277624232265585"
+        },
+        {
           "pub": "2026-11-16 15:11:03",
           "desc": "在发财和发光中 选择了发视频～ #moonride #hearts2hearts#卡点舞 @DOU+小助手 @抖音小助手 #手势舞",
           "caption": "发布时间: 2026-11-16 15:11:03\n作品类型: 视频\n\n文案:\n在发财和发光中 选择了发视频～ #moonride #hearts2hearts#卡点舞 @DOU+小助手 @抖音小助手 #手势舞\n\n点赞 37 | 评论 1 | 收藏 3 | 分享 8\n作品链接: https://www.douyin.com/video/7708663403892036474",
@@ -82112,6 +82229,23 @@
       "nick": "Yuann",
       "works": [
         {
+          "pub": "2026-11-20 17:43:50",
+          "desc": "oh幸福～妈妈说的爱搞不清楚🐕🐶#看看你们家可爱的小土狗 #黑色幼犬 #中华田园犬 #小黑狗 @DOU+小助手 @抖音小助手",
+          "caption": "发布时间: 2026-11-20 17:43:50\n作品类型: 视频\n\n文案:\noh幸福～妈妈说的爱搞不清楚🐕🐶#看看你们家可爱的小土狗 #黑色幼犬 #中华田园犬 #小黑狗 @DOU+小助手 @抖音小助手\n\n点赞 5 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7710187119931165402",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Yuann__20261120_174350_oh.__01.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Yuann__20261120_174350_oh.__02.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7710187119931165402"
+        },
+        {
           "pub": "2026-11-18 21:09:42",
           "desc": "嘿～在吗？☎️#茉莉 #我家门口开了一朵茉莉 #茉茉 #手势舞",
           "caption": "发布时间: 2026-11-18 21:09:42\n作品类型: 视频\n\n文案:\n嘿～在吗？☎️#茉莉 #我家门口开了一朵茉莉 #茉茉 #手势舞\n\n点赞 7 | 评论 0 | 收藏 1 | 分享 0\n作品链接: https://www.douyin.com/video/7709498000825078694",
@@ -83645,5 +83779,5 @@
       ]
     }
   ],
-  "local_added": 589
+  "local_added": 595
 }
