@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-22 01:20:53",
-  "total": 2471,
+  "generated": "2026-11-22 01:53:27",
+  "total": 2472,
   "source": "github-releases",
   "accounts": [
     {
@@ -7822,6 +7822,23 @@
           ]
         },
         {
+          "pub": "2026-11-21 15:46:07",
+          "desc": "长大一点都不好玩",
+          "caption": "发布时间: 2026-11-21 15:46:07\n作品类型: 图文\n\n文案:\n长大一点都不好玩\n我想下课和你去吃麦旋风了\n\n点赞 4 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7710527869298708351",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261121_154607_._.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261121_154607_._.__02.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7710527869298708351"
+        },
+        {
           "pub": "2026-11-21 10:11:07",
           "desc": "如果我是太阳 我希望你永远是我的23度26分",
           "caption": "发布时间: 2026-11-21 10:11:07\n作品类型: 视频\n\n文案:\n如果我是太阳 我希望你永远是我的23度26分\n\n点赞 2 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7710441532293914771",
@@ -8982,6 +8999,30 @@
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_221638_.__10.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_221638_.__11.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_221638_.__12.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_221638_.__13.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_221638_.__14.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_221638_.__15.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_221638_.__16.mp4"
             }
           ],
           "link": "https://www.douyin.com/video/7623052401532409718"
@@ -84147,5 +84188,5 @@
       ]
     }
   ],
-  "local_added": 603
+  "local_added": 604
 }
