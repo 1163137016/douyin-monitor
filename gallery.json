@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-23 04:00:29",
-  "total": 2483,
+  "generated": "2026-11-23 04:32:09",
+  "total": 2485,
   "source": "github-releases",
   "accounts": [
     {
@@ -57998,6 +57998,35 @@
           ]
         },
         {
+          "pub": "2026-11-23 00:29:57",
+          "desc": "有我 别心慌。#城市citywalk #抖音小助手",
+          "caption": "发布时间: 2026-11-23 00:29:57\n作品类型: 图文\n\n文案:\n有我 别心慌。#城市citywalk #抖音小助手\n\n点赞 0 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7711033944649003635",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Xiaotong.tt__20261123_002957_.citywalk.__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Xiaotong.tt__20261123_002957_.citywalk.__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Xiaotong.tt__20261123_002957_.citywalk.__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Xiaotong.tt__20261123_002957_.citywalk.__04.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Xiaotong.tt__20261123_002957_.citywalk.__05.jpg"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7711033944649003635"
+        },
+        {
           "pub": "2026-11-04 20:58:17",
           "desc": "幸福本质不是惊天动地狂喜 而是拥有持续收集微小雀跃的能力#玉龙雪山日落金山 #日照金山见者幸运",
           "caption": "发布时间: 2026-11-04 20:58:17\n作品类型: 图文\n\n文案:\n幸福本质不是惊天动地狂喜 而是拥有持续收集微小雀跃的能力#玉龙雪山日落金山 #日照金山见者幸运\n\n点赞 10 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7704299867405566834",
@@ -79504,6 +79533,19 @@
       "nick": "Nuo",
       "works": [
         {
+          "pub": "2026-11-22 21:38:13",
+          "desc": "#甜妹打call #恋爱达人 #元气wink #露肩上衣 #甜甜手势舞 @DOU+小助手",
+          "caption": "发布时间: 2026-11-22 21:38:13\n作品类型: 视频\n\n文案:\n#甜妹打call #恋爱达人 #元气wink #露肩上衣 #甜甜手势舞 @DOU+小助手\n\n点赞 4 | 评论 2 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7710989692883797130",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Nuo__20261122_213813_.call.wink.__.mp4"
+            }
+          ],
+          "link": "https://www.douyin.com/video/7710989692883797130"
+        },
+        {
           "pub": "2026-11-20 23:35:02",
           "desc": "最近很好 没再问那些蠢问题 #限定氛围感 #派对甜妹 #韩系氛围 #笑起来有多甜 #酒吧微醺感 @DOU+小助手",
           "caption": "发布时间: 2026-11-20 23:35:02\n作品类型: 视频\n\n文案:\n最近很好 没再问那些蠢问题 #限定氛围感 #派对甜妹 #韩系氛围 #笑起来有多甜 #酒吧微醺感 @DOU+小助手\n\n点赞 6 | 评论 1 | 收藏 0 | 分享 1\n作品链接: https://www.douyin.com/video/7710277624232265585",
@@ -84623,5 +84665,5 @@
       ]
     }
   ],
-  "local_added": 603
+  "local_added": 605
 }
