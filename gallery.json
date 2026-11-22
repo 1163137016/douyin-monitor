@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-22 21:17:33",
+  "generated": "2026-11-22 21:50:38",
   "total": 2482,
   "source": "github-releases",
   "accounts": [
@@ -11,11 +11,15 @@
           "pub": "2026-11-22 05:49:34",
           "desc": "在顺德渔村也能出片",
           "caption": "发布时间: 2026-11-22 05:49:34\n作品类型: 视频\n\n文案:\n在顺德渔村也能出片\n\n点赞 147 | 评论 10 | 收藏 10 | 分享 16\n作品链接: https://www.douyin.com/video/7710868921352517547",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Zeus__20261122_054934_.__.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Zeus__20261122_054934_.__.-2.mp4"
             }
           ]
         },
@@ -5152,7 +5156,7 @@
           "pub": "2026-11-20 09:11:57",
           "desc": "无标题",
           "caption": "发布时间: 2026-11-20 09:11:57\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 98 | 评论 4 | 收藏 2 | 分享 3\n作品链接: https://www.douyin.com/video/7710178903688468223",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
@@ -5165,6 +5169,18 @@
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261120_091157__03.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261120_091157__01-2.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261120_091157__02-2.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20261120_091157__03-2.mp4"
             }
           ]
         },
@@ -7948,7 +7964,7 @@
           "pub": "2026-03-30 14:16:38",
           "desc": "山山而川 绿水盈盈",
           "caption": "发布时间: 2026-03-30 14:16:38\n作品类型: 视频\n\n文案:\n山山而川 绿水盈盈\n\n点赞 42 | 评论 3 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7623052401532409718",
-          "kind": "video",
+          "kind": "live",
           "items": [
             {
               "type": "video",
@@ -8005,6 +8021,54 @@
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__16.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__01-2.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__02-2.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__03.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__04-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__05-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__06-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__07-2.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__10-2.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__11-2.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__12-2.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__15.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20260330_141638_.__16-2.mp4"
             }
           ]
         },
