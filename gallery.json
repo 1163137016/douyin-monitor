@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-26 21:47:30",
-  "total": 2500,
+  "generated": "2026-11-26 22:39:32",
+  "total": 2501,
   "source": "github-releases",
   "accounts": [
     {
@@ -21783,6 +21783,42 @@
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-14/happy.__20251215_063603_.__03.mp4"
+            }
+          ]
+        },
+        {
+          "pub": "2025-11-29 05:45:43",
+          "desc": "无标题",
+          "caption": "发布时间: 2025-11-29 05:45:43\n作品类型: 图文\n\n文案:\n(无文案)\n\n点赞 80 | 评论 10 | 收藏 2 | 分享 2\n作品链接: https://www.douyin.com/video/7578019423031318675",
+          "kind": "live",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20251129_054543__01.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20251129_054543__02.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20251129_054543__03.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20251129_054543__04.jpg"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20251129_054543__05.mp4"
+            },
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20251129_054543__06.mp4"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20251129_054543__08.jpg"
             }
           ]
         },
