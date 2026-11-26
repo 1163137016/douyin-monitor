@@ -2,7 +2,7 @@ name: 抖音监控（自动下载 + 云端画廊 + 微信推送）
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 */2 * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -17,7 +17,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 60    # 上传附件需要更多时间
+    timeout-minutes: 90    # 27 个账号全量回灌需要更多时间
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -47,7 +47,14 @@ jobs:
           SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
           MAX_PAGES: ${{ secrets.MAX_PAGES }}
           ACCOUNTS_URL: ${{ secrets.ACCOUNTS_URL }}
+          # GitHub Releases 存储后端: 用 Actions 自带令牌, 无需手动创建
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 每轮时间预算: 给缓存保存与 Pages 部署留余量(作业总超时 90 分钟)
+          TIME_BUDGET_MIN: "70"
+          # 每轮最多处理多少条新作品
+          MAX_NEW_PER_RUN: "120"
+          # 每轮最多补抓多少次缺失媒体(每条作品最多一次, 防止死循环吃满预算)
+          MISSING_FIX_MAX: "30"
         run: python monitor_run.py
 
       - name: Build gallery
@@ -57,6 +64,25 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
+
+      # GitHub 的 artifact 索引上传后有几秒~十几秒同步延迟, deploy-pages 立刻去取
+      # 会报 "Fetching artifact metadata failed / No artifacts named github-pages"。
+      # 加等待 + 轮询 API 确认 artifact 可见后再部署, 消除这个偶发假失败。
+      - name: Wait for Pages artifact visible
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for i in $(seq 1 12); do
+            FOUND=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" \
+              --jq '.artifacts[] | select(.name=="github-pages") | .id' 2>/dev/null | head -1)
+            if [ -n "$FOUND" ]; then
+              echo "artifact github-pages 可见 (id=$FOUND), 等待第 ${i} 次检查"
+              exit 0
+            fi
+            echo "artifact 尚未同步, 第 $i/12 次等待..."
+            sleep 10
+          done
+          echo "警告: 等待 120s 后 artifact 仍不可见, 继续尝试部署"
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -74,10 +100,10 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$N" -gt 0 ]; then
             URL="${{ steps.deployment.outputs.page_url }}"
             if [ "$N" -gt 0 ]; then
-              TITLE="抖音作品库已更新(云端可播放)"
-              DESC="本次新增 $N 条新作品，点此在浏览器在线观看(无需进抖音): $URL"
+              TITLE="有上新作品"
+              DESC="本次新增 $N 条新作品，点此在浏览器在线观看: $URL"
             else
-              TITLE="抖音作品库(手动查看)"
+              TITLE="作品库(可随时查看)"
               DESC="本次无新作品。作品库链接（可随时在线观看）: $URL"
             fi
             curl -s -X POST "https://sctapi.ftqq.com/${{ secrets.SERVERCHAN_SENDKEY }}.send" \
