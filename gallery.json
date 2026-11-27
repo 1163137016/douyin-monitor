@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27 14:39:59",
+  "generated": "2026-11-27 15:31:33",
   "total": 2503,
   "source": "github-releases",
   "accounts": [
@@ -13929,6 +13929,26 @@
           ]
         },
         {
+          "pub": "2024-04-02 13:48:30",
+          "desc": "#水瓶座 #显眼包ovo",
+          "caption": "发布时间: 2024-04-02 13:48:30\n作品类型: 图文\n\n文案:\n#水瓶座 #显眼包ovo\n\n点赞 1203 | 评论 125 | 收藏 55 | 分享 79\n作品链接: https://www.douyin.com/video/7353266196206128384",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20240402_134830_.ovo__01-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20240402_134830_.ovo__02-2.jpg"
+            },
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20240402_134830_.ovo__03-2.jpg"
+            }
+          ]
+        },
+        {
           "pub": "2026-11-21 15:46:07",
           "desc": "长大一点都不好玩",
           "caption": "发布时间: 2026-11-21 15:46:07\n作品类型: 图文\n\n文案:\n长大一点都不好玩\n我想下课和你去吃麦旋风了\n\n点赞 4 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7710527869298708351",
@@ -15813,27 +15833,6 @@
             }
           ],
           "link": "https://www.douyin.com/video/7357571207312444706"
-        },
-        {
-          "pub": "2024-04-02 21:48:30",
-          "desc": "#水瓶座 #显眼包ovo",
-          "caption": "发布时间: 2024-04-02 21:48:30\n作品类型: 图文\n\n文案:\n#水瓶座 #显眼包ovo\n\n点赞 1202 | 评论 125 | 收藏 55 | 分享 79\n作品链接: https://www.douyin.com/video/7353266196206128384",
-          "kind": "image",
-          "items": [
-            {
-              "type": "image",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20240402_214830_.ovo__01.jpg"
-            },
-            {
-              "type": "image",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20240402_214830_.ovo__02.jpg"
-            },
-            {
-              "type": "image",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/default.__20240402_214830_.ovo__03.jpg"
-            }
-          ],
-          "link": "https://www.douyin.com/video/7353266196206128384"
         }
       ]
     },
@@ -85107,5 +85106,5 @@
       ]
     }
   ],
-  "local_added": 611
+  "local_added": 610
 }
