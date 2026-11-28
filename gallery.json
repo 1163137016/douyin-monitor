@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-28 06:41:52",
-  "total": 2507,
+  "generated": "2026-11-28 08:04:07",
+  "total": 2508,
   "source": "github-releases",
   "accounts": [
     {
@@ -1102,6 +1102,30 @@
             {
               "type": "video",
               "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Zeus__20261125_045828_.__.mp4"
+            }
+          ]
+        },
+        {
+          "pub": "2026-11-24 12:23:16",
+          "desc": "无标题",
+          "caption": "发布时间: 2026-11-24 12:23:16\n作品类型: 视频\n\n文案:\n(无文案)\n\n点赞 44 | 评论 4 | 收藏 2 | 分享 0\n作品链接: https://www.douyin.com/video/7711712545032241087",
+          "kind": "video",
+          "items": [
+            {
+              "type": "video",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Zeus__20261124_122316__.mp4"
+            }
+          ]
+        },
+        {
+          "pub": "2026-11-23 18:10:17",
+          "desc": "6th Wedding Anniversary 🤍",
+          "caption": "发布时间: 2026-11-23 18:10:17\n作品类型: 图文\n\n文案:\n6th Wedding Anniversary 🤍\n\n点赞 142 | 评论 35 | 收藏 12 | 分享 10\n作品链接: https://www.douyin.com/video/7711430881135400895",
+          "kind": "image",
+          "items": [
+            {
+              "type": "image",
+              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Zeus__20261123_181017_6th.Wedding.Anniversary.__01.jpg"
             }
           ]
         },
@@ -3021,19 +3045,6 @@
             }
           ],
           "link": "https://www.douyin.com/video/7711712545032241087"
-        },
-        {
-          "pub": "2026-11-24 02:10:17",
-          "desc": "6th Wedding Anniversary 🤍",
-          "caption": "发布时间: 2026-11-24 02:10:17\n作品类型: 图文\n\n文案:\n6th Wedding Anniversary 🤍\n\n点赞 3 | 评论 0 | 收藏 0 | 分享 0\n作品链接: https://www.douyin.com/video/7711430881135400895",
-          "kind": "image",
-          "items": [
-            {
-              "type": "image",
-              "url": "https://github.com/1163137016/douyin-monitor/releases/download/works-26/Zeus__20261124_021017_6th.Wedding.Anniversary.__01.jpg"
-            }
-          ],
-          "link": "https://www.douyin.com/video/7711430881135400895"
         },
         {
           "pub": "2026-11-15 01:47:09",
@@ -85193,5 +85204,5 @@
       ]
     }
   ],
-  "local_added": 609
+  "local_added": 608
 }
